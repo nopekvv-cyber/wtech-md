@@ -1,0 +1,66 @@
+{
+  "name": "wtech-md",
+  "version": "2.0.0",
+  "private": true,
+  "description": "wtech.md - software studio in Chisinau. Trilingual production site.",
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "node scripts/check-placeholders.mjs && node scripts/check-i18n.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "check": "node scripts/check-placeholders.mjs && node scripts/check-i18n.mjs",
+    "analyze": "ANALYZE=true next build",
+    "icons": "node scripts/make-icons.mjs",
+    "og": "node scripts/make-og.mjs",
+    "preview:prod": "ALLOW_PLACEHOLDERS=1 next build && next start",
+    "check:env": "node scripts/check-env.mjs",
+    "test:e2e": "playwright test",
+    "lighthouse": "node scripts/lighthouse.mjs",
+    "verify": "node scripts/check-env.mjs && npm run check:lock && node scripts/check-placeholders.mjs && node scripts/check-i18n.mjs && tsc --noEmit && eslint . && next build && playwright test && node scripts/lighthouse.mjs",
+    "knip": "knip",
+    "check:lock": "npm ci --dry-run --ignore-scripts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.125.0",
+    "@dnd-kit/core": "6.3.1",
+    "@dnd-kit/utilities": "3.2.2",
+    "@supabase/supabase-js": "2.116.0",
+    "framer-motion": "13.2.0",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "lucide-react": "1.45.0",
+    "next": "15.5.25",
+    "next-intl": "4.14.4",
+    "nodemailer": "10.0.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "recharts": "3.10.1",
+    "server-only": "0.0.1",
+    "sharp": "0.35.4",
+    "zod": "4.6.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.3.1",
+    "@next/bundle-analyzer": "15.5.25",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "24.13.4",
+    "@types/nodemailer": "7.0.12",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "15.5.25",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "knip": "6.35.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "overrides": {
+    "postcss": "8.5.23"
+  }
+}

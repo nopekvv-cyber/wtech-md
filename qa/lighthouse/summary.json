@@ -1,0 +1,80 @@
+{
+  "date": "2026-09-14T09:59:17.485Z",
+  "runs": 3,
+  "gates": {
+    "performance": 90,
+    "accessibility": 95,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "pages": [
+    {
+      "page": "/",
+      "perf": 95,
+      "perfRuns": [
+        95,
+        95,
+        97
+      ],
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100,
+      "lcp": 2.87,
+      "cls": 0,
+      "tbt": 21,
+      "ok": true,
+      "below": []
+    },
+    {
+      "page": "/ru",
+      "perf": 94,
+      "perfRuns": [
+        94,
+        94,
+        94
+      ],
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100,
+      "lcp": 3.02,
+      "cls": 0,
+      "tbt": 15,
+      "ok": true,
+      "below": []
+    },
+    {
+      "page": "/en",
+      "perf": 95,
+      "perfRuns": [
+        94,
+        95,
+        95
+      ],
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100,
+      "lcp": 2.86,
+      "cls": 0,
+      "tbt": 18,
+      "ok": true,
+      "below": []
+    },
+    {
+      "page": "/servicii/ai-seo",
+      "perf": 95,
+      "perfRuns": [
+        95,
+        95,
+        97
+      ],
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100,
+      "lcp": 2.92,
+      "cls": 0.006,
+      "tbt": 5,
+      "ok": true,
+      "below": []
+    }
+  ]
+}

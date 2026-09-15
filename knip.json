@@ -1,0 +1,14 @@
+{
+  "entry": [
+    "app/**/*.{ts,tsx}",
+    "scripts/*.mjs",
+    "tests/**/*.{ts,mjs}"
+  ],
+  "ignoreDependencies": [
+    "eslint-config-next"
+  ],
+  "ignoreExportsUsedInFile": true,
+  "ignoreUnresolved": [
+    "../server.js"
+  ]
+}

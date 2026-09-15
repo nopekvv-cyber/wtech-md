@@ -1,0 +1,581 @@
+{
+  "meta": {
+    "siteName": "wtech.md",
+    "home": {
+      "title": "wtech.md | Site-uri, CRM, angajați AI și automatizări în Chișinău",
+      "description": "Creare site Chișinău, CRM pentru afaceri din Moldova, angajați AI care răspund 24/7 și automatizări. Un singur sistem, construit de o echipă din Chișinău. Preț fix în 48 de ore."
+    },
+    "services": {
+      "title": "Servicii | wtech.md",
+      "description": "Site-uri premium, CRM și dashboard-uri, angajați AI, automatizări, software la comandă și AI SEO pentru afaceri din Moldova."
+    },
+    "work": {
+      "title": "Lucrări | wtech.md",
+      "description": "Concepte și proiecte wtech.md: site premium, CRM personalizat, angajat AI pe telefon."
+    },
+    "pricing": {
+      "title": "Prețuri | wtech.md",
+      "description": "Prețuri de pornire în MDL pentru site, CRM și angajat AI. Propunere cu preț fix în 48 de ore, fără obligații."
+    },
+    "contact": {
+      "title": "Contact | wtech.md",
+      "description": "Scrie-ne pe WhatsApp, Telegram sau Viber sau programează un apel de 30 de minute. Răspundem în mai puțin de o oră în zilele lucrătoare."
+    },
+    "audit": {
+      "title": "Audit gratuit al site-ului în 24 h | wtech.md",
+      "description": "Trimite adresa site-ului și primești mâine un audit: viteză, SEO, conversie și vizibilitate în răspunsurile AI."
+    },
+    "about": {
+      "title": "Despre wtech.md | Studio de software din Chișinău",
+      "description": "wtech.md este un studio de software din Chișinău care construiește site-uri, CRM-uri, angajați AI și automatizări pentru afaceri din Moldova."
+    },
+    "blog": {
+      "title": "Blog | wtech.md",
+      "description": "Ghiduri practice despre site-uri, CRM, automatizări și AI SEO pentru afaceri din Moldova."
+    },
+    "notFound": {
+      "title": "Pagina nu există | wtech.md"
+    }
+  },
+  "nav": {
+    "services": "Servicii",
+    "work": "Lucrări",
+    "process": "Proces",
+    "pricing": "Prețuri",
+    "contact": "Contact",
+    "cta": "Programează un apel",
+    "language": "Limba",
+    "menu": "Meniu",
+    "close": "Închide",
+    "home": "Acasă"
+  },
+  "common": {
+    "skip": "Sari la conținut",
+    "sending": "Se trimite…",
+    "back": "Înapoi",
+    "next": "Continuă",
+    "readMore": "Citește",
+    "brandAlt": "wtech.md",
+    "markAlt": "Marca wtech.md, o panglică de sticlă în formă de w",
+    "demoData": "Date demonstrative",
+    "loading": "Se încarcă"
+  },
+  "hero": {
+    "h1": "Clienții îți scriu. Cineva trebuie să răspundă în 4 minute.",
+    "h1b": "Clienți care vin singuri. Un sistem care nu-i pierde.",
+    "sub": "Site-uri, CRM, angajați AI și automatizări — un singur sistem, construit în Chișinău, care nu pierde niciun lead.",
+    "primary": "Programează un apel de 30 min",
+    "ghost": "Vezi demo-ul CRM live",
+    "risk": "Propunere cu preț fix în 48 h · Fără obligații",
+    "facts": {
+      "city": "Chișinău",
+      "reply": "Răspundem în < 1 oră",
+      "price": "Preț fix, în MDL"
+    },
+    "fold": {
+      "websites": "Site-uri",
+      "crm": "CRM & dashboard-uri",
+      "ai": "Angajați AI",
+      "automations": "Automatizări",
+      "software": "Software la comandă",
+      "seo": "AI SEO"
+    },
+    "videoAlt": "Marca wtech.md, o panglică de sticlă luminoasă care se rotește lent pe fundal negru"
+  },
+  "services": {
+    "title": "Șase lucruri pe care le construim. Toate se leagă între ele.",
+    "items": {
+      "websites": {
+        "name": "Site-uri",
+        "before": "Ai un site care arată ca al tuturor și nu aduce niciun client.",
+        "after": "Ai un site premium, animat, care convinge și aduce cereri de ofertă în fiecare săptămână.",
+        "cta": "Vreau un site care aduce clienți",
+        "intro": "Creare site în Chișinău pentru afaceri care vor mai mult decât o carte de vizită online. Design unic, animații, RO/RU/EN, viteză sub 1 secundă și formulare care ajung direct în CRM și pe WhatsApp.",
+        "b1": "Design unic, nu template. Fiecare secțiune are un rol în conversie.",
+        "b2": "Trilingv RO/RU/EN, cu texte scrise nativ, nu traduse automat.",
+        "b3": "Lighthouse peste 90 pe mobil. LCP sub 1,2 secunde.",
+        "b4": "Formulare conectate la CRM, WhatsApp și Telegram din prima zi.",
+        "b5": "Găzduire, mentenanță și 30 de zile de suport incluse.",
+        "alt": "Laptop cu un site întunecat care derulează"
+      },
+      "crm": {
+        "name": "CRM & dashboard-uri",
+        "before": "Lead-urile stau în Excel, în telefonul managerului și în trei chaturi diferite.",
+        "after": "Fiecare lead are un statut, un responsabil și un termen. Vezi într-un ecran câți bani sunt în pipeline.",
+        "cta": "Vreau un CRM ca acesta",
+        "intro": "CRM pentru afaceri din Moldova, construit în jurul procesului tău, nu invers. Pipeline, oferte, facturi, rapoarte și un angajat AI care face follow-up. Fără abonamente per utilizator.",
+        "b1": "Pipeline personalizat: etapele tale, câmpurile tale, limbile tale.",
+        "b2": "Dashboard cu venit, timp de răspuns și rată de câștig, actualizat live.",
+        "b3": "Integrare cu 1C, Facebook Lead Ads, Gmail, WhatsApp Business și Telegram.",
+        "b4": "Codul este al tău. Fără plată lunară per utilizator.",
+        "b5": "Instalare pe serverul tău sau găzduire la noi, la alegere.",
+        "alt": "Dashboard CRM întunecat cu un grafic de venit"
+      },
+      "ai": {
+        "name": "Angajați AI",
+        "before": "Mesajele de la 22:00 primesc răspuns a doua zi la 10:00. Clientul a semnat deja cu altcineva.",
+        "after": "Ana răspunde în 4 minute, trimite oferta, programează întâlnirea și scrie totul în CRM.",
+        "cta": "Vreau un angajat AI",
+        "intro": "Chatbot AI pentru afaceri din Moldova care vorbește română și rusă, răspunde pe WhatsApp, Telegram, Viber și pe site, califică lead-urile, trimite oferte și programează întâlniri. Antrenat pe datele tale.",
+        "b1": "Răspunde în RO și RU, 24/7, pe toate canalele tale.",
+        "b2": "Califică lead-ul, trimite oferta în PDF, propune o oră de întâlnire.",
+        "b3": "Scrie fiecare conversație în CRM și anunță echipa când e nevoie de om.",
+        "b4": "Raport zilnic: câte lead-uri, câte oferte, câte întâlniri.",
+        "b5": "Escaladează către un om când nu știe răspunsul. Nu inventează.",
+        "alt": "Interfață de chat întunecată cu indicator de tastare"
+      },
+      "automations": {
+        "name": "Automatizări",
+        "before": "Factura se face manual, oferta se copiază din alt document, raportul se trimite când își amintește cineva.",
+        "after": "Lead → CRM → ofertă → factură → raport, fără nicio mână de om între ele.",
+        "cta": "Vreau să automatizez asta",
+        "intro": "Automatizare afacere: conectăm CRM-ul, e-mailul, WhatsApp, Telegram, Viber, facturarea și 1C într-un flux care rulează singur. Fiecare pas este vizibil și poate fi oprit cu un click.",
+        "b1": "Lead-urile din Facebook, site și telefon intră automat în CRM.",
+        "b2": "Oferte și facturi generate din CRM, trimise pe e-mail și WhatsApp.",
+        "b3": "Reamintiri de plată și confirmări de întâlnire fără să ridici telefonul.",
+        "b4": "Sincronizare cu 1C Contabilitate și bănci (maib, MICB, PayNet).",
+        "b5": "Raport zilnic pe Telegram la ora 18:00.",
+        "alt": "Noduri conectate cu un puls de lumină"
+      },
+      "software": {
+        "name": "Software la comandă",
+        "before": "Programul de pe piață face 60% din ce ai nevoie și te obligă să lucrezi cum vrea el.",
+        "after": "O aplicație construită pe procesul tău, cu integrările tale, care crește odată cu afacerea.",
+        "cta": "Vreau să discutăm despre o aplicație",
+        "intro": "Aplicații web, aplicații mobile și integrări construite de la zero, în sprinturi de două săptămâni, cu cod care rămâne al tău. Pentru companii din Moldova și pentru companii din UE care caută o echipă nearshore.",
+        "b1": "Aplicații web și mobile (iOS, Android) cu un singur cod.",
+        "b2": "Integrări cu API-uri locale: 1C, MPay, maib, PayNet, poșta, curieri.",
+        "b3": "Sprinturi de 2 săptămâni, demo la fiecare sprint.",
+        "b4": "Documentație, teste și livrare în Docker pe serverul tău.",
+        "b5": "Suport și dezvoltare continuă după lansare.",
+        "alt": "Telefon și editor de cod pe fundal negru"
+      },
+      "seo": {
+        "name": "AI SEO",
+        "before": "Ești pe pagina 3 în Google și nu exiști deloc în răspunsurile ChatGPT.",
+        "after": "Apari în Google, în AI Overviews și în răspunsurile ChatGPT, Gemini și Perplexity când cineva întreabă de serviciile tale.",
+        "cta": "Vreau un audit SEO + AI gratuit",
+        "intro": "SEO Chișinău plus GEO (generative engine optimisation): SEO tehnic, motor de conținut în RO/RU/EN, date structurate, pagini de entitate și citări, astfel încât Google și modelele AI să te recomande. Cu dashboard de poziții și vizibilitate AI în CRM.",
+        "b1": "SEO tehnic și Core Web Vitals: viteză, indexare, structură.",
+        "b2": "Conținut lunar în RO/RU/EN: redactat cu AI, editat de om, publicat pe programul tău.",
+        "b3": "GEO: schema, pagini de entitate, citări și FAQ-uri pe care modelele AI le pot cita.",
+        "b4": "Dashboard cu poziții în Google și scor de vizibilitate AI, în CRM.",
+        "b5": "Raport lunar cu ce s-a schimbat și ce urmează.",
+        "alt": "Bară de căutare cu rezultate și un card de răspuns AI"
+      }
+    }
+  },
+  "proof": {
+    "n1": "[[proof.n1]]",
+    "l1": "proiecte livrate în Moldova",
+    "n2": "[[proof.n2]]",
+    "l2": "minute timp mediu de răspuns al angajaților AI",
+    "n3": "[[proof.n3]]",
+    "l3": "lead-uri procesate lunar prin sistemele noastre",
+    "sentence": "Numere reale, din sistemele pe care le-am construit. Le actualizăm lunar."
+  },
+  "crm": {
+    "title": "Un CRM construit în jurul afacerii tale — nu invers.",
+    "sub": "Nu este o imagine. Trage un card în altă coloană.",
+    "cta": "Vreau un CRM ca acesta",
+    "search": "Caută persoane, companii, deal-uri…",
+    "user": "Mihai D.",
+    "sidebar": {
+      "overview": "Prezentare",
+      "leads": "Lead-uri",
+      "deals": "Deal-uri",
+      "clients": "Clienți",
+      "automations": "Automatizări",
+      "ai": "Angajați AI",
+      "settings": "Setări"
+    },
+    "stats": {
+      "leads": "Lead-uri noi",
+      "won": "Deal-uri câștigate",
+      "revenue": "Venit",
+      "response": "Timp de răspuns",
+      "vs": "față de ultimele 30 de zile",
+      "responseValue": "4 min"
+    },
+    "chart": {
+      "title": "Venit lunar",
+      "months": "Ian,Feb,Mar,Apr,Mai,Iun,Iul,Aug,Sep,Oct,Noi,Dec"
+    },
+    "pipeline": {
+      "title": "Pipeline de vânzări",
+      "total": "Total deal-uri",
+      "period": "Luna aceasta",
+      "more": "încă {count}",
+      "columns": {
+        "new": "Nou",
+        "contacted": "Contactat",
+        "offer": "Ofertă",
+        "won": "Câștigat"
+      },
+      "dragHint": "Trage cardurile între coloane"
+    },
+    "industries": {
+      "software": "Dezvoltare software",
+      "trade": "Comerț cu ridicata",
+      "energy": "Energie",
+      "telecom": "Telecomunicații",
+      "agro": "Fermă agricolă",
+      "food": "Producție alimentară",
+      "pharmacy": "Farmacie",
+      "confectionery": "Cofetărie",
+      "construction": "Construcții",
+      "it": "IT & consultanță",
+      "logistics": "Logistică",
+      "wine": "Vinuri",
+      "dental": "Clinică dentară",
+      "furniture": "Mobilier"
+    },
+    "ana": {
+      "panel": "Angajat AI",
+      "name": "Ana",
+      "greeting": "Bună, Mihai!",
+      "summary": "Iată rezumatul follow-up-urilor de azi. Am identificat 12 oportunități importante care necesită atenția ta.",
+      "t1": "12 follow-up-uri astăzi",
+      "t1s": "8 lead-uri · 4 clienți",
+      "t2": "3 întâlniri programate",
+      "t2s": "9:00, 11:30, 16:00",
+      "t3": "2 oportunități fierbinți",
+      "t3s": "Vinăria Codru, Dental Art",
+      "followups": "Follow-up-uri de azi",
+      "seeAll": "Vezi toate",
+      "urgent": "Urgent",
+      "normal": "Normal",
+      "f1": "Confirmare ofertă și următorii pași",
+      "f2": "Discuție tehnică, soluție personalizată",
+      "f3": "Follow-up ofertă trimisă",
+      "f4": "Apel de follow-up, feedback",
+      "input": "Întreab-o pe Ana ceva…"
+    }
+  },
+  "ai": {
+    "title": "Angajați AI care răspund când tu dormi.",
+    "sub": "Un exemplu real de conversație, de la prima întrebare până la întâlnirea programată.",
+    "chat": {
+      "header": "Ana · Angajat AI",
+      "client": "Andrei C.",
+      "clientRole": "Client",
+      "m1": "Bună! Puteți să-mi trimiteți o ofertă pentru un site de prezentare? Avem nevoie de ceva modern și rapid.",
+      "m2": "Bună, Andrei! Am pregătit o ofertă personalizată pentru site-ul de prezentare. Costul este [[price.site]] MDL fără TVA, iar termenul de livrare este 3 săptămâni.",
+      "file": "Ofertă site de prezentare",
+      "fileMeta": "PDF · 1,2 MB",
+      "m3": "Dacă vă convine, putem discuta detaliile miercuri la 10:00. Vă rezerv ora?",
+      "m4": "Da, miercuri e perfect.",
+      "meeting": "Întâlnire programată",
+      "meetingWhen": "Miercuri, 14 mai · 10:00",
+      "meetingWhere": "Online · Google Meet",
+      "sent": "Trimis în CRM ✓",
+      "sentSub": "Clientul a fost adăugat în pipeline",
+      "input": "Scrie un mesaj…",
+      "m2_short": "Bună, Andrei! Am pregătit o ofertă personalizată pentru site-ul de prezentare, cu preț fix fără TVA, iar termenul de livrare este 3 săptămâni."
+    },
+    "automations": {
+      "header": "Automatizări",
+      "ranToday": "Rulate azi",
+      "of": "din {total}",
+      "title": "Fluxuri automate",
+      "active": "Activ",
+      "a1": "Răspunde la lead-uri noi",
+      "a1s": "Trimite mesaj de bun venit și colectează informații.",
+      "a2": "Trimite oferte",
+      "a2s": "Generează oferta personalizată și o trimite clientului.",
+      "a3": "Reamintiri de plată",
+      "a3s": "Trimite automat scadențele și notificările de plată.",
+      "a4": "Raport zilnic",
+      "a4s": "Trimite sumarul zilei prin e-mail la ora 18:00.",
+      "tabs": {
+        "chat": "Chat",
+        "automations": "Automatizări",
+        "crm": "CRM",
+        "settings": "Setări"
+      }
+    },
+    "roi": {
+      "title": "Câți bani pierzi lunar pe lead-uri fără răspuns?",
+      "leads": "Lead-uri pe lună",
+      "lost": "Din ele, câte % rămân fără răspuns la timp",
+      "value": "Valoarea medie a unei comenzi (MDL)",
+      "result": "MDL recuperați pe lună",
+      "hint": "Estimare: un angajat AI recuperează aproximativ 60% din lead-urile pierdute prin răspuns în primele minute.",
+      "cta": "Vreau să recuperez acești bani",
+      "perYear": "pe an"
+    }
+  },
+  "automations": {
+    "title": "Totul conectat. Nimic copiat manual.",
+    "sub": "Un lead intră o singură dată. Restul se întâmplă singur.",
+    "nodes": {
+      "lead": "Lead",
+      "crm": "CRM",
+      "offer": "Ofertă",
+      "whatsapp": "WhatsApp",
+      "invoice": "Factură",
+      "report": "Raport"
+    },
+    "l1": "Conectăm 1C Contabilitate, Facebook Lead Ads, Gmail, WhatsApp Business și Telegram.",
+    "l2": "Facturi și plăți prin bănci locale și PayNet, cu confirmare automată în CRM.",
+    "l3": "Fiecare flux este vizibil, poate fi pornit sau oprit și îți scrie pe Telegram când ceva nu merge.",
+    "cta": "Vreau să automatizez asta"
+  },
+  "software": {
+    "title": "Software la comandă, când produsele gata nu ajung.",
+    "p": "Aplicații web, mobile și integrări construite pe procesul tău, în sprinturi de două săptămâni, cu cod care rămâne al tău. Pentru companii din Moldova și pentru companii din UE care caută o echipă nearshore.",
+    "cta": "Vreau să discutăm despre o aplicație",
+    "alt": "Laptop, telefon și tabletă cu aceeași interfață întunecată"
+  },
+  "seo": {
+    "title": "Apari în Google. Și în răspunsurile AI.",
+    "sub": "Clienții tăi întreabă ChatGPT, Gemini și Perplexity înainte să caute în Google. Ne asigurăm că răspunsul te menționează.",
+    "question": "Cine face site-uri premium în Chișinău?",
+    "answerIntro": "Pentru site-uri premium în Chișinău, o opțiune des recomandată este ",
+    "answerBody": ", un studio din Chișinău care construiește site-uri animate, CRM-uri și angajați AI pentru afaceri din Moldova. Oferă propunere cu preț fix în 48 de ore și lucrează în română, rusă și engleză.",
+    "sources": "Surse",
+    "ranking": {
+      "title": "Poziții și vizibilitate AI",
+      "visibility": "Vizibilitate AI",
+      "keyword": "Cuvânt-cheie",
+      "position": "Poziție",
+      "k1": "creare site Chișinău",
+      "k2": "site web Moldova preț",
+      "k3": "CRM pentru afaceri Moldova",
+      "k4": "chatbot AI Moldova",
+      "k5": "AI SEO Moldova",
+      "trend": "ultimele 90 de zile"
+    },
+    "l1": "SEO tehnic și Core Web Vitals: viteză, indexare, structură curată.",
+    "l2": "Motor de conținut în RO/RU/EN: redactat cu AI, editat de om, publicat lunar.",
+    "l3": "GEO: schema, pagini de entitate și citări, ca modelele AI să recomande brandul tău.",
+    "cta": "Vreau un audit SEO + AI gratuit"
+  },
+  "audit": {
+    "title": "Audit gratuit al site-ului tău în 24 h",
+    "sub": "Trimite adresa site-ului. Mâine primești pe WhatsApp un audit de viteză, SEO, conversie și vizibilitate în răspunsurile AI.",
+    "url": "Adresa site-ului",
+    "urlPlaceholder": "https://firma-ta.md",
+    "email": "E-mail",
+    "whatsapp": "WhatsApp",
+    "whatsappPlaceholder": "+373 6x xxx xxx",
+    "includeAi": "Include analiza vizibilității în răspunsurile AI (ChatGPT, Gemini, Perplexity)",
+    "submit": "Vreau auditul gratuit",
+    "success": "Trimis. Primești auditul mâine.",
+    "successSub": "Îl trimitem pe WhatsApp și pe e-mail în maximum 24 de ore lucrătoare.",
+    "error": "Nu am putut trimite. Scrie-ne direct pe WhatsApp.",
+    "invalidUrl": "Introdu o adresă validă, de exemplu https://firma-ta.md",
+    "invalidEmail": "Introdu o adresă de e-mail validă",
+    "invalidPhone": "Introdu un număr de telefon valid"
+  },
+  "process": {
+    "title": "Cum lucrăm. Patru pași, fără surprize.",
+    "s1": "Apel de 30 min",
+    "s1d": "Îți ascultăm afacerea și problema. Fără prezentări, fără jargon.",
+    "s2": "Propunere cu preț fix în 48 h",
+    "s2d": "Primești un document cu ce construim, cât costă în MDL și când livrăm.",
+    "s3": "Construim în sprinturi de 2 săptămâni",
+    "s3d": "La fiecare două săptămâni vezi ceva care funcționează, nu un raport.",
+    "s4": "Lansare + 30 zile suport inclus",
+    "s4d": "Lansăm, instruim echipa și rămânem alături o lună. Apoi, dacă vrei, mentenanță."
+  },
+  "pricing": {
+    "title": "Prețuri de pornire. Transparente, în MDL.",
+    "sub": "Fiecare proiect primește un preț fix în propunere. Acestea sunt reperele de la care pornim.",
+    "from": "de la",
+    "currency": "MDL",
+    "r1": "Site de prezentare",
+    "r1p": "[[price.site]]",
+    "r1i": "Design unic, RO/RU/EN, animații, formulare în CRM și WhatsApp, găzduire un an, 30 de zile suport.",
+    "r2": "CRM personalizat",
+    "r2p": "[[price.crm]]",
+    "r2i": "Pipeline, dashboard, oferte și facturi, integrare 1C și Facebook Lead Ads, instalare pe serverul tău, codul este al tău.",
+    "r3": "Angajat AI",
+    "r3p": "[[price.ai]]",
+    "r3i": "Răspuns în RO/RU pe WhatsApp, Telegram, Viber și site, calificare lead-uri, oferte, programări, raport zilnic. Plus abonament lunar pentru rulare.",
+    "note": "Facturăm SRL-uri cu factură fiscală. Plata în etape, legată de sprinturi.",
+    "cta": "Vreau propunerea cu preț fix",
+    "onRequest": "preț la cerere"
+  },
+  "faq": {
+    "title": "Întrebările pe care ni le pun proprietarii de SRL",
+    "q1": "Cât costă un site sau un CRM la wtech.md?",
+    "a1": "Un site de prezentare pornește de la [[price.site]] MDL, un CRM personalizat de la [[price.crm]] MDL, iar un angajat AI de la [[price.ai]] MDL plus un abonament lunar. Prețul exact îl primești fix, în scris, în 48 de ore după apelul de 30 de minute.",
+    "q2": "Cât durează?",
+    "a2": "Un site de prezentare durează 3 până la 5 săptămâni. Un CRM personalizat, 6 până la 10 săptămâni. Un angajat AI poate răspunde clienților în 2 săptămâni. Lucrăm în sprinturi de două săptămâni și vezi rezultatul la fiecare sprint.",
+    "q3": "Cine deține codul?",
+    "a3": "Tu. Tot codul, designul și datele sunt ale tale de la prima plată. Le primești într-un repository privat și le poți muta oriunde, oricând.",
+    "q4": "Unde este găzduit site-ul sau CRM-ul?",
+    "a4": "Unde vrei tu: pe serverul tău, la un furnizor din Moldova sau din UE, sau la noi. Livrăm totul în Docker, deci mutarea durează o oră, nu o lună.",
+    "q5": "Faceți site-uri în română, rusă și engleză?",
+    "a5": "Da, și scriem textele nativ în fiecare limbă, nu le traducem automat. Acest site este în RO, RU și EN și este construit exact așa cum construim pentru clienți.",
+    "q6": "Ce se întâmplă după lansare?",
+    "a6": "Primești 30 de zile de suport inclus. După aceea poți alege un abonament de mentenanță lunar sau ne chemi când ai nevoie. Nu te legăm de nimic.",
+    "q7": "Lucrați cu afaceri mici?",
+    "a7": "Da. Majoritatea clienților noștri sunt SRL-uri cu 3 până la 50 de angajați din Chișinău, Bălți și restul Moldovei. Dacă ai lead-uri pe care nu reușești să le procesezi, ești exact clientul pentru care construim.",
+    "q8": "Puteți integra 1C, Contabilitate, Amazon sau Facebook Leads?",
+    "a8": "Da. Integrăm 1C și 1C Contabilitate, Facebook și Instagram Lead Ads, Gmail și Google Workspace, WhatsApp Business, Telegram, Viber, maib, MICB, PayNet și MPay, plus Amazon și marketplace-uri prin API. Dacă are API, îl conectăm.",
+    "a1_short": "Prețul exact îl primești fix, în scris, în 48 de ore după apelul de 30 de minute. Prețurile de pornire pentru site, CRM și angajat AI le vezi pe pagina de prețuri."
+  },
+  "contact": {
+    "title": "Hai să vorbim despre afacerea ta.",
+    "sub": "Două întrebări și îți scriem în mai puțin de o oră în zilele lucrătoare.",
+    "step1": "Ce vrei să construim?",
+    "o1": "Un site care aduce clienți",
+    "o2": "Un CRM ca să nu pierdem lead-uri",
+    "o3": "Un angajat AI care răspunde 24/7",
+    "o4": "Automatizări între sisteme",
+    "o5": "Altceva, hai să discutăm",
+    "step2": "Cum te contactăm?",
+    "name": "Numele tău",
+    "phone": "Telefon sau WhatsApp",
+    "email": "E-mail (opțional)",
+    "message": "Câteva cuvinte despre proiect (opțional)",
+    "company": "Compania (opțional)",
+    "submit": "Trimite",
+    "next": "Continuă",
+    "back": "Înapoi",
+    "stepOf": "Pasul {step} din 2",
+    "success": "Mulțumim. Îți scriem în mai puțin de o oră.",
+    "successSub": "Între timp, poți programa direct apelul de 30 de minute.",
+    "error": "Nu am putut trimite. Scrie-ne direct pe WhatsApp sau sună-ne.",
+    "invalidName": "Spune-ne cum te cheamă",
+    "invalidPhone": "Avem nevoie de un telefon sau WhatsApp valid",
+    "aside": {
+      "reply": "Răspundem în < 1 oră în zilele lucrătoare",
+      "hours": "Luni – Vineri, 9:00 – 18:00",
+      "address": "Adresă",
+      "channels": "Scrie-ne unde îți e mai ușor",
+      "call": "Sună",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "viber": "Viber",
+      "book": "Programează un apel de 30 min"
+    }
+  },
+  "footer": {
+    "tagline": "Software care îți conduce afacerea. Construit în Chișinău.",
+    "services": "Servicii",
+    "company": "Companie",
+    "about": "Despre",
+    "work": "Lucrări",
+    "blog": "Blog",
+    "pricing": "Prețuri",
+    "contact": "Contact",
+    "audit": "Audit gratuit",
+    "legal": "Legal",
+    "idno": "IDNO {idno}",
+    "rights": "© 2026 wtech.md. Toate drepturile rezervate.",
+    "languages": "Limbi"
+  },
+  "sticky": {
+    "call": "Apel",
+    "whatsapp": "WhatsApp",
+    "book": "Programează un apel"
+  },
+  "pill": {
+    "label": "Scrie-ne",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "viber": "Viber",
+    "close": "Închide"
+  },
+  "exit": {
+    "title": "Înainte să pleci: un audit gratuit al site-ului tău.",
+    "sub": "Trimite adresa și primești mâine viteza, problemele SEO și ce te împiedică să apari în răspunsurile AI.",
+    "cta": "Vreau auditul gratuit",
+    "close": "Nu, mulțumesc"
+  },
+  "localeBanner": {
+    "text": "Acest site este disponibil și în {language}.",
+    "switch": "Schimbă",
+    "dismiss": "Rămân aici",
+    "ro": "română",
+    "ru": "русском",
+    "en": "English"
+  },
+  "preloader": {
+    "loading": "Se încarcă",
+    "skip": "Sari peste"
+  },
+  "booking": {
+    "title": "Programează un apel de 30 min",
+    "sub": "Alege ora care îți convine. Vorbim despre afacerea ta, nu despre noi.",
+    "fallback": "Lasă-ne un număr și te sunăm noi la ora aleasă de tine.",
+    "when": "Când preferi să te sunăm?",
+    "close": "Închide"
+  },
+  "work": {
+    "title": "Lucrări",
+    "sub": "Trei concepte care arată cum construim. Fiecare este un sistem real: site, CRM și angajat AI, din aceeași echipă.",
+    "concept": "Concept",
+    "w1": "Site premium pentru un studio de software",
+    "w1d": "Hero cu marcă animată, servicii în rânduri, CRM live în pagină. Este chiar site-ul pe care îl vezi.",
+    "w2": "CRM personalizat cu angajat AI",
+    "w2d": "Pipeline Nou → Contactat → Ofertă → Câștigat, dashboard de venit și Ana, care pregătește follow-up-urile zilei.",
+    "w3": "Angajat AI pe telefon",
+    "w3d": "Conversație de la cererea de ofertă la întâlnirea programată, plus fluxurile automate care rulează în spate.",
+    "cta": "Vreau ceva similar"
+  },
+  "about": {
+    "title": "Despre wtech.md",
+    "p1": "wtech.md este un studio de software din Chișinău. Construim site-uri, CRM-uri, angajați AI, automatizări, aplicații la comandă și AI SEO pentru afaceri din Moldova și pentru companii din UE care caută o echipă nearshore.",
+    "p2": "Credem că o afacere mică din Moldova merită același nivel de software ca o companie din Berlin: rapid, frumos, conectat și în limba clienților ei. De aceea scriem în română, rusă și engleză, facturăm în MDL și răspundem în mai puțin de o oră.",
+    "p3": "Lucrăm cu un proces simplu: apel de 30 de minute, propunere cu preț fix în 48 de ore, sprinturi de două săptămâni, lansare cu 30 de zile de suport. Codul rămâne al clientului.",
+    "facts": "Pe scurt",
+    "f1": "Sediu în Chișinău, Republica Moldova",
+    "f2": "Română, rusă și engleză, scrise nativ",
+    "f3": "Preț fix în MDL, factură fiscală pentru SRL",
+    "f4": "Șase servicii, o singură echipă",
+    "cta": "Programează un apel de 30 min"
+  },
+  "blog": {
+    "title": "Blog",
+    "sub": "Ghiduri practice pentru afaceri din Moldova: site, CRM, automatizări, AI SEO.",
+    "review": "Ciornă în revizuire",
+    "readTime": "{minutes} min de citit",
+    "back": "Toate articolele",
+    "p1t": "Cât costă un site în Moldova în 2026 și ce primești pentru bani",
+    "p1e": "Prețurile reale din piață, de la 50 EUR la 10 000 EUR, și ce diferențiază un site care aduce clienți de unul care doar există.",
+    "p2t": "CRM pentru afaceri din Moldova: Bitrix24, AmoCRM sau un CRM construit pentru tine?",
+    "p2e": "Când merită un abonament și când merită un sistem propriu. Cu costuri pe 3 ani și lista de integrări locale.",
+    "p3t": "AI SEO în Moldova: cum apari în răspunsurile ChatGPT și Gemini",
+    "p3e": "Ce este GEO, ce citează modelele AI și cei 7 pași concreți pentru ca brandul tău să fie recomandat."
+  },
+  "notFound": {
+    "title": "Pagina asta nu există.",
+    "sub": "Dar sistemul tău poate exista. Hai înapoi la început sau scrie-ne.",
+    "home": "Înapoi acasă",
+    "contact": "Contact"
+  },
+  "schema": {
+    "orgDescription": "Studio de software din Chișinău: site-uri, CRM, angajați AI, automatizări, software la comandă și AI SEO pentru afaceri din Moldova.",
+    "areaServed": "Republica Moldova"
+  },
+  "chat": {
+    "title": "Ana · Angajat AI",
+    "subtitle": "Răspunde în RO, RU, EN despre tot ce construim",
+    "open": "Întreab-o pe Ana",
+    "close": "Închide",
+    "placeholder": "Scrie întrebarea ta…",
+    "send": "Trimite",
+    "greeting": "Bună! Sunt Ana, angajatul AI de la wtech.md. Te pot ajuta cu site-uri, CRM, angajați AI, automatizări, software la comandă și AI SEO. Ce vrei să construim?",
+    "s1": "Cât costă un site?",
+    "s2": "Ce face un angajat AI?",
+    "s3": "Puteți integra 1C?",
+    "s4": "Cum lucrați?",
+    "typing": "Ana scrie…",
+    "error": "Nu am putut răspunde acum. Scrie-ne pe WhatsApp și îți răspundem în mai puțin de o oră.",
+    "offline": "Chatul AI nu este activ pe acest server. Scrie-ne pe WhatsApp sau programează un apel.",
+    "leadSaved": "Am trimis datele tale echipei. Îți scriem în mai puțin de o oră în zilele lucrătoare.",
+    "whatsapp": "WhatsApp",
+    "book": "Programează un apel",
+    "disclaimer": "Ana este un asistent AI. Prețurile finale vin în propunerea cu preț fix."
+  },
+  "errorPage": {
+    "title": "Ceva nu a mers. Nu e vina ta.",
+    "sub": "Am notat eroarea. Încearcă din nou sau scrie-ne pe WhatsApp, răspundem în mai puțin de o oră.",
+    "retry": "Încearcă din nou",
+    "home": "Înapoi acasă"
+  }
+}

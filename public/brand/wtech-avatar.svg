@@ -1,0 +1,12 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="signal" x1="170" y1="290" x2="860" y2="735" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#765CFF"/><stop offset="0.48" stop-color="#FF7B89"/><stop offset="1" stop-color="#65E6E2"/>
+    </linearGradient>
+    <radialGradient id="aura" cx="0" cy="0" r="1" gradientTransform="translate(510 510) rotate(90) scale(490)">
+      <stop stop-color="#18151E"/><stop offset="1" stop-color="#08090B"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="220" fill="url(#aura)"/>
+  <path d="M178 314C228 594 319 752 409 486C465 321 553 320 614 489C709 754 812 585 855 303" stroke="url(#signal)" stroke-width="130" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="signal" x1="28" y1="70" x2="438" y2="248" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#765CFF"/><stop offset="0.48" stop-color="#FF7B89"/><stop offset="1" stop-color="#65E6E2"/>
+    </linearGradient>
+  </defs>
+  <path d="M30 78C60 216 104 256 155 139C192 54 233 56 271 143C321 257 381 208 426 72" stroke="url(#signal)" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="500" y="207" fill="#F5F2EC" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="158" font-weight="500" letter-spacing="-9">wtech.md</text>
+</svg>

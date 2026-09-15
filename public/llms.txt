@@ -1,0 +1,29 @@
+# wtech.md
+
+> wtech.md is a software studio in Chișinău, Republic of Moldova. It builds websites, custom CRM systems and dashboards, AI employees (AI agents that answer leads, send offers and book meetings), automations, custom web and mobile software, and AI SEO / GEO for businesses in Moldova and for EU companies looking for a nearshore team. Work is delivered in Romanian, Russian and English with a fixed-price proposal within 48 hours.
+
+## Services
+- Websites: premium, animated, conversion-focused sites in RO/RU/EN. /servicii/site-uri
+- CRM & dashboards: custom CRM, internal dashboards, reporting, integrations with 1C, Facebook Lead Ads, WhatsApp Business. /servicii/crm-dashboard
+- AI employees: agents that answer leads 24/7 in RO and RU, send offers, book meetings, write into the CRM. /servicii/angajati-ai
+- Automations: workflows connecting CRM, email, WhatsApp/Telegram/Viber, invoicing, 1C, banks (maib, PayNet). /servicii/automatizari
+- Custom software & apps: web apps, mobile apps, integrations, delivered in two-week sprints. /servicii/software-la-comanda
+- AI SEO: technical SEO, RO/RU/EN content engine, structured data, GEO so the brand appears in Google and in ChatGPT, Gemini, Perplexity answers. /servicii/ai-seo
+
+## Process
+1. 30-minute call. 2. Fixed-price proposal within 48 hours. 3. Two-week sprints. 4. Launch plus 30 days of included support. The client owns the code.
+
+## Languages and pages
+- Romanian (default): https://wtech.md/
+- Russian: https://wtech.md/ru
+- English: https://wtech.md/en
+- About: https://wtech.md/despre
+- Pricing (starting from, in MDL): https://wtech.md/preturi
+- Contact: https://wtech.md/contact
+- Free 24-hour website audit: https://wtech.md/audit
+- Blog: https://wtech.md/blog
+
+## Facts
+- Location: Chișinău, Moldova. Serves all of Moldova (Chișinău, Bălți, Cahul, Comrat) and EU clients remotely.
+- Pricing: fixed price in MDL, invoices for SRL companies.
+- Response time: under one hour on business days.

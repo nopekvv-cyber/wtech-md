@@ -1,0 +1,117 @@
+import "server-only";
+import { cache } from "react";
+import { readSettings } from "./db";
+import { contactDefaults, socialDefaults } from "./site";
+
+/**
+ * CMS-editable values (the former build-time placeholders): contact channels, the three "from" prices, the three proof
+ * numbers and socials. Stored in Supabase (`settings` table) and edited at /admin; environment
+ * NEXT_PUBLIC_* values remain the fallback so an existing .env keeps working. Read once per request through React
+ * cache so the layout, Footer, Contact and translated copy share one Supabase settings result.
+ */
+export type Field = {
+  key: string;
+  group: "contact" | "prices" | "proof" | "social";
+  label: string;
+  hint?: string;
+  type: "text" | "tel" | "email" | "url" | "number";
+  max?: number;
+};
+
+export const FIELDS: Field[] = [
+  { key: "contact.phone", group: "contact", label: "Phone", hint: "+373 69 000 000", type: "tel", max: 24 },
+  { key: "contact.whatsapp", group: "contact", label: "WhatsApp number", hint: "+373 69 000 000", type: "tel", max: 24 },
+  { key: "contact.telegram", group: "contact", label: "Telegram username", hint: "@wtechmd", type: "text", max: 40 },
+  { key: "contact.viber", group: "contact", label: "Viber number", hint: "+373 69 000 000", type: "tel", max: 24 },
+  { key: "contact.email", group: "contact", label: "Email", type: "email", max: 120 },
+  { key: "contact.address", group: "contact", label: "Address", hint: "str. …, Chișinău", type: "text", max: 160 },
+  { key: "contact.idno", group: "contact", label: "IDNO", hint: "13 digits", type: "text", max: 20 },
+  { key: "price.site", group: "prices", label: "Presentation website, from (MDL)", type: "number" },
+  { key: "price.crm", group: "prices", label: "Custom CRM, from (MDL)", type: "number" },
+  { key: "price.ai", group: "prices", label: "AI employee, from (MDL)", type: "number" },
+  { key: "proof.n1", group: "proof", label: "Projects delivered in Moldova", hint: "e.g. 40+", type: "text", max: 12 },
+  { key: "proof.n2", group: "proof", label: "Average AI reply time (minutes)", hint: "e.g. 2", type: "text", max: 12 },
+  { key: "proof.n3", group: "proof", label: "Leads processed monthly", hint: "e.g. 3 000+", type: "text", max: 12 },
+  { key: "social.facebook", group: "social", label: "Facebook URL", type: "url", max: 200 },
+  { key: "social.instagram", group: "social", label: "Instagram URL", type: "url", max: 200 },
+  { key: "social.linkedin", group: "social", label: "LinkedIn URL", type: "url", max: 200 },
+];
+
+export type Site = {
+  contact: { phone: string; phoneHref: string; whatsapp: string; telegram: string; viber: string; email: string; address: string; idno: string };
+  socials: { facebook: string; instagram: string; linkedin: string };
+  prices: { site: string; crm: string; ai: string };
+  proof: { n1: string; n2: string; n3: string };
+};
+
+/** Raw stored values merged over the environment fallbacks. */
+export const loadSettings = cache(async (): Promise<Record<string, string>> => {
+  const env: Record<string, string> = {
+    "contact.phone": contactDefaults.phone,
+    "contact.whatsapp": contactDefaults.whatsapp,
+    "contact.telegram": contactDefaults.telegram,
+    "contact.viber": contactDefaults.viber,
+    "contact.email": contactDefaults.email,
+    "contact.address": contactDefaults.address,
+    "contact.idno": contactDefaults.idno,
+    "social.facebook": socialDefaults.facebook,
+    "social.instagram": socialDefaults.instagram,
+    "social.linkedin": socialDefaults.linkedin,
+  };
+  let stored: Record<string, string> = {};
+  try { stored = await readSettings(); } catch { stored = {}; } // database issues must not take the public site down
+  const out = { ...env };
+  for (const [k, v] of Object.entries(stored)) if (v !== "") out[k] = v; else delete out[k];
+  return out;
+});
+
+export function formatPrice(v: string | undefined): string {
+  const n = Number(String(v ?? "").replace(/[^\d]/g, ""));
+  if (!n) return "";
+  return n.toLocaleString("ro-MD").replace(/\./g, " "); // 18 000 with a thin space
+}
+
+export const getSite = cache(async (): Promise<Site> => {
+  const s = await loadSettings();
+  const g = (k: string) => s[k] ?? "";
+  return {
+    contact: {
+      phone: g("contact.phone"),
+      phoneHref: g("contact.phone").replace(/[^+\d]/g, ""), whatsapp: g("contact.whatsapp"), telegram: g("contact.telegram"),
+      viber: g("contact.viber"), email: g("contact.email"), address: g("contact.address"), idno: g("contact.idno"),
+    },
+    socials: { facebook: g("social.facebook"), instagram: g("social.instagram"), linkedin: g("social.linkedin") },
+    prices: { site: formatPrice(s["price.site"]), crm: formatPrice(s["price.crm"]), ai: formatPrice(s["price.ai"]) },
+    proof: { n1: g("proof.n1"), n2: g("proof.n2"), n3: g("proof.n3") },
+  };
+});
+
+const TOKEN = /\[\[(price\.(?:site|crm|ai)|proof\.n[123])\]\]/g;
+
+/**
+ * Replaces the typed tokens in the message tree with CMS values. A string that still has an unresolved token after
+ * substitution falls back to its `<key>_short` sibling when one exists (copy written without the number), otherwise
+ * the token is removed so nothing invented ever renders.
+ */
+export function resolveMessages<T>(messages: T, site: Site): T {
+  const values: Record<string, string> = {
+    "price.site": site.prices.site, "price.crm": site.prices.crm, "price.ai": site.prices.ai,
+    "proof.n1": site.proof.n1, "proof.n2": site.proof.n2, "proof.n3": site.proof.n3,
+  };
+  const walk = (node: unknown): unknown => {
+    if (typeof node === "string") return node.replace(TOKEN, (_, k: string) => values[k] ?? "");
+    if (Array.isArray(node)) return node.map(walk);
+    if (node && typeof node === "object") {
+      const out: Record<string, unknown> = {};
+      for (const [k, raw] of Object.entries(node as Record<string, unknown>)) {
+        if (k.endsWith("_short")) continue;
+        const short = (node as Record<string, unknown>)[`${k}_short`];
+        const missing = typeof raw === "string" && [...raw.matchAll(TOKEN)].some((m) => !values[m[1]!]);
+        out[k] = missing && typeof short === "string" ? short : walk(raw);
+      }
+      return out;
+    }
+    return node;
+  };
+  return walk(messages) as T;
+}

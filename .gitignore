@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+.env*
+!.env.example
+*.log
+*.tsbuildinfo
+.DS_Store
+design/raw/
+scratch/
+qa/playwright-report/
+qa/test-results/
+qa/screenshots/*.png
+qa/lighthouse/*.json
+!qa/lighthouse/summary.json
+config/
