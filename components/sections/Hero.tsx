@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { m, useReducedMotion } from "framer-motion";
+import { m } from "framer-motion";
 import { useBrand } from "@/components/preloader/BrandContext";
 import { serviceKeys } from "@/lib/services";
 import { track } from "@/lib/analytics";
@@ -10,7 +10,6 @@ import { track } from "@/lib/analytics";
 export function Hero() {
   const t = useTranslations("hero");
   const { openBooking } = useBrand();
-  const reduce = useReducedMotion();
   const textRef = useRef<HTMLDivElement>(null);
 
   // ?v=b swaps the headline for the benefit-led variant, read after mount so the H1 stays in the static HTML (it is the LCP).
@@ -34,25 +33,18 @@ export function Hero() {
       <div className="hero-art" aria-hidden="true">
         <div className="hero-art__halo" />
         <div className="hero-art__orbit">
-          {reduce ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img data-hero src="/brand/wtech-hero-mark-v2.webp" alt="" width={1247} height={738} className="hero-art__mark" draggable={false} />
-          ) : (
-            <video
-              data-hero
-              className="hero-art__video"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              poster="/brand/wtech-hero-mark-v2.webp"
-              disablePictureInPicture
-            >
-              <source src="/media/wtech-hero-loop-hf-720.mp4" type="video/mp4" media="(max-width: 767px)" />
-              <source src="/media/wtech-hero-loop-hf-2k.mp4" type="video/mp4" />
-            </video>
-          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            data-hero
+            src="/brand/wtech-hero-mark-v2.png"
+            alt=""
+            width={1247}
+            height={738}
+            className="hero-art__mark"
+            draggable={false}
+            decoding="async"
+            fetchPriority="high"
+          />
         </div>
       </div>
 

@@ -27,22 +27,8 @@ test.describe("hero", () => {
     await expect(page.locator('[data-locale-banner="true"]')).toHaveCount(0);
     const media = page.locator("[data-hero]");
     await expect(media).toBeVisible();
-    if (await media.evaluate((el) => el instanceof HTMLVideoElement)) {
-      await expect(media).toHaveAttribute("poster", "/brand/wtech-hero-mark-v2.webp");
-    } else {
-      expect(await media.evaluate((el) => (el as HTMLImageElement).complete && (el as HTMLImageElement).naturalWidth > 0)).toBe(true);
-    }
-  });
-
-  test("Higgsfield hero loop plays", async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
-    const video = page.locator("video[data-hero]");
-    await expect(video).toBeVisible();
-    await expect.poll(() => video.evaluate((el) => (el as HTMLVideoElement).readyState)).toBeGreaterThanOrEqual(2);
-    const before = await video.evaluate((el) => (el as HTMLVideoElement).currentTime);
-    await page.waitForTimeout(700);
-    const after = await video.evaluate((el) => (el as HTMLVideoElement).currentTime);
-    expect(after).toBeGreaterThan(before);
+    await expect(media).toHaveAttribute("src", "/brand/wtech-hero-mark-v2.png");
+    expect(await media.evaluate((el) => (el as HTMLImageElement).complete && (el as HTMLImageElement).naturalWidth === 1247)).toBe(true);
   });
 
   test("?v=b swaps the headline and fires hero_variant", async ({ page }) => {
@@ -55,7 +41,7 @@ test.describe("hero", () => {
     await expect(page.locator("h1")).toContainText(/Clienții îți scriu/);
   });
 
-  test("reduced motion: no pinning and content visible", async ({ browser }) => {
+  test("reduced motion: static hero, no pinning and content visible", async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: "reduce" });
     const page = await ctx.newPage();
     await page.goto("/");

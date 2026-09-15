@@ -149,7 +149,7 @@ a, button {
   .btn { white-space: normal; text-wrap: balance; text-align: center; padding-top: 10px; padding-bottom: 10px; }
 }
 
-/* Hero mark: the logo moves in 3D while its stage and light remain anchored. */
+/* Hero mark: one crisp, static brand image with a restrained optical halo. */
 .hero-art {
   position: absolute;
   z-index: 0;
@@ -159,7 +159,6 @@ a, button {
   height: 68%;
   display: grid;
   place-items: center;
-  perspective: 1200px;
   pointer-events: none;
 }
 
@@ -180,23 +179,13 @@ a, button {
 }
 
 .hero-art__mark {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  filter: saturate(1.04) contrast(1.03) drop-shadow(0 22px 34px rgba(0, 0, 0, 0.42));
-}
-
-.hero-art__video {
-  position: relative;
-  z-index: 2;
   display: block;
+  position: relative;
+  z-index: 2;
   width: 100%;
   height: auto;
   object-fit: contain;
-  background: #000;
-  filter: saturate(1.04) contrast(1.03) drop-shadow(0 22px 34px rgba(0, 0, 0, 0.42));
+  filter: saturate(1.02) contrast(1.02) drop-shadow(0 22px 34px rgba(0, 0, 0, 0.38));
 }
 
 @media (max-width: 1023px) {
