@@ -2,24 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { m } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { useBrand } from "@/components/preloader/BrandContext";
 import { serviceKeys } from "@/lib/services";
 import { track } from "@/lib/analytics";
 
-/**
- * Hero images (Higgsfield, the real mark composited by the model from the reference):
- * PC 16:9 with the ribbon in the right half over a glossy floor, phone 9:16 with the ribbon in the top third.
- * Both are drawn with object-fit: contain on pure black, so no viewport ever crops the mark.
- * The fractions below are the mark's bounding box inside each image (design/hero-bbox.json).
- */
-const PC = { src: "/media/hero-pc", widths: [1280, 1920, 2688] };
-const PHONE = { src: "/media/hero-phone", widths: [720, 1080, 1520] };
-const LG = 1024; // below this the phone composition is used (portrait tablets included)
-
 export function Hero() {
   const t = useTranslations("hero");
   const { openBooking } = useBrand();
+  const reduce = useReducedMotion();
   const textRef = useRef<HTMLDivElement>(null);
 
   // ?v=b swaps the headline for the benefit-led variant, read after mount so the H1 stays in the static HTML (it is the LCP).
@@ -38,28 +29,36 @@ export function Hero() {
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0 },
   };
-  const pcSet = PC.widths.map((w) => `${PC.src}-${w}.webp ${w}w`).join(", ");
-  const phoneSet = PHONE.widths.map((w) => `${PHONE.src}-${w}.webp ${w}w`).join(", ");
-
   return (
     <section id="hero" className="relative min-h-[100dvh] flex flex-col overflow-hidden bg-bg">
-      {/* backdrop: the mark lives in the image; contain on black never crops it */}
-      <div className="absolute inset-0">
-        <picture>
-          <source media={`(max-width: ${LG - 1}px)`} type="image/webp" srcSet={phoneSet} sizes="100vw" />
-          <source type="image/webp" srcSet={pcSet} sizes="100vw" />
+      <div className="hero-art" aria-hidden="true">
+        <div className="hero-art__halo" />
+        <m.div
+          className="hero-art__orbit"
+          animate={reduce ? undefined : {
+            y: [0, -12, 0],
+            rotateX: [2.5, -2, 2.5],
+            rotateY: [-7, 8, -7],
+            rotateZ: [-0.7, 0.7, -0.7],
+          }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             data-hero
-            src="/media/hero-pc.jpg"
-            alt={t("videoAlt")}
-            width={2688}
-            height={1520}
+            src="/brand/wtech-hero-mark-v2.webp"
+            alt=""
+            width={1247}
+            height={738}
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-contain object-[top_center] lg:object-[right_center]"
+            className="hero-art__mark"
             draggable={false}
           />
-        </picture>
+          {!reduce ? <span className="hero-art__glint" /> : null}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/wtech-hero-mark-v2.webp" alt="" width={1247} height={738} className="hero-art__reflection" draggable={false} />
+        </m.div>
       </div>
 
       <div className="container-x relative flex-1 grid lg:grid-cols-12 items-start lg:items-center pb-10 lg:pb-0">

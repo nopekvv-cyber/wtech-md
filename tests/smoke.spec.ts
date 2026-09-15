@@ -29,6 +29,16 @@ test.describe("hero", () => {
     expect(ok).toBe(true);
   });
 
+  test("hero mark runs its 3D orbit", async ({ page }) => {
+    await page.goto("/", { waitUntil: "networkidle" });
+    const orbit = page.locator(".hero-art__orbit");
+    await expect(orbit).toBeVisible();
+    const before = await orbit.evaluate((el) => getComputedStyle(el).transform);
+    await page.waitForTimeout(700);
+    const after = await orbit.evaluate((el) => getComputedStyle(el).transform);
+    expect(after).not.toBe(before);
+  });
+
   test("?v=b swaps the headline and fires hero_variant", async ({ page }) => {
     await markSeen(page);
     await page.goto("/?v=b");
@@ -44,6 +54,11 @@ test.describe("hero", () => {
     const page = await ctx.newPage();
     await page.goto("/");
     await expect(page.locator(".preloader-stage")).toHaveCount(0, { timeout: 2000 });
+    const orbit = page.locator(".hero-art__orbit");
+    const before = await orbit.evaluate((el) => getComputedStyle(el).transform);
+    await page.waitForTimeout(300);
+    const after = await orbit.evaluate((el) => getComputedStyle(el).transform);
+    expect(after).toBe(before);
     await page.evaluate(() => window.scrollTo(0, 4000)); // mouse.wheel is unsupported in mobile WebKit
     await page.waitForTimeout(500);
     expect(await page.locator(".pin-spacer").count()).toBe(0);

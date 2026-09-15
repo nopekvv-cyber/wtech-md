@@ -149,6 +149,100 @@ a, button {
   .btn { white-space: normal; text-wrap: balance; text-align: center; padding-top: 10px; padding-bottom: 10px; }
 }
 
+/* Hero mark: the logo moves in 3D while its stage and light remain anchored. */
+.hero-art {
+  position: absolute;
+  z-index: 0;
+  left: 46%;
+  right: -3%;
+  top: 12%;
+  height: 68%;
+  display: grid;
+  place-items: center;
+  perspective: 1200px;
+  pointer-events: none;
+}
+
+.hero-art__halo {
+  position: absolute;
+  inset: 6% 2% 3%;
+  background:
+    radial-gradient(circle at 25% 52%, rgba(110, 59, 255, 0.19), transparent 36%),
+    radial-gradient(circle at 52% 48%, rgba(255, 122, 107, 0.14), transparent 32%),
+    radial-gradient(circle at 78% 50%, rgba(53, 227, 240, 0.16), transparent 35%);
+  filter: blur(26px);
+  opacity: 0.78;
+}
+
+.hero-art__orbit {
+  position: relative;
+  width: min(56vw, 790px);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hero-art__mark {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: saturate(1.04) contrast(1.03) drop-shadow(0 22px 34px rgba(0, 0, 0, 0.42));
+}
+
+.hero-art__glint {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: linear-gradient(108deg, transparent 36%, rgba(255,255,255,.78) 48%, transparent 58%);
+  background-size: 220% 100%;
+  background-position: 140% 0;
+  -webkit-mask: url("/brand/wtech-hero-mark-v2.webp") center / contain no-repeat;
+  mask: url("/brand/wtech-hero-mark-v2.webp") center / contain no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: hero-glint 4.5s ease-in-out infinite;
+}
+
+.hero-art__reflection {
+  position: absolute;
+  z-index: 1;
+  left: 5%;
+  top: 72%;
+  width: 90%;
+  height: auto;
+  opacity: 0.19;
+  transform: scaleY(-0.58) translateZ(-18px);
+  transform-origin: top;
+  filter: blur(5px) saturate(1.05);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 58%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 58%);
+}
+
+@keyframes hero-glint {
+  0%, 30% { opacity: 0; background-position: 140% 0; }
+  42% { opacity: 0.32; }
+  58% { opacity: 0.16; background-position: -40% 0; }
+  70%, 100% { opacity: 0; background-position: -40% 0; }
+}
+
+@media (max-width: 1023px) {
+  .hero-art {
+    left: 3%;
+    right: 3%;
+    top: calc(var(--nav-h) + 12px);
+    height: min(52vw, 310px);
+  }
+  .hero-art__orbit { width: min(96vw, 660px); }
+  .hero-art__reflection { top: 70%; opacity: 0.12; filter: blur(4px); }
+}
+
+@media (max-width: 480px) {
+  .hero-art { left: -5%; right: -5%; top: calc(var(--nav-h) + 14px); }
+  .hero-art__orbit { width: 108vw; }
+  .hero-art__halo { inset: 5% 2% 0; filter: blur(20px); }
+}
+
 .link-inline {
   display: inline-flex;
   align-items: center;
