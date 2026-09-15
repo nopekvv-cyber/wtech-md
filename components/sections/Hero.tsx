@@ -33,32 +33,27 @@ export function Hero() {
     <section id="hero" className="relative min-h-[100dvh] flex flex-col overflow-hidden bg-bg">
       <div className="hero-art" aria-hidden="true">
         <div className="hero-art__halo" />
-        <m.div
-          className="hero-art__orbit"
-          animate={reduce ? undefined : {
-            y: [0, -12, 0],
-            rotateX: [2.5, -2, 2.5],
-            rotateY: [-7, 8, -7],
-            rotateZ: [-0.7, 0.7, -0.7],
-          }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            data-hero
-            src="/brand/wtech-hero-mark-v2.webp"
-            alt=""
-            width={1247}
-            height={738}
-            fetchPriority="high"
-            decoding="async"
-            className="hero-art__mark"
-            draggable={false}
-          />
-          {!reduce ? <span className="hero-art__glint" /> : null}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/wtech-hero-mark-v2.webp" alt="" width={1247} height={738} className="hero-art__reflection" draggable={false} />
-        </m.div>
+        <div className="hero-art__orbit">
+          {reduce ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img data-hero src="/brand/wtech-hero-mark-v2.webp" alt="" width={1247} height={738} className="hero-art__mark" draggable={false} />
+          ) : (
+            <video
+              data-hero
+              className="hero-art__video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster="/brand/wtech-hero-mark-v2.webp"
+              disablePictureInPicture
+            >
+              <source src="/media/wtech-hero-loop-hf-720.mp4" type="video/mp4" media="(max-width: 767px)" />
+              <source src="/media/wtech-hero-loop-hf-2k.mp4" type="video/mp4" />
+            </video>
+          )}
+        </div>
       </div>
 
       <div className="container-x relative flex-1 grid lg:grid-cols-12 items-start lg:items-center pb-10 lg:pb-0">
