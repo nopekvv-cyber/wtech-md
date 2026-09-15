@@ -1,6 +1,6 @@
 // Starts the Telegram mock and the production standalone server with an isolated test data store.
 import { spawn } from "node:child_process";
-import { cpSync, existsSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { join } from "node:path";
 
@@ -13,6 +13,7 @@ mkdirSync(join(standalone, "scripts"), { recursive: true });
 cpSync(join(root, "scripts/check-env.mjs"), join(standalone, "scripts/check-env.mjs"));
 
 const telegramLog = join(root, "qa/test-results/telegram.jsonl");
+mkdirSync(join(root, "qa/test-results"), { recursive: true });
 writeFileSync(telegramLog, "");
 
 // Telegram mock: records every sendMessage body, answers like the real API

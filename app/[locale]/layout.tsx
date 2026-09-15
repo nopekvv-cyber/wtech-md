@@ -12,14 +12,12 @@ import { getSite } from "@/lib/settings";
 import { SiteProvider } from "@/components/site/SiteContext";
 import { BrandProvider } from "@/components/preloader/BrandContext";
 import { MotionProvider } from "@/components/layout/MotionProvider";
-import { Preloader } from "@/components/preloader/Preloader";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { StickyCta } from "@/components/layout/StickyCta";
 import { MessengerPill } from "@/components/layout/MessengerPill";
 import { ExitIntent } from "@/components/layout/ExitIntent";
-import { LocaleBanner } from "@/components/layout/LocaleBanner";
 import { BookingModal } from "@/components/layout/BookingModal";
 import { OrganizationSchema } from "@/components/seo/Schema";
 import "../globals.css";
@@ -92,7 +90,6 @@ export default async function LocaleLayout({
           <BrandProvider>
           <MotionProvider>
             <a href="#main" className="skip-link">{tc("skip")}</a>
-            <Preloader />
             <SmoothScroll />
             <Nav />
             <main id="main">{children}</main>
@@ -101,7 +98,6 @@ export default async function LocaleLayout({
             <MessengerPill />
             <ExitIntent />
             <BookingModal />
-            <LocaleBanner current={locale as Locale} />
           </MotionProvider>
           </BrandProvider>
           </SiteProvider>

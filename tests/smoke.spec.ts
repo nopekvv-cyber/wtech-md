@@ -19,36 +19,12 @@ for (const locale of LOCALES) {
   });
 }
 
-test.describe("hero and preloader", () => {
-  test("preloader shows once, releases within 1.8 s, never blocks the H1", async ({ page }, testInfo) => {
-    const w = await watch(page);
-    // `goto` normally resolves on `load`, which on a cold cache can land after the release, so wait for `commit`
-    // only and watch the stage from outside: mount → release (sessionStorage flag) → exit fade → DOM removal
-    await page.goto("/", { waitUntil: "commit" });
-    // the H1 is in the server HTML under the stage
-    await expect(page.locator("h1")).toHaveCount(1);
-    const stage = page.locator(".preloader-stage");
-    await expect(stage).toBeVisible({ timeout: 1500 });
-    const shown = Date.now(); // the 1.8 s budget counts from when the stage is on screen (after hydration)
-    await expect.poll(() => page.evaluate(() => sessionStorage.getItem("wtech_seen")), { timeout: 3000 }).toBe("1");
-    expect(Date.now() - shown, "release ms since the stage appeared").toBeLessThanOrEqual(1800 + 300);
-    await expect(stage).toHaveCount(0, { timeout: 2500 }); // exit fade + shared-layout hand-off
-    // client-side navigation in the same session: no stage
-    if (testInfo.project.name === "mobile-safari") await page.locator('button[aria-controls="mobile-menu"]').click();
-    await page.locator("header a:visible", { hasText: /Servicii|Услуги|Services/ }).first().click(); // the phone sheet sits next to <nav>
-    await page.waitForURL(/servicii|uslugi|services/);
+test.describe("hero", () => {
+  test("loads immediately without entry or language overlays", async ({ page }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("h1")).toBeVisible();
     await expect(page.locator(".preloader-stage")).toHaveCount(0);
-    await expectClean(page, w);
-  });
-
-  test("hero image is loaded and the stage is skippable", async ({ page }, testInfo) => {
-    await page.goto("/", { waitUntil: "commit" });
-    await expect(page.locator(".preloader-stage")).toBeVisible({ timeout: 1500 });
-    // any key or pointer skips; phones have no Escape key, so tap there
-    if (testInfo.project.name === "mobile-safari") await page.touchscreen.tap(180, 300); else await page.keyboard.press("Escape");
-    // the skip releases at once (flag set, hero starts); the stage element leaves after its fade + layout hand-off
-    await expect.poll(() => page.evaluate(() => sessionStorage.getItem("wtech_seen")), { timeout: 1000 }).toBe("1");
-    await expect(page.locator(".preloader-stage")).toHaveCount(0, { timeout: 3000 });
+    await expect(page.locator('[data-locale-banner="true"]')).toHaveCount(0);
     const ok = await page.locator("img[data-hero]").evaluate((el) => (el as HTMLImageElement).complete && (el as HTMLImageElement).naturalWidth > 0);
     expect(ok).toBe(true);
   });
@@ -63,7 +39,7 @@ test.describe("hero and preloader", () => {
     await expect(page.locator("h1")).toContainText(/Clienții îți scriu/);
   });
 
-  test("reduced motion: no pinning, content visible, preloader short", async ({ browser }) => {
+  test("reduced motion: no pinning and content visible", async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: "reduce" });
     const page = await ctx.newPage();
     await page.goto("/");

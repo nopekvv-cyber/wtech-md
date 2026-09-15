@@ -222,16 +222,6 @@ a, button {
   }
 }
 
-/* Preloader */
-.preloader-stage {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: #000;
-  display: grid;
-  place-items: center;
-}
-
 /* Lenis */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
