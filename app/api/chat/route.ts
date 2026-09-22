@@ -1,5 +1,4 @@
-import OpenAI from "openai";
-import type { FunctionTool, ResponseInput } from "openai/resources/responses/responses";
+import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { buildSystemPrompt } from "@/lib/chat-knowledge";
 import { notifyAll } from "@/lib/notify";
@@ -33,12 +32,11 @@ const leadInputSchema = z
 
 const LEAD_TITLE: Record<Locale, string> = { ro: "Lead din chatul cu Ana", ru: "Заявка из чата с Аной", en: "Lead from the Ana chat" };
 
-const leadTool: FunctionTool = {
-  type: "function",
+const leadTool: Anthropic.Tool = {
   name: "capture_lead",
   description: "Send the visitor's contact details to the wtech.md team so a person calls them back. Call it once, only after the visitor gave a phone number or email.",
   strict: true,
-  parameters: {
+  input_schema: {
     type: "object",
     properties: {
       name: { type: "string", description: "Visitor's name as given, or an empty string" },
@@ -67,53 +65,37 @@ export async function POST(req: Request) {
   if (!parsed.success) return jsonError("invalid", 400);
   const { locale, messages } = parsed.data;
   if (messages[messages.length - 1]?.role !== "user") return jsonError("invalid", 400);
-  if (env.CHAT_DISABLED === "1" || !env.OPENAI_API_KEY) return jsonError("offline", 503);
+  if (env.CHAT_DISABLED === "1" || !env.ANTHROPIC_API_KEY) return jsonError("offline", 503);
 
-  const client = new OpenAI({ apiKey: env.OPENAI_API_KEY, timeout: 20_000, maxRetries: 1 });
-  const input: ResponseInput = messages.map((message) => ({ role: message.role, content: message.content }));
-  const instructions = await buildSystemPrompt(locale);
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, timeout: 20_000, maxRetries: 1 });
+  const history: Anthropic.MessageParam[] = messages.map((message) => ({ role: message.role, content: message.content }));
+  const system = await buildSystemPrompt(locale);
 
   const stream = new ReadableStream({
     async start(controller) {
       try {
         let leadSent = false;
-        let answered = false;
-
         for (let turn = 0; turn < 3; turn++) {
-          const response = await client.responses.create({
-            model: "gpt-5.6-luna",
-            instructions,
-            input,
+          const response = client.messages.stream({
+            model: "claude-sonnet-5",
+            max_tokens: 1024,
+            output_config: { effort: "low" },
+            system: [{ type: "text", text: system, cache_control: { type: "ephemeral" } }],
             tools: [leadTool],
-            parallel_tool_calls: false,
-            reasoning: { effort: "low" },
-            max_output_tokens: 900,
-            store: false,
-            include: ["reasoning.encrypted_content"],
+            messages: history,
           });
+          response.on("text", (delta) => ndjson(controller, { t: "text", d: delta }));
+          const message = await response.finalMessage();
+          if (message.stop_reason === "refusal") { ndjson(controller, { t: "error" }); break; }
+          if (message.stop_reason !== "tool_use") break;
 
-          const toolCalls = response.output.filter((item) => item.type === "function_call");
-          if (!toolCalls.length) {
-            const text = response.output_text.trim();
-            if (!text) throw new Error("OpenAI returned no text response");
-            ndjson(controller, { t: "text", d: text });
-            answered = true;
-            break;
-          }
-
-          // Re-submit only conversation items produced by this text/function route.
-          // The SDK's full output union also contains tool types this route never enables.
-          const continuation = response.output.filter((item) =>
-            item.type === "message" || item.type === "function_call" || item.type === "reasoning",
-          ) as ResponseInput;
-          input.push(...continuation);
-          for (const call of toolCalls) {
+          history.push({ role: "assistant", content: message.content });
+          const results: Anthropic.ToolResultBlockParam[] = [];
+          for (const block of message.content) {
+            if (block.type !== "tool_use") continue;
             let result = "error: unsupported tool";
-            if (call.name === "capture_lead" && !leadSent) {
-              let raw: unknown;
-              try { raw = JSON.parse(call.arguments); } catch { raw = null; }
-              const lead = leadInputSchema.safeParse(raw);
-
+            if (block.name === "capture_lead" && !leadSent) {
+              const lead = leadInputSchema.safeParse(block.input);
               if (!lead.success) {
                 result = "error: invalid contact details";
               } else if (!lead.data.phone && !lead.data.email) {
@@ -152,16 +134,15 @@ export async function POST(req: Request) {
                 }
               }
             }
-            input.push({ type: "function_call_output", call_id: call.call_id, output: result });
+            results.push({ type: "tool_result", tool_use_id: block.id, content: result });
           }
+          history.push({ role: "user", content: results });
         }
-
-        if (!answered) ndjson(controller, { t: "error" });
         ndjson(controller, { t: "done" });
       } catch (e) {
-        if (e instanceof OpenAI.RateLimitError) log("error", "chat: rate limited by OpenAI");
-        else if (e instanceof OpenAI.AuthenticationError) log("error", "chat: invalid OpenAI credentials");
-        else if (e instanceof OpenAI.APIError) log("error", "chat: OpenAI API error", { status: e.status, message: e.message });
+        if (e instanceof Anthropic.RateLimitError) log("error", "chat: rate limited by Anthropic");
+        else if (e instanceof Anthropic.AuthenticationError) log("error", "chat: invalid Anthropic credentials");
+        else if (e instanceof Anthropic.APIError) log("error", "chat: Anthropic API error", { status: e.status, message: e.message });
         else log("error", "chat: failed", { err: String(e) });
         ndjson(controller, { t: "error" });
       } finally {

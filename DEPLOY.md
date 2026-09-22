@@ -36,7 +36,7 @@ Add these variables to Production, Preview, and Development unless a value shoul
 
 - Telegram: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
 - Email: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `LEADS_TO`
-- Ana: `OPENAI_API_KEY` — a dedicated OpenAI project key, stored only as a server-side Vercel secret. The route uses `gpt-5.6-luna` through the OpenAI Responses API and disables API response storage. `CHAT_DISABLED=1` disables the chat.
+- Ana: `ANTHROPIC_API_KEY` — a dedicated Anthropic key, stored only as a server-side Vercel secret. The route uses the official `claude-sonnet-5` model through the Anthropic Messages API. `CHAT_DISABLED=1` disables the chat.
 - Contact and social fallbacks: the `NEXT_PUBLIC_*` fields in `.env.example`
 - Analytics: `NEXT_PUBLIC_UMAMI_URL`, `NEXT_PUBLIC_UMAMI_WEBSITE_ID`
 
