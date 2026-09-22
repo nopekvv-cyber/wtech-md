@@ -3,7 +3,7 @@ import { z } from "zod";
 import { buildSystemPrompt } from "@/lib/chat-knowledge";
 import { notifyAll } from "@/lib/notify";
 import { insertLead, markDelivered } from "@/lib/db";
-import { chatConfigured, chatProvider, env } from "@/lib/env";
+import { env } from "@/lib/env";
 import { clientIp, rateLimit, originAllowed, jsonError, log } from "@/lib/request-guard";
 import type { Locale } from "@/i18n/routing";
 
@@ -56,15 +56,17 @@ export async function POST(req: Request) {
   const { locale, messages } = parsed.data;
   if (messages[messages.length - 1]?.role !== "user") return jsonError("invalid", 400);
 
-  // No credentials on this server: tell the widget so it shows the messenger links instead.
-  if (!chatConfigured) return jsonError("offline", 503);
+  // Vercel injects the short-lived OIDC token into the request at runtime. A local pull exposes the same token as env.
+  const oidcToken = req.headers.get("x-vercel-oidc-token") || env.VERCEL_OIDC_TOKEN;
+  const directAnthropic = Boolean(env.ANTHROPIC_API_KEY || env.ANTHROPIC_AUTH_TOKEN);
+  const viaGateway = !directAnthropic && Boolean(oidcToken);
+  if (env.CHAT_DISABLED === "1" || (!directAnthropic && !viaGateway)) return jsonError("offline", 503);
 
-  const viaGateway = chatProvider === "vercel-gateway";
   const client = viaGateway
     ? new Anthropic({
         baseURL: "https://ai-gateway.vercel.sh",
         apiKey: null,
-        authToken: env.VERCEL_OIDC_TOKEN,
+        authToken: oidcToken,
       })
     : new Anthropic();
   const history: Anthropic.MessageParam[] = messages.map((m) => ({ role: m.role, content: m.content }));

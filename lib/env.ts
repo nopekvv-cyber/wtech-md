@@ -38,10 +38,4 @@ if (!parsed.success) {
 export const env = parsed.data;
 export const telegramConfigured = Boolean(env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID);
 export const smtpConfigured = Boolean(env.SMTP_HOST && env.LEADS_TO);
-export const chatProvider = env.ANTHROPIC_API_KEY || env.ANTHROPIC_AUTH_TOKEN
-  ? "anthropic"
-  : env.VERCEL_OIDC_TOKEN
-    ? "vercel-gateway"
-    : "offline";
-export const chatConfigured = env.CHAT_DISABLED !== "1" && chatProvider !== "offline";
 export const supabaseConfigured = Boolean(env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY);
