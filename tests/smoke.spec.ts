@@ -28,8 +28,8 @@ test.describe("pricing bundles", () => {
       await expect(pricing.locator(".package-bundle")).toHaveCount(5);
       await expect(pricing).toContainText(/600/);
       await expect(pricing).toContainText(/12[\s,\u202f]000/);
-      await expect(pricing).toContainText(/15[\s,\u202f]000/);
       await expect(pricing).toContainText("EUR");
+      await expect(pricing).not.toContainText(/Preț de referință|Reference price|Ориентировочная цена|WTECH −20%/);
       await expect(pricing.locator(".package-bundle--complete")).toBeVisible();
       await expect(pricing.locator(".package-terms")).toBeVisible();
       await noHorizontalScroll(page);

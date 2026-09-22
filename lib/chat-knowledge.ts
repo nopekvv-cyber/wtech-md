@@ -25,7 +25,7 @@ export async function buildSystemPrompt(locale: Locale): Promise<string> {
     })
     .join("\n\n");
   const pricing = ([1, 2, 3, 4, 5] as const)
-    .map((n) => `- ${m.pricing[`r${n}`]}: ${m.pricing.from} ${m.pricing[`r${n}p`]} ${m.pricing.currency} (${m.pricing.reference}: ${m.pricing[`r${n}old`]} ${m.pricing.currency}). ${m.pricing[`r${n}i`]}`)
+    .map((n) => `- ${m.pricing[`r${n}`]}: ${m.pricing.from} ${m.pricing[`r${n}p`]} ${m.pricing.currency}. ${m.pricing[`r${n}i`]}`)
     .join("\n");
   const process = ([1, 2, 3, 4] as const).map((n) => `${n}. ${m.process[`s${n}`]}: ${m.process[`s${n}d`]}`).join("\n");
   const faq = ([1, 2, 3, 4, 5, 6, 7, 8] as const).map((n) => `Q: ${m.faq[`q${n}`]}\nA: ${m.faq[`a${n}`]}`).join("\n\n");

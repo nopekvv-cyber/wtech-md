@@ -38,17 +38,13 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
                   <article className="package-bundle__article">
                     <div className="package-bundle__topline">
                       <span className="package-bundle__index">WTECH / 0{n}</span>
-                      <span className="package-bundle__discount">{complete ? t("customBadge") : t("discount")}</span>
+                      {complete && <span className="package-bundle__badge">{t("customBadge")}</span>}
                     </div>
 
                     {complete && <Wordmark size={24} className="package-bundle__wordmark" />}
                     <h3 className="package-bundle__title">{t(`r${n}`)}</h3>
 
                     <div className="package-bundle__prices">
-                      <div className="package-bundle__reference">
-                        <span>{t("reference")}</span>
-                        <s className="tnum">{t(`r${n}old`)} {t("currency")}</s>
-                      </div>
                       <div className="package-bundle__current">
                         <span className="package-bundle__from">{t("from")}</span>
                         <span className="package-bundle__amount tnum">{t(`r${n}p`)}</span>

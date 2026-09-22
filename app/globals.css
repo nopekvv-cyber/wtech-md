@@ -457,7 +457,7 @@ a, button {
   font-weight: 600;
   letter-spacing: 0.13em;
 }
-.package-bundle__discount {
+.package-bundle__badge {
   padding: 6px 10px;
   border: 1px solid rgba(245, 241, 234, 0.16);
   border-radius: 999px;
@@ -474,26 +474,9 @@ a, button {
   font-size: clamp(27px, 3vw, 42px);
 }
 .package-bundle__prices {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 18px 32px;
-  align-items: end;
   margin-top: 30px;
   padding-top: 24px;
   border-top: 1px solid rgba(245, 241, 234, 0.12);
-}
-.package-bundle__reference {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  color: var(--text-dim);
-  font-size: 11px;
-}
-.package-bundle__reference s {
-  color: rgba(245, 241, 234, 0.54);
-  font-size: 16px;
-  text-decoration-color: var(--coral);
-  text-decoration-thickness: 1.5px;
 }
 .package-bundle__current {
   display: flex;
@@ -539,7 +522,6 @@ a, button {
   font-size: clamp(38px, 5.5vw, 76px);
 }
 .package-bundle--complete .package-bundle__prices {
-  grid-template-columns: minmax(150px, auto) minmax(0, 1fr);
   max-width: 780px;
   margin-top: auto;
 }
@@ -620,8 +602,6 @@ a, button {
   .package-bundle__title,
   .package-bundle--complete .package-bundle__title { margin-top: 40px; font-size: 30px; }
   .package-bundle__wordmark { margin-top: 30px; }
-  .package-bundle__prices,
-  .package-bundle--complete .package-bundle__prices { grid-template-columns: 1fr; gap: 18px; }
   .package-bundle--complete .package-bundle__amount { font-size: 48px; }
   .package-terms { padding: 24px 20px; }
   .package-terms__items { grid-template-columns: 1fr; gap: 22px; }
