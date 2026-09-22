@@ -43,7 +43,8 @@ if (env.ADMIN_SESSION_SECRET && env.ADMIN_SESSION_SECRET.length < 32) problems.p
 for (const k of Object.keys(env)) if (/^NEXT_PUBLIC_/.test(k) && /(TOKEN|SECRET|PASS|API_KEY)/.test(k)) problems.push(`${k}: secrets must not be NEXT_PUBLIC_`);
 
 if (!env.TELEGRAM_BOT_TOKEN && !env.SMTP_HOST) warnings.push("no TELEGRAM_* or SMTP_* set: leads are collected in /admin/leads only (no push notifications)");
-if (!env.ANTHROPIC_API_KEY && !env.ANTHROPIC_AUTH_TOKEN && !env.VERCEL_OIDC_TOKEN && env.CHAT_DISABLED !== "1") warnings.push("No Anthropic or Vercel OIDC credential: the chat falls back to WhatsApp/booking");
+if (env.OPENAI_API_KEY && !env.OPENAI_API_KEY.startsWith("sk-")) problems.push("OPENAI_API_KEY does not look like an OpenAI secret key");
+if (!env.OPENAI_API_KEY && env.CHAT_DISABLED !== "1") warnings.push("OPENAI_API_KEY is not set: the chat falls back to WhatsApp/booking");
 if (env.ALLOW_PLACEHOLDERS === "1") warnings.push("ALLOW_PLACEHOLDERS=1: [[placeholders]] may be visible on the site");
 if (!env.SUPABASE_URL) warnings.push("Supabase is not configured: database-backed routes will report unavailable");
 if (!env.ADMIN_PASSWORD) warnings.push("ADMIN_PASSWORD not set: /admin login is unavailable");

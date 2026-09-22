@@ -1,4 +1,5 @@
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
+import type { FunctionTool, ResponseInput } from "openai/resources/responses/responses";
 import { z } from "zod";
 import { buildSystemPrompt } from "@/lib/chat-knowledge";
 import { notifyAll } from "@/lib/notify";
@@ -20,18 +21,29 @@ const schema = z
   })
   .strict();
 
+const leadInputSchema = z
+  .object({
+    name: z.string().trim().max(120),
+    phone: z.string().trim().max(40),
+    email: z.string().trim().max(160),
+    interest: z.string().trim().max(200),
+    summary: z.string().trim().max(1000),
+  })
+  .strict();
+
 const LEAD_TITLE: Record<Locale, string> = { ro: "Lead din chatul cu Ana", ru: "Заявка из чата с Аной", en: "Lead from the Ana chat" };
 
-const leadTool = {
+const leadTool: FunctionTool = {
+  type: "function",
   name: "capture_lead",
   description: "Send the visitor's contact details to the wtech.md team so a person calls them back. Call it once, only after the visitor gave a phone number or email.",
   strict: true,
-  input_schema: {
-    type: "object" as const,
+  parameters: {
+    type: "object",
     properties: {
-      name: { type: "string", description: "Visitor's name as given" },
-      phone: { type: "string", description: "Phone or WhatsApp number as given, empty string if none" },
-      email: { type: "string", description: "Email as given, empty string if none" },
+      name: { type: "string", description: "Visitor's name as given, or an empty string" },
+      phone: { type: "string", description: "Phone or WhatsApp number as given, or an empty string" },
+      email: { type: "string", description: "Email as given, or an empty string" },
       interest: { type: "string", description: "What they want to build, in one short sentence" },
       summary: { type: "string", description: "Two-sentence summary of the conversation for the team" },
     },
@@ -55,52 +67,71 @@ export async function POST(req: Request) {
   if (!parsed.success) return jsonError("invalid", 400);
   const { locale, messages } = parsed.data;
   if (messages[messages.length - 1]?.role !== "user") return jsonError("invalid", 400);
+  if (env.CHAT_DISABLED === "1" || !env.OPENAI_API_KEY) return jsonError("offline", 503);
 
-  // Vercel injects the short-lived OIDC token into the request at runtime. A local pull exposes the same token as env.
-  const oidcToken = req.headers.get("x-vercel-oidc-token") || env.VERCEL_OIDC_TOKEN;
-  const directAnthropic = Boolean(env.ANTHROPIC_API_KEY || env.ANTHROPIC_AUTH_TOKEN);
-  const viaGateway = !directAnthropic && Boolean(oidcToken);
-  if (env.CHAT_DISABLED === "1" || (!directAnthropic && !viaGateway)) return jsonError("offline", 503);
-
-  const client = viaGateway
-    ? new Anthropic({
-        baseURL: "https://ai-gateway.vercel.sh",
-        apiKey: null,
-        authToken: oidcToken,
-      })
-    : new Anthropic();
-  const history: Anthropic.MessageParam[] = messages.map((m) => ({ role: m.role, content: m.content }));
-  const system = await buildSystemPrompt(locale);
+  const client = new OpenAI({ apiKey: env.OPENAI_API_KEY, timeout: 20_000, maxRetries: 1 });
+  const input: ResponseInput = messages.map((message) => ({ role: message.role, content: message.content }));
+  const instructions = await buildSystemPrompt(locale);
 
   const stream = new ReadableStream({
     async start(controller) {
       try {
         let leadSent = false;
+        let answered = false;
+
         for (let turn = 0; turn < 3; turn++) {
-          const s = client.messages.stream({
-            model: viaGateway ? "anthropic/claude-sonnet-5" : "claude-opus-5",
-            max_tokens: 1024, // deliberately short chat answers
-            output_config: { effort: "low" },
-            system: [{ type: "text", text: system, cache_control: { type: "ephemeral" } }],
+          const response = await client.responses.create({
+            model: "gpt-5.6-luna",
+            instructions,
+            input,
             tools: [leadTool],
-            messages: history,
+            parallel_tool_calls: false,
+            reasoning: { effort: "low" },
+            max_output_tokens: 900,
+            store: false,
+            include: ["reasoning.encrypted_content"],
           });
-          s.on("text", (delta) => ndjson(controller, { t: "text", d: delta }));
-          const msg = await s.finalMessage();
-          if (msg.stop_reason === "refusal") { ndjson(controller, { t: "error" }); break; }
-          if (msg.stop_reason !== "tool_use") break;
-          history.push({ role: "assistant", content: msg.content });
-          const results: Anthropic.ToolResultBlockParam[] = [];
-          for (const block of msg.content) {
-            if (block.type !== "tool_use") continue;
-            let result = "ok";
-            if (block.name === "capture_lead" && !leadSent) {
-              const input = block.input as { name: string; phone: string; email: string; interest: string; summary: string };
-              if (input.phone || input.email) {
-                const clip = (v: unknown, n: number) => String(v ?? "").slice(0, n);
+
+          const toolCalls = response.output.filter((item) => item.type === "function_call");
+          if (!toolCalls.length) {
+            const text = response.output_text.trim();
+            if (!text) throw new Error("OpenAI returned no text response");
+            ndjson(controller, { t: "text", d: text });
+            answered = true;
+            break;
+          }
+
+          // Re-submit only conversation items produced by this text/function route.
+          // The SDK's full output union also contains tool types this route never enables.
+          const continuation = response.output.filter((item) =>
+            item.type === "message" || item.type === "function_call" || item.type === "reasoning",
+          ) as ResponseInput;
+          input.push(...continuation);
+          for (const call of toolCalls) {
+            let result = "error: unsupported tool";
+            if (call.name === "capture_lead" && !leadSent) {
+              let raw: unknown;
+              try { raw = JSON.parse(call.arguments); } catch { raw = null; }
+              const lead = leadInputSchema.safeParse(raw);
+
+              if (!lead.success) {
+                result = "error: invalid contact details";
+              } else if (!lead.data.phone && !lead.data.email) {
+                result = "error: no phone or email given";
+              } else {
+                const contact = lead.data;
                 let id = 0;
                 try {
-                  id = await insertLead({ kind: "chat", locale, name: clip(input.name, 120), phone: clip(input.phone, 40), email: clip(input.email, 160), interest: clip(input.interest, 200), message: clip(input.summary, 1000), ip });
+                  id = await insertLead({
+                    kind: "chat",
+                    locale,
+                    name: contact.name,
+                    phone: contact.phone,
+                    email: contact.email,
+                    interest: contact.interest,
+                    message: contact.summary,
+                    ip,
+                  });
                 } catch (e) {
                   log("error", "chat lead insert failed", { err: String(e) });
                 }
@@ -108,29 +139,29 @@ export async function POST(req: Request) {
                   const delivered = await notifyAll({
                     title: LEAD_TITLE[locale],
                     locale,
-                    lines: [["Nume / Имя / Name", clip(input.name, 120)], ["Telefon", clip(input.phone, 40)], ["E-mail", clip(input.email, 160)], ["Interes", clip(input.interest, 200)], ["Rezumat", clip(input.summary, 1000)], ["ID", String(id)]],
+                    lines: [["Nume / Имя / Name", contact.name], ["Telefon", contact.phone], ["E-mail", contact.email], ["Interes", contact.interest], ["Rezumat", contact.summary], ["ID", String(id)]],
                   });
                   if (delivered && id) await markDelivered(id);
                   leadSent = true;
+                  result = "ok";
                   ndjson(controller, { t: "lead" });
                 } catch (e) {
                   log("error", "chat lead notify failed", { id, err: String(e) });
                   result = id ? "ok (stored; the team will call back)" : "error: could not deliver the lead; ask the visitor to write on WhatsApp";
                   if (id) { leadSent = true; ndjson(controller, { t: "lead" }); }
                 }
-              } else {
-                result = "error: no phone or email given";
               }
             }
-            results.push({ type: "tool_result", tool_use_id: block.id, content: result });
+            input.push({ type: "function_call_output", call_id: call.call_id, output: result });
           }
-          history.push({ role: "user", content: results });
         }
+
+        if (!answered) ndjson(controller, { t: "error" });
         ndjson(controller, { t: "done" });
       } catch (e) {
-        if (e instanceof Anthropic.RateLimitError) log("error", "chat: rate limited by API");
-        else if (e instanceof Anthropic.AuthenticationError) log("error", "chat: invalid credentials");
-        else if (e instanceof Anthropic.APIError) log("error", "chat: API error", { status: e.status, message: e.message });
+        if (e instanceof OpenAI.RateLimitError) log("error", "chat: rate limited by OpenAI");
+        else if (e instanceof OpenAI.AuthenticationError) log("error", "chat: invalid OpenAI credentials");
+        else if (e instanceof OpenAI.APIError) log("error", "chat: OpenAI API error", { status: e.status, message: e.message });
         else log("error", "chat: failed", { err: String(e) });
         ndjson(controller, { t: "error" });
       } finally {
