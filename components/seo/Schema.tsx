@@ -31,7 +31,7 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
         address: { "@type": "PostalAddress", ...(contact.address ? { streetAddress: contact.address } : {}), addressLocality: "Chișinău", addressCountry: "MD" },
         geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng },
         areaServed: { "@type": "Country", name: t("areaServed") },
-        priceRange: "MDL",
+        priceRange: "600–12,000 EUR",
         currenciesAccepted: "MDL, EUR",
         openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "18:00" }],
         knowsLanguage: ["ro", "ru", "en"],
@@ -39,7 +39,7 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
         makesOffer: serviceKeys.map((k) => ({
           "@type": "Offer",
           itemOffered: { "@type": "Service", "@id": `${SITE_URL}/#service-${k}`, name: ts(`${k}.name`), url: `${SITE_URL}/${locale === "ro" ? "" : locale + "/"}${locale === "ru" ? "uslugi" : locale === "en" ? "services" : "servicii"}/${serviceSlugs[k][locale]}` },
-          priceCurrency: "MDL",
+          priceCurrency: "EUR",
         })),
       },
       {
@@ -67,7 +67,7 @@ export function ServiceSchema({ name, description, url, locale }: { name: string
         inLanguage: locale,
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: { "@type": "Country", name: "Moldova" },
-        offers: { "@type": "Offer", priceCurrency: "MDL", availability: "https://schema.org/InStock" },
+        offers: { "@type": "Offer", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
       }}
     />
   );

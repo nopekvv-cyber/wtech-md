@@ -18,12 +18,12 @@
 - Russian: https://wtech.md/ru
 - English: https://wtech.md/en
 - About: https://wtech.md/despre
-- Pricing (starting from, in MDL): https://wtech.md/preturi
+- Pricing packages (starting from, in EUR): https://wtech.md/preturi
 - Contact: https://wtech.md/contact
 - Free 24-hour website audit: https://wtech.md/audit
 - Blog: https://wtech.md/blog
 
 ## Facts
 - Location: Chișinău, Moldova. Serves all of Moldova (Chișinău, Bălți, Cahul, Comrat) and EU clients remotely.
-- Pricing: fixed price in MDL, invoices for SRL companies.
+- Pricing: START from EUR 600; BUSINESS from EUR 1,200; BOOKING from EUR 2,800; CRM & AI from EUR 6,000; COMPLETE from EUR 12,000. Each package includes the previous one, and prices are project totals rather than cumulative amounts. VAT, when applicable, is separate.
 - Response time: under one hour on business days.

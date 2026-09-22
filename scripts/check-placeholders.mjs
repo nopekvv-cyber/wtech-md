@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Fails the build if any `[[placeholder]]` is left in source, messages, or env defaults.
-// The typed CMS tokens [[price.site|crm|ai]] and [[proof.n1|n2|n3]] are allowed: lib/settings.ts resolves them at
-// request time from the /admin values. Set ALLOW_PLACEHOLDERS=1 for local/dev builds while other placeholders remain.
+// The typed CMS tokens [[proof.n1|n2|n3]] are allowed: lib/settings.ts resolves them at request time from the
+// /admin values. Set ALLOW_PLACEHOLDERS=1 for local/dev builds while other placeholders remain.
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 
@@ -21,7 +21,7 @@ function walk(p) {
   const text = readFileSync(p, "utf8");
   const lines = text.split("\n");
   lines.forEach((line, i) => {
-    const m = (line.match(/\[\[[a-zA-Z0-9_.\- ]+\]\]/g) || []).filter((t) => !/^\[\[(price\.(site|crm|ai)|proof\.n[123])\]\]$/.test(t));
+    const m = (line.match(/\[\[[a-zA-Z0-9_.\- ]+\]\]/g) || []).filter((t) => !/^\[\[proof\.n[123]\]\]$/.test(t));
     if (m.length) hits.push({ file: p, line: i + 1, tokens: m });
   });
 }

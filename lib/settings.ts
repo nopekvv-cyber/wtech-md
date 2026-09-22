@@ -4,14 +4,14 @@ import { readSettings } from "./db";
 import { contactDefaults, socialDefaults } from "./site";
 
 /**
- * CMS-editable values (the former build-time placeholders): contact channels, the three "from" prices, the three proof
- * numbers and socials. Stored in Supabase (`settings` table) and edited at /admin; environment
+ * CMS-editable values (the former build-time placeholders): contact channels, the three proof numbers and socials.
+ * Stored in Supabase (`settings` table) and edited at /admin; environment
  * NEXT_PUBLIC_* values remain the fallback so an existing .env keeps working. Read once per request through React
  * cache so the layout, Footer, Contact and translated copy share one Supabase settings result.
  */
 export type Field = {
   key: string;
-  group: "contact" | "prices" | "proof" | "social";
+  group: "contact" | "proof" | "social";
   label: string;
   hint?: string;
   type: "text" | "tel" | "email" | "url" | "number";
@@ -26,9 +26,6 @@ export const FIELDS: Field[] = [
   { key: "contact.email", group: "contact", label: "Email", type: "email", max: 120 },
   { key: "contact.address", group: "contact", label: "Address", hint: "str. …, Chișinău", type: "text", max: 160 },
   { key: "contact.idno", group: "contact", label: "IDNO", hint: "13 digits", type: "text", max: 20 },
-  { key: "price.site", group: "prices", label: "Presentation website, from (MDL)", type: "number" },
-  { key: "price.crm", group: "prices", label: "Custom CRM, from (MDL)", type: "number" },
-  { key: "price.ai", group: "prices", label: "AI employee, from (MDL)", type: "number" },
   { key: "proof.n1", group: "proof", label: "Projects delivered in Moldova", hint: "e.g. 40+", type: "text", max: 12 },
   { key: "proof.n2", group: "proof", label: "Average AI reply time (minutes)", hint: "e.g. 2", type: "text", max: 12 },
   { key: "proof.n3", group: "proof", label: "Leads processed monthly", hint: "e.g. 3 000+", type: "text", max: 12 },
@@ -40,7 +37,6 @@ export const FIELDS: Field[] = [
 export type Site = {
   contact: { phone: string; phoneHref: string; whatsapp: string; telegram: string; viber: string; email: string; address: string; idno: string };
   socials: { facebook: string; instagram: string; linkedin: string };
-  prices: { site: string; crm: string; ai: string };
   proof: { n1: string; n2: string; n3: string };
 };
 
@@ -65,12 +61,6 @@ export const loadSettings = cache(async (): Promise<Record<string, string>> => {
   return out;
 });
 
-export function formatPrice(v: string | undefined): string {
-  const n = Number(String(v ?? "").replace(/[^\d]/g, ""));
-  if (!n) return "";
-  return n.toLocaleString("ro-MD").replace(/\./g, " "); // 18 000 with a thin space
-}
-
 export const getSite = cache(async (): Promise<Site> => {
   const s = await loadSettings();
   const g = (k: string) => s[k] ?? "";
@@ -81,12 +71,11 @@ export const getSite = cache(async (): Promise<Site> => {
       viber: g("contact.viber"), email: g("contact.email"), address: g("contact.address"), idno: g("contact.idno"),
     },
     socials: { facebook: g("social.facebook"), instagram: g("social.instagram"), linkedin: g("social.linkedin") },
-    prices: { site: formatPrice(s["price.site"]), crm: formatPrice(s["price.crm"]), ai: formatPrice(s["price.ai"]) },
     proof: { n1: g("proof.n1"), n2: g("proof.n2"), n3: g("proof.n3") },
   };
 });
 
-const TOKEN = /\[\[(price\.(?:site|crm|ai)|proof\.n[123])\]\]/g;
+const TOKEN = /\[\[(proof\.n[123])\]\]/g;
 
 /**
  * Replaces the typed tokens in the message tree with CMS values. A string that still has an unresolved token after
@@ -95,7 +84,6 @@ const TOKEN = /\[\[(price\.(?:site|crm|ai)|proof\.n[123])\]\]/g;
  */
 export function resolveMessages<T>(messages: T, site: Site): T {
   const values: Record<string, string> = {
-    "price.site": site.prices.site, "price.crm": site.prices.crm, "price.ai": site.prices.ai,
     "proof.n1": site.proof.n1, "proof.n2": site.proof.n2, "proof.n3": site.proof.n3,
   };
   const walk = (node: unknown): unknown => {

@@ -22,15 +22,13 @@ test.describe("admin CMS", () => {
     await page.goto("/admin");
     await page.fill('input[name="password"]', PASSWORD);
     await page.locator('button[type="submit"]').click();
-    await expect(page.locator('input[name="price.site"]')).toBeVisible();
+    await expect(page.locator('input[name="contact.phone"]')).toBeVisible();
 
     await page.fill('input[name="contact.phone"]', "+373 69 123 456");
     await page.fill('input[name="contact.whatsapp"]', "069 123 456");
     await page.fill('input[name="contact.telegram"]', "wtechmd");
     await page.fill('input[name="contact.address"]', "str. Test 1, Chișinău");
     await page.fill('input[name="contact.idno"]', "1234567890123");
-    await page.fill('input[name="price.site"]', "18000");
-    await page.fill('input[name="price.crm"]', "45000");
     await page.fill('input[name="proof.n1"]', "40+");
     await page.getByRole("button", { name: "Save changes" }).click();
     await expect(page.locator('[role="status"]')).toHaveText(/Saved/);
@@ -41,8 +39,8 @@ test.describe("admin CMS", () => {
     const site = await context.newPage();
     await markSeen(site);
     await site.goto("/preturi");
-    await expect(site.locator("#preturi")).toContainText("18\u202f000");
-    await expect(site.locator("#preturi")).toContainText(/preț la cerere/); // price.ai left empty
+    await expect(site.locator("#preturi")).toContainText("600");
+    await expect(site.locator("#preturi")).toContainText("12\u202f000");
     await site.goto("/contact");
     await expect(site.locator("#contact a[href^='tel:']")).toHaveAttribute("href", "tel:+37369123456");
     await expect(site.locator("#contact a[href^='https://wa.me/']")).toHaveAttribute("href", /wa\.me\/37369123456/);
@@ -83,7 +81,7 @@ test.describe("admin CMS", () => {
     await page.goto("/admin");
     await page.fill('input[name="password"]', PASSWORD);
     await page.locator('button[type="submit"]').click();
-    await expect(page.locator('input[name="price.site"]')).toBeVisible();
+    await expect(page.locator('input[name="contact.phone"]')).toBeVisible();
     await page.getByRole("button", { name: "Sign out" }).click();
     await expect(page.locator('input[name="password"]')).toBeVisible();
   });

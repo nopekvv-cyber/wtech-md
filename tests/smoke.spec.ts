@@ -19,15 +19,19 @@ for (const locale of LOCALES) {
   });
 }
 
-test.describe("pricing plans", () => {
+test.describe("pricing bundles", () => {
   const pages = ["/preturi", "/ru/ceny", "/en/pricing"];
   for (const path of pages) {
-    test(`${path} shows the custom WTECH floor`, async ({ page }) => {
+    test(`${path} shows all five WTECH package floors`, async ({ page }) => {
       await page.goto(path, { waitUntil: "networkidle" });
       const pricing = page.locator("#preturi");
+      await expect(pricing.locator(".package-bundle")).toHaveCount(5);
+      await expect(pricing).toContainText(/600/);
       await expect(pricing).toContainText(/12[\s,\u202f]000/);
+      await expect(pricing).toContainText(/15[\s,\u202f]000/);
       await expect(pricing).toContainText("EUR");
-      await expect(pricing.locator(".pricing-plan--custom")).toBeVisible();
+      await expect(pricing.locator(".package-bundle--complete")).toBeVisible();
+      await expect(pricing.locator(".package-terms")).toBeVisible();
       await noHorizontalScroll(page);
     });
   }
@@ -44,7 +48,7 @@ test.describe("WTECH bundle system", () => {
       }
     });
     const bundles = page.locator(".bundle-shell");
-    await expect.poll(() => bundles.count()).toBeGreaterThanOrEqual(14);
+    await expect.poll(() => bundles.count()).toBeGreaterThanOrEqual(19);
     const count = await bundles.count();
     for (let i = 0; i < count; i++) {
       const bundle = bundles.nth(i);

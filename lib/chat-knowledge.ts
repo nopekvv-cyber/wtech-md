@@ -10,7 +10,7 @@ const LANG: Record<Locale, string> = { ro: "Romanian", ru: "Russian", en: "Engli
 
 /**
  * Everything Ana knows: the six services, pricing signals, process, FAQ and contact channels, taken from the
- * localised copy (with the CMS prices and contact details resolved) so the bot never contradicts the site.
+ * localised copy (with the CMS contact details resolved) so the bot never contradicts the site.
  * Stable between CMS edits, so the system prompt caches.
  */
 export async function buildSystemPrompt(locale: Locale): Promise<string> {
@@ -24,11 +24,8 @@ export async function buildSystemPrompt(locale: Locale): Promise<string> {
       return `### ${s.name}\n${s.intro}\nBefore: ${s.before}\nAfter: ${s.after}\n${bullets}`;
     })
     .join("\n\n");
-  const pricing = ([1, 2, 3, 4] as const)
-    .map((n) => {
-      const currency = n === 4 ? m.pricing.r4c : m.pricing.currency;
-      return `- ${m.pricing[`r${n}`]}: ${m.pricing[`r${n}p`] ? `${m.pricing.from} ${m.pricing[`r${n}p`]} ${currency}` : m.pricing.onRequest}. ${m.pricing[`r${n}i`]}`;
-    })
+  const pricing = ([1, 2, 3, 4, 5] as const)
+    .map((n) => `- ${m.pricing[`r${n}`]}: ${m.pricing.from} ${m.pricing[`r${n}p`]} ${m.pricing.currency} (${m.pricing.reference}: ${m.pricing[`r${n}old`]} ${m.pricing.currency}). ${m.pricing[`r${n}i`]}`)
     .join("\n");
   const process = ([1, 2, 3, 4] as const).map((n) => `${n}. ${m.process[`s${n}`]}: ${m.process[`s${n}d`]}`).join("\n");
   const faq = ([1, 2, 3, 4, 5, 6, 7, 8] as const).map((n) => `Q: ${m.faq[`q${n}`]}\nA: ${m.faq[`a${n}`]}`).join("\n\n");
@@ -41,9 +38,13 @@ The site is in ${LANG[locale]}. Reply in the language the visitor writes in (Rom
 ## What we build (six services)
 ${svc}
 
-## Starting prices (in MDL and EUR)
+## WTECH package prices (EUR)
 ${pricing}
 ${m.pricing.note}
+${m.pricing.included}: ${m.pricing.includedText}
+${m.pricing.separate}: ${m.pricing.separateText}
+${m.pricing.individual}: ${m.pricing.individualText}
+${m.pricing.vat}
 Every project gets a fixed price in a written proposal within 48 hours after a 30-minute call. If a starting price above reads "${m.pricing.onRequest}", say that the exact starting price is confirmed in the proposal and do not invent a number.
 
 ## How we work

@@ -12,7 +12,7 @@ export default async function AdminPage() {
     return (
       <>
         <h1 className="text-[32px] md:text-[40px]">wtech.md admin</h1>
-        <p className="text-dim mt-3 max-w-[520px]">Contact channels, starting prices, proof numbers and socials shown on the site. Changes go live immediately.</p>
+        <p className="text-dim mt-3 max-w-[520px]">Contact channels, proof numbers and socials shown on the site. Changes go live immediately.</p>
         <LoginForm />
       </>
     );
@@ -20,7 +20,6 @@ export default async function AdminPage() {
   const [stored, open] = await Promise.all([loadSettings(), countLeads(true)]);
   const groups: Array<{ id: (typeof FIELDS)[number]["group"]; title: string; note?: string }> = [
     { id: "contact", title: "Contact", note: "Empty channels are hidden on the site. Phone numbers are stored as +373…" },
-    { id: "prices", title: "Starting prices (MDL, without VAT)", note: "Digits only. An empty price shows “price on request” and the FAQ and demo chat switch to the wording without numbers." },
     { id: "proof", title: "Proof numbers", note: "Only real numbers from your own systems. Empty ones are not shown; with all three empty the whole band disappears." },
     { id: "social", title: "Social profiles", note: "Full https:// links. Used for the Organization schema and the footer." },
   ];
