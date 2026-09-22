@@ -15,7 +15,7 @@
     },
     "pricing": {
       "title": "Pricing | wtech.md",
-      "description": "Starting prices in MDL for a website, a CRM and an AI employee. Fixed-price proposal within 48 hours, no obligation."
+      "description": "WTECH plans for websites, CRM, AI employees and fully custom systems starting at EUR 12,000. A clear proposal within 48 hours."
     },
     "contact": {
       "title": "Contact | wtech.md",
@@ -380,8 +380,9 @@
     "s4d": "We launch, train your team and stay for a month. After that, maintenance if you want it."
   },
   "pricing": {
-    "title": "Starting prices. Transparent, in MDL.",
-    "sub": "Every project gets a fixed price in the proposal. These are the reference points we start from.",
+    "eyebrow": "WTECH plans",
+    "title": "Choose the starting point. We build the rest.",
+    "sub": "Three clear solutions and one fully custom plan. Your written proposal defines scope, timeline and final price.",
     "from": "from",
     "currency": "MDL",
     "r1": "Presentation website",
@@ -393,6 +394,12 @@
     "r3": "AI employee",
     "r3p": "[[price.ai]]",
     "r3i": "Answers in RO/RU/EN on WhatsApp, Telegram, Viber and the website, lead qualification, offers, bookings, daily report. Plus a monthly running subscription.",
+    "r4": "Complete WTECH system",
+    "r4p": "12,000",
+    "r4c": "EUR",
+    "r4i": "A platform designed from scratch around your business: digital experience, CRM, automations, AI, integrations and infrastructure in one system.",
+    "r4note": "Everything is designed to order. The final price varies with features, integrations, data volume and delivery timeline.",
+    "customBadge": "100% custom",
     "note": "We invoice companies with a fiscal invoice. Payment in stages, tied to sprints. EUR invoicing available for EU clients.",
     "cta": "I want the fixed-price proposal",
     "onRequest": "price on request"
@@ -400,7 +407,7 @@
   "faq": {
     "title": "The questions business owners ask us",
     "q1": "How much does a website or a CRM cost at wtech.md?",
-    "a1": "A presentation website starts from [[price.site]] MDL, a custom CRM from [[price.crm]] MDL, and an AI employee from [[price.ai]] MDL plus a monthly subscription. You get the exact fixed price in writing within 48 hours after the 30-minute call.",
+    "a1": "A presentation website starts from [[price.site]] MDL, a custom CRM from [[price.crm]] MDL, and an AI employee from [[price.ai]] MDL plus a monthly subscription. A complete WTECH system starts at EUR 12,000 and is designed entirely to order. You receive the exact price in writing after the 30-minute call.",
     "q2": "How long does it take?",
     "a2": "A presentation website takes 3 to 5 weeks. A custom CRM takes 6 to 10 weeks. An AI employee can be answering clients within 2 weeks. We work in two-week sprints and you see the result after every sprint.",
     "q3": "Who owns the code?",

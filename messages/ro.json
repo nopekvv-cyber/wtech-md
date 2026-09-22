@@ -15,7 +15,7 @@
     },
     "pricing": {
       "title": "Prețuri | wtech.md",
-      "description": "Prețuri de pornire în MDL pentru site, CRM și angajat AI. Propunere cu preț fix în 48 de ore, fără obligații."
+      "description": "Planuri WTECH pentru site, CRM, angajat AI și sisteme complet personalizate de la 12.000 EUR. Propunere clară în 48 de ore."
     },
     "contact": {
       "title": "Contact | wtech.md",
@@ -380,8 +380,9 @@
     "s4d": "Lansăm, instruim echipa și rămânem alături o lună. Apoi, dacă vrei, mentenanță."
   },
   "pricing": {
-    "title": "Prețuri de pornire. Transparente, în MDL.",
-    "sub": "Fiecare proiect primește un preț fix în propunere. Acestea sunt reperele de la care pornim.",
+    "eyebrow": "Planuri WTECH",
+    "title": "Alege punctul de pornire. Noi construim restul.",
+    "sub": "Trei soluții clare și un plan complet personalizat. Primești scopul, calendarul și prețul final în propunerea scrisă.",
     "from": "de la",
     "currency": "MDL",
     "r1": "Site de prezentare",
@@ -393,6 +394,12 @@
     "r3": "Angajat AI",
     "r3p": "[[price.ai]]",
     "r3i": "Răspuns în RO/RU pe WhatsApp, Telegram, Viber și site, calificare lead-uri, oferte, programări, raport zilnic. Plus abonament lunar pentru rulare.",
+    "r4": "Sistem WTECH complet",
+    "r4p": "12 000",
+    "r4c": "EUR",
+    "r4i": "Platformă creată de la zero în jurul afacerii tale: experiență digitală, CRM, automatizări, AI, integrări și infrastructură într-un singur sistem.",
+    "r4note": "Totul este proiectat la comandă. Prețul final poate varia în funcție de funcții, integrări, volum de date și calendar.",
+    "customBadge": "100% la comandă",
     "note": "Facturăm SRL-uri cu factură fiscală. Plata în etape, legată de sprinturi.",
     "cta": "Vreau propunerea cu preț fix",
     "onRequest": "preț la cerere"
@@ -400,7 +407,7 @@
   "faq": {
     "title": "Întrebările pe care ni le pun proprietarii de SRL",
     "q1": "Cât costă un site sau un CRM la wtech.md?",
-    "a1": "Un site de prezentare pornește de la [[price.site]] MDL, un CRM personalizat de la [[price.crm]] MDL, iar un angajat AI de la [[price.ai]] MDL plus un abonament lunar. Prețul exact îl primești fix, în scris, în 48 de ore după apelul de 30 de minute.",
+    "a1": "Un site de prezentare pornește de la [[price.site]] MDL, un CRM personalizat de la [[price.crm]] MDL, iar un angajat AI de la [[price.ai]] MDL plus un abonament lunar. Un sistem WTECH complet pornește de la 12.000 EUR și se configurează integral la comandă. Prețul exact îl primești în scris după apelul de 30 de minute.",
     "q2": "Cât durează?",
     "a2": "Un site de prezentare durează 3 până la 5 săptămâni. Un CRM personalizat, 6 până la 10 săptămâni. Un angajat AI poate răspunde clienților în 2 săptămâni. Lucrăm în sprinturi de două săptămâni și vezi rezultatul la fiecare sprint.",
     "q3": "Cine deține codul?",

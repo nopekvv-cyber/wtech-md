@@ -19,6 +19,20 @@ for (const locale of LOCALES) {
   });
 }
 
+test.describe("pricing plans", () => {
+  const pages = ["/preturi", "/ru/ceny", "/en/pricing"];
+  for (const path of pages) {
+    test(`${path} shows the custom WTECH floor`, async ({ page }) => {
+      await page.goto(path, { waitUntil: "networkidle" });
+      const pricing = page.locator("#preturi");
+      await expect(pricing).toContainText(/12[\s,\u202f]000/);
+      await expect(pricing).toContainText("EUR");
+      await expect(pricing.locator(".pricing-plan--custom")).toBeVisible();
+      await noHorizontalScroll(page);
+    });
+  }
+});
+
 test.describe("hero", () => {
   test("loads immediately without entry or language overlays", async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
