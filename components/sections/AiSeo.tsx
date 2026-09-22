@@ -7,6 +7,7 @@ import { m, useInView, useReducedMotion } from "framer-motion";
 import { ArrowUp, ArrowDown, Minus, Sparkles, Search, ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Typewriter } from "@/components/ui/Typewriter";
+import { BundleShell } from "@/components/ui/BundleShell";
 
 const ROWS = [
   { k: "k1", pos: 2, delta: 5 },
@@ -30,12 +31,13 @@ export function AiSeo() {
   return (
     <section id="ai-seo" className="section" aria-labelledby="seo-title">
       <div className="container-x">
-        <h2 id="seo-title" className="text-[32px] md:text-[44px] max-w-[760px]">{t("title")}</h2>
-        <p className="text-dim mt-4 text-lg max-w-[620px]">{t("sub")}</p>
-      </div>
-      <div ref={ref} className="container-x mt-14 md:mt-20 grid lg:grid-cols-2 gap-6">
-        {/* AI answer panel */}
-        <div className="relative crm-panel rounded-[var(--radius-lg)] p-6 md:p-8 overflow-hidden min-h-[380px]">
+        <BundleShell accent="cyan" className="p-6 md:p-10 lg:p-14">
+          <p className="bundle-kicker">WTECH visibility bundle</p>
+          <h2 id="seo-title" className="text-[32px] md:text-[46px] max-w-[760px] mt-4">{t("title")}</h2>
+          <p className="text-dim mt-4 text-lg max-w-[620px]">{t("sub")}</p>
+          <div ref={ref} className="mt-14 md:mt-20 grid lg:grid-cols-2 gap-6">
+            {/* AI answer panel */}
+            <div className="relative crm-panel rounded-[var(--radius-lg)] p-6 md:p-8 overflow-hidden min-h-[380px]">
           <Image src="/media/seo-bg-1.jpg" alt="" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover opacity-70 pointer-events-none" />
           <div className="relative">
             <div className="flex items-center gap-2 text-dim text-[13px]"><Search size={14} aria-hidden="true" />{t("question")}</div>
@@ -51,10 +53,10 @@ export function AiSeo() {
               {t("sources")}: wtech.md · wtech.md/despre · wtech.md/blog
             </m.div>
           </div>
-        </div>
+            </div>
 
-        {/* Ranking mini-dashboard */}
-        <div className="relative crm-panel rounded-[var(--radius-lg)] p-6 md:p-8 overflow-hidden">
+            {/* Ranking mini-dashboard */}
+            <div className="relative crm-panel rounded-[var(--radius-lg)] p-6 md:p-8 overflow-hidden">
           <Image src="/media/seo-bg-2.jpg" alt="" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover opacity-60 pointer-events-none" />
           <div className="relative">
             <div className="flex items-start justify-between gap-6">
@@ -90,13 +92,15 @@ export function AiSeo() {
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
-      <div className="container-x mt-12 md:mt-16">
-        <ul className="divide-y divide-white/10 border-t border-line max-w-[760px]">
-          {(["l1", "l2", "l3"] as const).map((k) => <li key={k} className="py-5 text-[17px]">{t(k)}</li>)}
-        </ul>
-        <Link href={{ pathname: "/audit", query: { ai: "1" } }} className="btn btn-primary mt-8">{t("cta")} <ArrowUpRight size={16} aria-hidden="true" /></Link>
+            </div>
+          </div>
+          <div className="mt-12 md:mt-16">
+            <ul className="divide-y divide-white/10 border-t border-line max-w-[760px]">
+              {(["l1", "l2", "l3"] as const).map((k) => <li key={k} className="py-5 text-[17px]">{t(k)}</li>)}
+            </ul>
+            <Link href={{ pathname: "/audit", query: { ai: "1" } }} className="btn btn-primary mt-8">{t("cta")} <ArrowUpRight size={16} aria-hidden="true" /></Link>
+          </div>
+        </BundleShell>
       </div>
     </section>
   );

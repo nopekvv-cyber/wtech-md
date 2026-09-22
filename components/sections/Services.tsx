@@ -4,35 +4,42 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { serviceKeys, serviceMedia, serviceSlugs } from "@/lib/services";
 import { LoopVideo } from "@/components/ui/LoopVideo";
+import { BundleShell } from "@/components/ui/BundleShell";
 
-/**
- * Six rows (BAB). Static by design: no pin, no scroll reveals, so the text is always there whether the visitor
- * scrolls, jumps to an anchor or lands mid-page. Each row carries its own loop on the right.
- */
+const ACCENTS = ["violet", "coral", "cyan", "cyan", "violet", "coral"] as const;
+
+/** Six independent WTECH bundles. Video previews stay active while the surface reveals and reacts to hover. */
 export function Services() {
   const t = useTranslations("services");
   const locale = useLocale() as Locale;
   return (
     <section id="servicii" className="section" aria-labelledby="services-title">
       <div className="container-x">
-        <h2 id="services-title" className="text-[32px] md:text-[44px] max-w-[760px]">{t("title")}</h2>
-        <div className="mt-12 lg:mt-16 border-t border-line">
-          {serviceKeys.map((k) => (
-            <article key={k} id={`svc-${k}`} className="border-b border-line py-10 lg:py-14 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              <div className="lg:col-span-6">
-                <h3 className="text-[28px] md:text-[32px]">{t(`items.${k}.name`)}</h3>
-                <p className="text-dim mt-5 text-[17px]">{t(`items.${k}.before`)}</p>
-                <p className="mt-3 text-[17px] md:text-[19px] max-w-[520px]">{t(`items.${k}.after`)}</p>
-                <div className="mt-7">
-                  <Link href={{ pathname: "/servicii/[slug]", params: { slug: serviceSlugs[k][locale] } }} className="link-inline">
-                    {t(`items.${k}.cta`)} <ArrowUpRight size={16} aria-hidden="true" />
-                  </Link>
+        <p className="bundle-kicker">WTECH bundles</p>
+        <h2 id="services-title" className="text-[34px] md:text-[50px] max-w-[820px] mt-4">{t("title")}</h2>
+        <div className="service-bundle-grid mt-12 lg:mt-16">
+          {serviceKeys.map((k, i) => (
+            <BundleShell key={k} accent={ACCENTS[i]} interactive className="service-bundle">
+              <article id={`svc-${k}`}>
+                <div className="service-bundle__media">
+                  <LoopVideo base={serviceMedia[k].video.replace("/media/", "")} alt={t(`items.${k}.alt`)} className="w-full h-full" />
                 </div>
-              </div>
-              <div className="lg:col-span-6 rounded-[var(--radius-lg)] overflow-hidden border border-line bg-surface">
-                <LoopVideo base={serviceMedia[k].video.replace("/media/", "")} alt={t(`items.${k}.alt`)} className="w-full h-full" />
-              </div>
-            </article>
+                <div className="service-bundle__body">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="service-bundle__index">WTECH / 0{i + 1}</span>
+                    <span className="w-2 h-2 rounded-full" style={{ background: `rgb(var(--bundle-accent))`, boxShadow: "0 0 18px rgb(var(--bundle-accent) / .65)" }} aria-hidden="true" />
+                  </div>
+                  <h3 className="text-[28px] md:text-[34px] mt-6">{t(`items.${k}.name`)}</h3>
+                  <p className="text-dim mt-5 text-[16px]">{t(`items.${k}.before`)}</p>
+                  <p className="mt-3 text-[18px] md:text-[20px] max-w-[520px]">{t(`items.${k}.after`)}</p>
+                  <div className="mt-8">
+                    <Link href={{ pathname: "/servicii/[slug]", params: { slug: serviceSlugs[k][locale] } }} className="link-inline">
+                      {t(`items.${k}.cta`)} <ArrowUpRight size={16} aria-hidden="true" />
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            </BundleShell>
           ))}
         </div>
       </div>

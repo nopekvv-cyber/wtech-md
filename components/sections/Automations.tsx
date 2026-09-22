@@ -49,16 +49,17 @@ export function Automations() {
   }, [reduce]);
 
   return (
-    <section id="automatizari" ref={wrap} className="section overflow-hidden" aria-labelledby="auto-title">
+    <section id="automatizari" ref={wrap} className="section overflow-hidden automation-bundle-stage" aria-labelledby="auto-title">
       <div className="container-x">
-        <h2 id="auto-title" className="text-[32px] md:text-[44px] max-w-[760px]">{t("title")}</h2>
+        <p className="bundle-kicker">WTECH automation bundle</p>
+        <h2 id="auto-title" className="text-[32px] md:text-[46px] max-w-[760px] mt-4">{t("title")}</h2>
         <p className="text-dim mt-4 text-lg">{t("sub")}</p>
       </div>
       {/* phones and tablets: a vertical flow, one node per row, gradient spine */}
       <ol className="lg:hidden container-x mt-12 relative" aria-label={NODES.map((n) => t(`nodes.${n}`)).join(" → ")}>
         <span className="absolute left-[calc(20px+17px)] top-4 bottom-4 w-px" style={{ background: "var(--grad)", opacity: 0.7 }} aria-hidden="true" />
         {NODES.map((n, i) => (
-          <li key={n} className="relative flex items-center gap-5 py-4">
+          <li key={n} className="auto-mobile-node relative flex items-center gap-5 py-4 px-4">
             <span className="relative z-10 w-9 h-9 rounded-full grid place-items-center shrink-0" style={{ background: "#0A0A0B", border: "1.5px solid rgba(255,255,255,0.18)" }}>
               <span className="w-1.5 h-1.5 rounded-full bg-ink" />
             </span>
@@ -93,7 +94,7 @@ export function Automations() {
             ))}
           </svg>
         </div>
-        <div className="container-x lg:w-[640px] lg:shrink-0 lg:pl-16 mt-4 lg:mt-0">
+        <div className="auto-summary-bundle container-x lg:w-[640px] lg:shrink-0 lg:pl-16 mt-4 lg:mt-0">
           <ul className="divide-y divide-white/10 border-t border-line">
             {(["l1", "l2", "l3"] as const).map((k) => (
               <li key={k} className="py-5 text-[17px] max-w-[560px]">{t(k)}</li>

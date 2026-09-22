@@ -33,6 +33,28 @@ test.describe("pricing plans", () => {
   }
 });
 
+test.describe("WTECH bundle system", () => {
+  test("all homepage bundles reveal cleanly", async ({ page }) => {
+    await page.goto("/", { waitUntil: "networkidle" });
+    await page.evaluate(async () => {
+      const step = Math.max(480, Math.floor(window.innerHeight * 0.72));
+      for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+        window.scrollTo(0, y);
+        await new Promise((resolve) => setTimeout(resolve, 90));
+      }
+    });
+    const bundles = page.locator(".bundle-shell");
+    await expect.poll(() => bundles.count()).toBeGreaterThanOrEqual(14);
+    const count = await bundles.count();
+    for (let i = 0; i < count; i++) {
+      const bundle = bundles.nth(i);
+      await bundle.scrollIntoViewIfNeeded();
+      await expect(bundle).toHaveCSS("opacity", "1");
+    }
+    await noHorizontalScroll(page);
+  });
+});
+
 test.describe("hero", () => {
   test("loads immediately without entry or language overlays", async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });

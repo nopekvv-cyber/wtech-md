@@ -6,6 +6,7 @@ import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Plus } from "lucide-react";
 
 import { FAQ_KEYS } from "@/lib/faq";
+import { BundleShell } from "@/components/ui/BundleShell";
 
 export function Faq() {
   const t = useTranslations("faq");
@@ -13,13 +14,18 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section id="faq" className="section" aria-labelledby="faq-title">
-      <div className="container-x grid lg:grid-cols-12 gap-10">
-        <h2 id="faq-title" className="lg:col-span-4 text-[32px] md:text-[40px]">{t("title")}</h2>
-        <div className="lg:col-span-8 border-t border-line divide-y divide-white/10">
-          {FAQ_KEYS.map((n, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={n}>
+      <div className="container-x">
+        <BundleShell accent="violet" className="p-7 md:p-12 lg:p-14">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+            <div className="lg:col-span-4">
+              <p className="bundle-kicker">WTECH clarity bundle</p>
+              <h2 id="faq-title" className="text-[32px] md:text-[42px] mt-4">{t("title")}</h2>
+            </div>
+            <div className="lg:col-span-8 border-t border-line divide-y divide-white/10">
+              {FAQ_KEYS.map((n, i) => {
+                const isOpen = open === i;
+                return (
+                  <div key={n} className="faq-bundle-row">
                 <h3>
                   <button
                     type="button"
@@ -49,10 +55,12 @@ export function Faq() {
                     </m.div>
                   ) : null}
                 </AnimatePresence>
-              </div>
-            );
-          })}
-        </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </BundleShell>
       </div>
     </section>
   );

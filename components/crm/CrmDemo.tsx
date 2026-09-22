@@ -12,6 +12,7 @@ import { Typewriter } from "@/components/ui/Typewriter";
 import { useBrand } from "@/components/preloader/BrandContext";
 import { track } from "@/lib/analytics";
 import { loadGsap } from "@/lib/gsap";
+import { BundleShell } from "@/components/ui/BundleShell";
 
 const NAV = [
   { key: "overview", Icon: LayoutDashboard }, { key: "leads", Icon: Users }, { key: "deals", Icon: Handshake }, { key: "clients", Icon: Building2 },
@@ -50,11 +51,12 @@ export function CrmDemo() {
   return (
     <section id="crm" className="section" aria-labelledby="crm-title">
       <div className="container-x">
-        <h2 id="crm-title" className="text-[32px] md:text-[44px] max-w-[760px]">{t("title")}</h2>
-        <p className="text-dim mt-4 text-lg">{t("sub")}</p>
-      </div>
-      <div className="container-x mt-12 md:mt-16" style={{ perspective: 1600 }}>
-        <m.div
+        <BundleShell accent="violet" className="p-5 md:p-9 lg:p-12">
+          <p className="bundle-kicker">WTECH CRM bundle</p>
+          <h2 id="crm-title" className="text-[32px] md:text-[46px] max-w-[760px] mt-4">{t("title")}</h2>
+          <p className="text-dim mt-4 text-lg">{t("sub")}</p>
+          <div className="mt-12 md:mt-16" style={{ perspective: 1600 }}>
+            <m.div
           ref={ref}
           className="monitor"
           style={reduce ? undefined : { rotateX: rx, rotateY: ry }}
@@ -164,11 +166,13 @@ export function CrmDemo() {
               <div className="crm-panel mt-4 h-10 px-3 flex items-center justify-between text-dim"><span className="inline-flex items-center gap-2"><Sparkles size={13} aria-hidden="true" />{t("ana.input")}</span><Send size={14} aria-hidden="true" /></div>
             </aside>
           </div>
-        </m.div>
-        <div className="mt-10 flex flex-wrap items-center gap-4">
-          <button type="button" className="btn btn-primary" onClick={() => { track("cta_call_click", { place: "crm" }); openBooking(); }}>{t("cta")}</button>
-          <span className="text-dim text-[14px]">{t("pipeline.dragHint")}</span>
-        </div>
+            </m.div>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <button type="button" className="btn btn-primary" onClick={() => { track("cta_call_click", { place: "crm" }); openBooking(); }}>{t("cta")}</button>
+              <span className="text-dim text-[14px]">{t("pipeline.dragHint")}</span>
+            </div>
+          </div>
+        </BundleShell>
       </div>
     </section>
   );

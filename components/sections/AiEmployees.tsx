@@ -7,6 +7,7 @@ import { loadGsap } from "@/lib/gsap";
 import { PhoneChat } from "@/components/phones/PhoneChat";
 import { PhoneAutomations } from "@/components/phones/PhoneAutomations";
 import { RoiCalculator } from "./RoiCalculator";
+import { BundleShell } from "@/components/ui/BundleShell";
 
 
 export function AiEmployees() {
@@ -36,17 +37,18 @@ export function AiEmployees() {
   return (
     <section id="ai" className="section" aria-labelledby="ai-title">
       <div className="container-x">
-        <h2 id="ai-title" className="text-[32px] md:text-[44px] max-w-[760px]">{t("title")}</h2>
-        <p className="text-dim mt-4 text-lg max-w-[560px]">{t("sub")}</p>
-      </div>
-      <div ref={wrap} className="container-x mt-14 md:mt-20 grid md:grid-cols-2 gap-10 md:gap-6 justify-items-center">
-        <div className="phone-l md:justify-self-end md:mr-4"><PhoneChat /></div>
-        <div className="phone-r md:justify-self-start md:ml-4 md:mt-16"><PhoneAutomations /></div>
-      </div>
-      <div className="container-x mt-20 md:mt-28">
-        <div className="hairline pt-14 md:pt-20">
-          <RoiCalculator />
-        </div>
+        <BundleShell accent="coral" className="p-6 md:p-10 lg:p-14">
+          <p className="bundle-kicker">WTECH AI bundle</p>
+          <h2 id="ai-title" className="text-[32px] md:text-[46px] max-w-[760px] mt-4">{t("title")}</h2>
+          <p className="text-dim mt-4 text-lg max-w-[560px]">{t("sub")}</p>
+          <div ref={wrap} className="mt-14 md:mt-20 grid md:grid-cols-2 gap-10 md:gap-6 justify-items-center">
+            <div className="phone-l md:justify-self-end md:mr-4"><PhoneChat /></div>
+            <div className="phone-r md:justify-self-start md:ml-4 md:mt-16"><PhoneAutomations /></div>
+          </div>
+          <div className="mt-20 md:mt-28 hairline pt-14 md:pt-20">
+            <RoiCalculator />
+          </div>
+        </BundleShell>
       </div>
     </section>
   );
