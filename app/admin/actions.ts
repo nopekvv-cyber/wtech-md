@@ -12,9 +12,9 @@ export type ActionState = { error?: string; ok?: boolean; at?: string };
 
 export async function login(_prev: ActionState, form: FormData): Promise<ActionState> {
   const ip = await requestIp();
-  if (await rateLimit(`admin:${ip}`)) { log("warn", "admin login rate limited", { ip }); return { error: "Too many attempts. Try again in a few minutes." }; }
+  if (await rateLimit(`admin:${ip}`)) { log("warn", "admin login rate limited", { ip }); return { error: "Prea multe încercări. Încearcă din nou peste câteva minute." }; }
   const password = String(form.get("password") ?? "");
-  if (!password || !passwordMatches(password)) { log("warn", "admin login failed", { ip }); return { error: "Wrong password." }; }
+  if (!password || !passwordMatches(password)) { log("warn", "admin login failed", { ip }); return { error: "Parolă greșită." }; }
   const s = signSession();
   (await cookies()).set(COOKIE, s.value, { httpOnly: true, sameSite: "strict", secure: await isHttps(), path: "/admin", expires: s.expires });
   log("info", "admin login", { ip });
@@ -56,7 +56,7 @@ const urlField = z.string().trim().max(200).refine((v) => v === "" || /^https:\/
 const numberField = z.string().trim().max(12).refine((v) => v === "" || /^\d{3,7}$/.test(digits(v)), "number").transform((v) => v === "" ? "" : digits(v));
 
 export async function saveSettings(_prev: ActionState, form: FormData): Promise<ActionState> {
-  if (!(await isAdmin())) return { error: "Session expired. Sign in again." };
+  if (!(await isAdmin())) return { error: "Sesiunea a expirat. Autentifică-te din nou." };
   const values: Record<string, string> = {};
   const errors: string[] = [];
   for (const f of FIELDS) {
@@ -66,7 +66,7 @@ export async function saveSettings(_prev: ActionState, form: FormData): Promise<
     if (!r.success) errors.push(f.label);
     else values[f.key] = r.data;
   }
-  if (errors.length) return { error: `Check: ${errors.join(", ")}.` };
+  if (errors.length) return { error: `Verifică: ${errors.join(", ")}.` };
   await writeSettings(values);
   log("info", "settings saved", { keys: Object.keys(values).length });
   return { ok: true, at: new Date().toISOString() };

@@ -11,12 +11,12 @@ export function LoginForm() {
   return (
     <form action={action} className="mt-10 max-w-[420px] grid gap-4" aria-describedby={state.error ? "login-err" : undefined}>
       <label className="grid gap-2 text-[14px] text-dim">
-        Password
+        Parolă
         <input name="password" type="password" autoComplete="current-password" required className="field" />
       </label>
       {state.error ? <p id="login-err" role="alert" className="error-text">{state.error}</p> : null}
-      <button type="submit" className="btn btn-primary" disabled={pending}>{pending ? "…" : "Sign in"}</button>
-      <p className="text-dim text-[13px]">The password is ADMIN_PASSWORD from the server settings. Without one, a temporary password is printed in the server log at every start.</p>
+      <button type="submit" className="btn btn-primary" disabled={pending}>{pending ? "…" : "Intră în CRM"}</button>
+      <p className="text-dim text-[13px]">Folosește parola ADMIN_PASSWORD configurată în Vercel. Cheia nu este afișată sau trimisă către browser.</p>
     </form>
   );
 }
@@ -48,9 +48,9 @@ export function SettingsForm({ groups, fields, values }: { groups: Array<{ id: F
         </fieldset>
       ))}
       <div className="flex flex-wrap items-center gap-4">
-        <button type="submit" className="btn btn-primary" disabled={pending}>{pending ? "Saving…" : "Save changes"}</button>
+        <button type="submit" className="btn btn-primary" disabled={pending}>{pending ? "Se salvează…" : "Salvează modificările"}</button>
         {state.error ? <p role="alert" className="error-text">{state.error}</p> : null}
-        {state.ok ? <p role="status" className="text-[14px] text-dim">Saved. The site shows the new values on the next page load.</p> : null}
+        {state.ok ? <p role="status" className="text-[14px] text-dim">Salvat. Site-ul afișează valorile noi la următoarea încărcare.</p> : null}
       </div>
     </form>
   );
