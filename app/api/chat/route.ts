@@ -3,7 +3,7 @@ import { z } from "zod";
 import { buildSystemPrompt } from "@/lib/chat-knowledge";
 import { notifyAll } from "@/lib/notify";
 import { insertLead, markDelivered } from "@/lib/db";
-import { chatConfigured } from "@/lib/env";
+import { chatConfigured, chatProvider, env } from "@/lib/env";
 import { clientIp, rateLimit, originAllowed, jsonError, log } from "@/lib/request-guard";
 import type { Locale } from "@/i18n/routing";
 
@@ -59,7 +59,14 @@ export async function POST(req: Request) {
   // No credentials on this server: tell the widget so it shows the messenger links instead.
   if (!chatConfigured) return jsonError("offline", 503);
 
-  const client = new Anthropic();
+  const viaGateway = chatProvider === "vercel-gateway";
+  const client = viaGateway
+    ? new Anthropic({
+        baseURL: "https://ai-gateway.vercel.sh",
+        apiKey: null,
+        authToken: env.VERCEL_OIDC_TOKEN,
+      })
+    : new Anthropic();
   const history: Anthropic.MessageParam[] = messages.map((m) => ({ role: m.role, content: m.content }));
   const system = await buildSystemPrompt(locale);
 
@@ -69,7 +76,7 @@ export async function POST(req: Request) {
         let leadSent = false;
         for (let turn = 0; turn < 3; turn++) {
           const s = client.messages.stream({
-            model: "claude-opus-5",
+            model: viaGateway ? "anthropic/claude-sonnet-5" : "claude-opus-5",
             max_tokens: 1024, // deliberately short chat answers
             output_config: { effort: "low" },
             system: [{ type: "text", text: system, cache_control: { type: "ephemeral" } }],

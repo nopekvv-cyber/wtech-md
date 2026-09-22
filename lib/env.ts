@@ -20,6 +20,7 @@ const schema = z.object({
   LEADS_TO: z.string().email().optional().or(z.literal("")),
   ANTHROPIC_API_KEY: z.string().optional().or(z.literal("")),
   ANTHROPIC_AUTH_TOKEN: z.string().optional().or(z.literal("")),
+  VERCEL_OIDC_TOKEN: z.string().optional().or(z.literal("")),
   CHAT_DISABLED: z.enum(["0", "1"]).default("0"),
   ALLOWED_ORIGINS: z.string().optional().or(z.literal("")),
   ADMIN_PASSWORD: z.string().min(8).optional().or(z.literal("")),
@@ -37,5 +38,10 @@ if (!parsed.success) {
 export const env = parsed.data;
 export const telegramConfigured = Boolean(env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID);
 export const smtpConfigured = Boolean(env.SMTP_HOST && env.LEADS_TO);
-export const chatConfigured = env.CHAT_DISABLED !== "1" && Boolean(env.ANTHROPIC_API_KEY || env.ANTHROPIC_AUTH_TOKEN);
+export const chatProvider = env.ANTHROPIC_API_KEY || env.ANTHROPIC_AUTH_TOKEN
+  ? "anthropic"
+  : env.VERCEL_OIDC_TOKEN
+    ? "vercel-gateway"
+    : "offline";
+export const chatConfigured = env.CHAT_DISABLED !== "1" && chatProvider !== "offline";
 export const supabaseConfigured = Boolean(env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY);
