@@ -15,6 +15,7 @@ import { FAQ_KEYS } from "@/lib/faq";
 import { FaqSchema } from "@/components/seo/Schema";
 import { LeadMagnet } from "@/components/sections/LeadMagnet";
 import { RoiCalculator } from "@/components/sections/RoiCalculator";
+import { metadataWithAlternates } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -23,20 +24,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const key = serviceFromSlug(locale as Locale, slug);
   if (!key) return {};
   const t = await getTranslations({ locale, namespace: "services.items" });
+  const title = t(`${key}.seoTitle`);
+  const description = t(`${key}.seoDescription`);
   const international = (await requestMarket()) === "international";
   const origin = international ? await requestOrigin() : SITE_URL;
   if (international) {
     const canonical = origin + internationalPublicPath(getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[key].en } }, locale: "en" }));
-    return { title: `${t(`${key}.name`)}`, description: t(`${key}.intro`), alternates: { canonical, languages: { en: canonical, "x-default": canonical } } };
+    return metadataWithAlternates({ locale: locale as Locale, title, description, alternates: { canonical, languages: { en: canonical, "x-default": canonical } } });
   }
   const languages: Record<string, string> = {};
   for (const l of locales) languages[l] = SITE_URL + getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[key][l] } }, locale: l });
   languages["x-default"] = languages.ro ?? "";
-  return {
-    title: `${t(`${key}.name`)}`,
-    description: t(`${key}.intro`),
-    alternates: { canonical: languages[locale] ?? languages.ro, languages },
-  };
+  return metadataWithAlternates({ locale: locale as Locale, title, description, alternates: { canonical: languages[locale] ?? languages.ro, languages } });
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
@@ -60,7 +59,7 @@ export default async function ServicePage({ params }: { params: Promise<{ locale
       <section className="section" style={{ paddingTop: "calc(var(--nav-h) + 64px)" }}>
         <div className="container-x grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-6">
-            <h1 className="text-[36px] md:text-[56px]">{t(`${key}.name`)}</h1>
+            <h1 className="text-[36px] md:text-[56px]">{t(`${key}.pageTitle`)}</h1>
             <p className="text-dim mt-5 text-lg max-w-[560px]">{t(`${key}.intro`)}</p>
             <div className="mt-8 flex flex-wrap gap-3 items-center">
               <BookButton place={`service-${key}`}>{th("primary")}</BookButton>
@@ -82,7 +81,7 @@ export default async function ServicePage({ params }: { params: Promise<{ locale
       <LeadMagnet />
       <Faq />
       <FaqSchema items={faq} />
-      <ServiceSchema name={t(`${key}.name`)} description={t(`${key}.intro`)} url={url} locale={locale as Locale} />
+      <ServiceSchema name={t(`${key}.pageTitle`)} description={t(`${key}.intro`)} url={url} locale={locale as Locale} />
       <BreadcrumbSchema items={[{ name: "wtech.md", url: homeUrl }, { name: tn("services"), url: servicesUrl }, { name: t(`${key}.name`), url }]} />
     </>
   );

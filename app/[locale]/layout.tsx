@@ -60,6 +60,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: { card: "summary_large_image", images: [`/og-${locale}.png`] },
     robots: { index: true, follow: true },
+    verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : undefined,
   };
 }
 

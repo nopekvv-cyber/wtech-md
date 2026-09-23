@@ -22,33 +22,46 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
   const international = (await requestMarket()) === "international";
   const origin = international ? await requestOrigin() : SITE_URL;
   const priceBook = internationalPriceBook(international ? await requestCountry() : null);
+  const organizationType = contact.address ? ["Organization", "ProfessionalService"] : "Organization";
+  const organization = {
+    "@type": organizationType,
+    "@id": `${origin}/#organization`,
+    name: "wtech.md",
+    alternateName: "WTECH",
+    url: origin,
+    logo: { "@type": "ImageObject", url: `${origin}/brand/wtech-mark-black.png`, width: 1024, height: 1024 },
+    image: `${origin}/og-${locale}.png`,
+    description: t("orgDescription"),
+    ...(contact.legalName ? { legalName: contact.legalName } : {}),
+    ...(contact.phone ? { telephone: contact.phone } : {}),
+    email: contact.email,
+    ...(contact.address ? {
+      address: { "@type": "PostalAddress", streetAddress: contact.address, addressLocality: "Chișinău", addressCountry: "MD" },
+      geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng },
+    } : {}),
+    areaServed: international ? ["United States", "Canada", "Australia", "Europe"] : { "@type": "Country", name: t("areaServed") },
+    priceRange: international ? `${priceBook.prices[0]}–${priceBook.prices[4]} ${priceBook.currency}` : "600–12,000 EUR",
+    currenciesAccepted: international ? "USD, EUR, CAD, AUD" : "MDL, EUR",
+    knowsLanguage: ["ro", "ru", "en"],
+    sameAs,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: t("catalogName"),
+      itemListElement: serviceKeys.map((k) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          "@id": `${origin}/#service-${k}`,
+          name: ts(`${k}.name`),
+          url: international ? origin + internationalPublicPath(getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[k].en } }, locale: "en" })) : `${origin}/${locale === "ro" ? "" : locale + "/"}${locale === "ru" ? "uslugi" : locale === "en" ? "services" : "servicii"}/${serviceSlugs[k][locale]}`,
+        },
+      })),
+    },
+  };
   const org = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
-        "@id": `${origin}/#organization`,
-        name: "wtech.md",
-        url: origin,
-        logo: `${origin}/brand/wtech-mark-black.png`,
-        image: `${origin}/og-${locale}.png`,
-        description: t("orgDescription"),
-        ...(contact.phone ? { telephone: contact.phone } : {}),
-        email: contact.email,
-        address: { "@type": "PostalAddress", ...(contact.address ? { streetAddress: contact.address } : {}), addressLocality: "Chișinău", addressCountry: "MD" },
-        geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng },
-        areaServed: international ? ["United States", "Canada", "Australia", "Europe"] : { "@type": "Country", name: t("areaServed") },
-        priceRange: international ? `${priceBook.prices[0]}–${priceBook.prices[4]} ${priceBook.currency}` : "600–12,000 EUR",
-        currenciesAccepted: international ? "USD, EUR, CAD, AUD" : "MDL, EUR",
-        openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "18:00" }],
-        knowsLanguage: ["ro", "ru", "en"],
-        sameAs,
-        makesOffer: serviceKeys.map((k) => ({
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", "@id": `${origin}/#service-${k}`, name: ts(`${k}.name`), url: international ? origin + internationalPublicPath(getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[k].en } }, locale: "en" })) : `${origin}/${locale === "ro" ? "" : locale + "/"}${locale === "ru" ? "uslugi" : locale === "en" ? "services" : "servicii"}/${serviceSlugs[k][locale]}` },
-          priceCurrency: international ? priceBook.currency : "EUR",
-        })),
-      },
+      organization,
       {
         "@type": "WebSite",
         "@id": `${origin}/#website`,
@@ -65,19 +78,19 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
 export async function ServiceSchema({ name, description, url, locale }: { name: string; description: string; url: string; locale: Locale }) {
   const international = (await requestMarket()) === "international";
   const origin = international ? await requestOrigin() : SITE_URL;
-  const priceBook = internationalPriceBook(international ? await requestCountry() : null);
   return (
     <JsonLd
       data={{
         "@context": "https://schema.org",
         "@type": "Service",
         name,
+        serviceType: name,
         description,
         url,
         inLanguage: locale,
         provider: { "@id": `${origin}/#organization` },
         areaServed: international ? ["United States", "Canada", "Australia", "Europe"] : { "@type": "Country", name: "Moldova" },
-        offers: { "@type": "Offer", priceCurrency: international ? priceBook.currency : "EUR", availability: "https://schema.org/InStock" },
+        availableLanguage: ["Romanian", "Russian", "English"],
       }}
     />
   );

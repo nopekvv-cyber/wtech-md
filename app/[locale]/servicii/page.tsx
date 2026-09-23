@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { type Locale } from "@/i18n/routing";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { serviceKeys, serviceMedia, serviceSlugs } from "@/lib/services";
 import { LoopVideo } from "@/components/ui/LoopVideo";
 import { BookButton } from "@/components/ui/BookButton";
@@ -11,7 +11,7 @@ import { BookButton } from "@/components/ui/BookButton";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("services.title") }, description: t("services.description"), alternates: await alternatesFor("/servicii", locale as Locale) };
+  return pageMetadata({ href: "/servicii", locale: locale as Locale, title: t("services.title"), description: t("services.description") });
 }
 
 export default async function ServicesIndex({ params }: { params: Promise<{ locale: string }> }) {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { type Locale } from "@/i18n/routing";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { Pricing } from "@/components/sections/Pricing";
 import { Process } from "@/components/sections/Process";
 import { Faq } from "@/components/sections/Faq";
@@ -11,7 +11,7 @@ import { FaqSchema } from "@/components/seo/Schema";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("pricing.title") }, description: t("pricing.description"), alternates: await alternatesFor("/preturi", locale as Locale) };
+  return pageMetadata({ href: "/preturi", locale: locale as Locale, title: t("pricing.title"), description: t("pricing.description") });
 }
 
 export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {

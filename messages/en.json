@@ -2,35 +2,35 @@
   "meta": {
     "siteName": "wtech.md",
     "home": {
-      "title": "wtech.md | Websites, CRM, AI employees and automations in Chișinău",
-      "description": "Software development in Moldova: web agency in Chisinau building conversion-focused websites, custom CRM, AI employees that answer 24/7 and automations. One team, one system, a written proposal after discovery. Nearshore-ready for EU companies."
+      "title": "Web agency in Moldova | Websites, CRM and AI",
+      "description": "We build websites, custom CRM, AI agents and automations for companies in Moldova and international teams seeking a nearshore software partner."
     },
     "services": {
-      "title": "Services | wtech.md",
-      "description": "Premium websites, CRM and dashboards, AI employees, automations, custom software and AI SEO for businesses in Moldova and nearshore clients in the EU."
+      "title": "Web, CRM and AI services in Moldova | wtech.md",
+      "description": "Custom websites, CRM, AI agents, automations, applications and search optimization for Moldovan companies and international nearshore clients."
     },
     "work": {
-      "title": "Work | wtech.md",
-      "description": "wtech.md concepts and projects: premium website, custom CRM, AI employee on the phone."
+      "title": "Web, CRM and AI projects | wtech.md",
+      "description": "Explore WTECH website, custom CRM and AI assistant work, with real projects and demonstration concepts labelled clearly."
     },
     "pricing": {
-      "title": "Pricing | wtech.md",
-      "description": "Five WTECH packages for landing pages, websites, bookings, CRM, AI and apps. Prices from EUR 600 to EUR 12,000."
+      "title": "Website, CRM and automation pricing | wtech.md",
+      "description": "WTECH packages for landing pages, websites, bookings, CRM, AI and apps. Project pricing starts at EUR 600 with the scope explained clearly."
     },
     "contact": {
-      "title": "Contact | wtech.md",
-      "description": "Message us on WhatsApp, Telegram or Viber, or book a 30-minute call. We reply during business hours on business days."
+      "title": "Contact our Moldova software studio | wtech.md",
+      "description": "Talk with WTECH about a website, CRM, AI agent or automation. Send a message or book a 30-minute discovery call."
     },
     "audit": {
-      "title": "Free 24-hour website audit | wtech.md",
-      "description": "Send your website address and get an audit tomorrow: speed, SEO, conversion and visibility in AI answers."
+      "title": "Free website audit in Moldova | wtech.md",
+      "description": "Send your website address for a review of speed, technical SEO, conversion and visibility in Google Search and AI answers."
     },
     "about": {
       "title": "About wtech.md | Software studio in Chișinău",
       "description": "wtech.md is a software studio in Chișinău, Moldova, building websites, CRMs, AI employees and automations for Moldovan businesses and EU companies nearshoring development."
     },
     "blog": {
-      "title": "Blog | wtech.md",
+      "title": "Web, CRM and AI guides for Moldova | wtech.md",
       "description": "Practical guides on websites, CRM, automation and AI SEO for businesses in Moldova."
     },
     "notFound": {
@@ -61,15 +61,15 @@
     "loading": "Loading"
   },
   "hero": {
-    "h1": "Your clients are messaging you. Someone has to answer in 4 minutes.",
+    "h1": "Your clients are messaging you. The system should keep every inquiry visible.",
     "h1b": "Clients who come on their own. A system that keeps every inquiry visible.",
     "sub": "Websites, CRM, AI employees and automations — one system, built in Chișinău, that keeps leads in one visible workflow.",
     "primary": "Book a 30-min call",
     "ghost": "See the live CRM demo",
-    "risk": "Fixed-price proposal within 48 h · No obligation",
+    "risk": "Written proposal after discovery · No obligation",
     "facts": {
       "city": "Chișinău, Moldova",
-      "reply": "We reply in < 1 hour",
+      "reply": "We reply on business days",
       "price": "Fixed price in the proposal"
     },
     "fold": {
@@ -87,19 +87,25 @@
     "items": {
       "websites": {
         "name": "Websites",
+        "pageTitle": "Website development in Moldova",
+        "seoTitle": "Website development in Moldova | wtech.md",
+        "seoDescription": "Custom websites for Moldovan and international companies: design, development, RO/RU/EN content, performance and forms connected to your workflow.",
         "before": "You have a website that looks like everyone else's and brings no clients.",
-        "after": "You have a premium, animated site that convinces and brings quote requests every week.",
+        "after": "You have a custom, fast and clear website that guides visitors toward a quote request.",
         "cta": "I want a site that brings clients",
         "intro": "Web agency in Chisinau for businesses that want more than an online business card. Unique design, motion, RO/RU/EN, performance-focused build, and forms that land straight in the CRM and on WhatsApp.",
         "b1": "Unique design, not a template. Every section has a conversion job.",
         "b2": "Trilingual RO/RU/EN, reviewed separately for each language.",
-        "b3": "Lighthouse above 90 on mobile. LCP under 1.2 seconds.",
+        "b3": "Performance, accessibility and technical SEO are verified before launch.",
         "b4": "Forms wired into the CRM, WhatsApp and Telegram from day one.",
         "b5": "Hosting, maintenance and 30 days of support included.",
         "alt": "Laptop with a dark website scrolling"
       },
       "crm": {
         "name": "CRM & dashboards",
+        "pageTitle": "Custom CRM and dashboards in Moldova",
+        "seoTitle": "Custom CRM development in Moldova | wtech.md",
+        "seoDescription": "CRM systems and dashboards shaped around your business: pipelines, owners, reports, integrations and control of your data.",
         "before": "Leads live in a spreadsheet, on the manager's phone and in three different chats.",
         "after": "Every lead has a status, an owner and a deadline. One screen shows how much money is in the pipeline.",
         "cta": "I want a CRM like this",
@@ -113,8 +119,11 @@
       },
       "ai": {
         "name": "AI employees",
+        "pageTitle": "AI agents for businesses in Moldova",
+        "seoTitle": "AI agents for business in Moldova | wtech.md",
+        "seoDescription": "Romanian, Russian and English AI agents for websites and messaging: answers, lead qualification, bookings and transfer to a human operator.",
         "before": "Messages sent at 10 pm get answered at 10 am. The client already signed with someone else.",
-        "after": "Ana answers in 4 minutes, sends the offer, books the meeting and writes everything into the CRM.",
+        "after": "The AI agent follows your rules, qualifies the inquiry, books the meeting and records the conversation in the CRM.",
         "cta": "I want an AI employee",
         "intro": "AI automation agency in Moldova: AI agents that speak Romanian, Russian and English, answer on WhatsApp, Telegram, Viber and your website, qualify leads, send offers and book meetings. Trained on your data.",
         "b1": "Answers in RO, RU and EN, 24/7, on every channel you use.",
@@ -126,6 +135,9 @@
       },
       "automations": {
         "name": "Automations",
+        "pageTitle": "Business automation in Moldova",
+        "seoTitle": "Business automation in Moldova | wtech.md",
+        "seoDescription": "We connect CRM, email, messaging, invoicing and 1C into observable, controllable workflows adapted to your company.",
         "before": "Invoices are made by hand, offers copied from another document, reports sent when someone remembers.",
         "after": "Lead → CRM → offer → invoice → report, with no human hand in between.",
         "cta": "I want this automated",
@@ -139,6 +151,9 @@
       },
       "software": {
         "name": "Custom software",
+        "pageTitle": "Custom software development in Moldova",
+        "seoTitle": "Custom software development in Moldova | wtech.md",
+        "seoDescription": "Web and mobile apps, internal platforms and integrations built around your process, delivered in sprints with client-owned code.",
         "before": "Off-the-shelf software does 60% of what you need and forces you to work its way.",
         "after": "An application built on your process, with your integrations, that grows with the business.",
         "cta": "I want to talk about an app",
@@ -152,10 +167,13 @@
       },
       "seo": {
         "name": "AI SEO",
+        "pageTitle": "SEO and AI search visibility",
+        "seoTitle": "SEO and AI search visibility in Moldova | wtech.md",
+        "seoDescription": "Technical SEO, useful RO/RU/EN content, structured data and measurement for visibility in Google Search and AI answer engines.",
         "before": "You are on page 3 of Google and nowhere in ChatGPT's answers.",
-        "after": "You show up in Google, in AI Overviews and in ChatGPT, Gemini and Perplexity answers when someone asks about your services.",
+        "after": "The site becomes easier to index, understand and cite, with results tracked in Google Search Console and dedicated reports.",
         "cta": "I want a free SEO + AI audit",
-        "intro": "SEO plus GEO (generative engine optimisation): technical SEO, an RO/RU/EN content engine, structured data, entity pages and citations so Google and AI models recommend your brand. With a rankings and AI-visibility dashboard inside the CRM.",
+        "intro": "SEO and answer-engine optimization: technical SEO, useful RO/RU/EN content, structured data, entity pages and measurement. Search positions and AI citations are monitored, not guaranteed.",
         "b1": "Technical SEO and Core Web Vitals: speed, indexing, clean structure.",
         "b2": "Monthly content in RO/RU/EN: AI-drafted, human-edited, published on schedule.",
         "b3": "GEO: schema, entity pages, citations and FAQs that AI models can quote.",
@@ -328,7 +346,7 @@
     "alt": "Laptop, phone and tablet showing the same dark interface"
   },
   "seo": {
-    "title": "Show up in Google. And in AI answers.",
+    "title": "Easy to find in Google. Easy for answer engines to understand.",
     "sub": "Your clients ask ChatGPT, Gemini and Perplexity before they search Google. We improve the signals that can help answer engines cite your business.",
     "question": "Who builds premium websites in Chișinău?",
     "answerIntro": "For premium websites in Chișinău, one studio to consider is ",
@@ -348,7 +366,8 @@
     },
     "l1": "Technical SEO and Core Web Vitals: speed, indexing, clean structure.",
     "l2": "Content engine in RO/RU/EN: AI-drafted, human-edited, published monthly.",
-    "l3": "GEO: schema, entity pages and citations so AI models recommend your brand.",
+    "l3": "Entity pages, structured data and verifiable sources that help search systems understand the brand.",
+    "demoLabel": "Report example · illustrative data",
     "cta": "I want a free SEO + AI audit"
   },
   "audit": {
@@ -576,7 +595,8 @@
   },
   "schema": {
     "orgDescription": "Software studio in Chișinău, Moldova: websites, CRM, AI employees, automations, custom software and AI SEO for businesses in Moldova and nearshore clients in the EU.",
-    "areaServed": "Republic of Moldova"
+    "areaServed": "Republic of Moldova",
+    "catalogName": "WTECH digital services"
   },
   "chat": {
     "title": "Ana · AI employee",

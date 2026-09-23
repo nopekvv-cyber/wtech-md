@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { type Locale } from "@/i18n/routing";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { BookButton } from "@/components/ui/BookButton";
 import { getSite } from "@/lib/settings";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("about.title") }, description: t("about.description"), alternates: await alternatesFor("/despre", locale as Locale) };
+  return pageMetadata({ href: "/despre", locale: locale as Locale, title: t("about.title"), description: t("about.description") });
 }
 
 /** Entity page for AI search: plain, quotable sentences about who wtech.md is. */

@@ -6,31 +6,31 @@
       "description": "Premium websites, booking systems, custom CRM, AI employees, automation and mobile apps for businesses in the USA, Canada, Australia and Europe. Written project proposal after discovery."
     },
     "services": {
-      "title": "Services | wtech.md",
+      "title": "Website, CRM and AI services | WTECH",
       "description": "Premium websites, CRM and dashboards, AI employees, automation, custom software and AI SEO for businesses in the USA, Canada, Australia and Europe."
     },
     "work": {
-      "title": "Work | wtech.md",
-      "description": "wtech.md concepts and projects: premium website, custom CRM, AI employee on the phone."
+      "title": "Website, CRM and AI projects | WTECH",
+      "description": "Explore WTECH website, custom CRM and AI assistant work, with real projects and demonstration concepts labelled clearly."
     },
     "pricing": {
-      "title": "Pricing | wtech.md",
+      "title": "International website, CRM and AI pricing | WTECH",
       "description": "Five cumulative WTECH packages for landing pages, business websites, booking systems, custom CRM, AI and mobile apps. International project prices from USD 1,490."
     },
     "contact": {
-      "title": "Contact | wtech.md",
-      "description": "Message us on WhatsApp, Telegram or Viber, or book a 30-minute call. We reply during business hours on business days."
+      "title": "Contact WTECH | International software studio",
+      "description": "Talk with WTECH about a website, CRM, AI agent, automation or custom software project. Send a message or book a 30-minute discovery call."
     },
     "audit": {
-      "title": "Free 24-hour website audit | wtech.md",
-      "description": "Send your website address and get an audit tomorrow: speed, SEO, conversion and visibility in AI answers."
+      "title": "Free website, SEO and conversion audit | WTECH",
+      "description": "Send your website address for a review of speed, technical SEO, conversion and visibility in Google Search and AI answers."
     },
     "about": {
       "title": "About WTECH | International software studio",
       "description": "WTECH is a European software studio serving businesses in the USA, Canada, Australia and Europe with websites, CRM, AI employees, automation and custom applications."
     },
     "blog": {
-      "title": "Blog | wtech.md",
+      "title": "Web, CRM and AI guides for Moldova | wtech.md",
       "description": "Practical guides on websites, CRM, automation and AI SEO for international businesses."
     },
     "notFound": {
@@ -61,15 +61,15 @@
     "loading": "Loading"
   },
   "hero": {
-    "h1": "Your clients are messaging you. Someone has to answer in 4 minutes.",
+    "h1": "Your clients are messaging you. The system should keep every inquiry visible.",
     "h1b": "Clients who come on their own. A system that keeps every inquiry visible.",
     "sub": "Premium websites, CRM, AI employees and automation — one connected system for businesses in the USA, Canada, Australia and Europe.",
     "primary": "Book a 30-min call",
     "ghost": "See the live CRM demo",
-    "risk": "Fixed-price proposal within 48 h · No obligation",
+    "risk": "Written proposal after discovery · No obligation",
     "facts": {
       "city": "USA · Canada · Australia · Europe",
-      "reply": "We reply in < 1 hour",
+      "reply": "We reply on business days",
       "price": "Fixed price in the proposal"
     },
     "fold": {
@@ -87,19 +87,25 @@
     "items": {
       "websites": {
         "name": "Websites",
+        "pageTitle": "Custom business website development",
+        "seoTitle": "Custom business website development | WTECH",
+        "seoDescription": "Custom business websites with original design, responsive development, reviewed English content, performance work and forms connected to your workflow.",
         "before": "You have a website that looks like everyone else's and brings no clients.",
-        "after": "You have a premium, animated site that convinces and brings quote requests every week.",
+        "after": "You have a custom, fast and clear website that guides visitors toward a quote request.",
         "cta": "I want a site that brings clients",
         "intro": "Conversion-focused business websites with original design, purposeful motion, reviewed English copy, fast loading and forms connected directly to your CRM.",
         "b1": "Unique design, not a template. Every section has a conversion job.",
         "b2": "English content reviewed for the target market, responsive across desktop, tablet and mobile.",
-        "b3": "Lighthouse above 90 on mobile. LCP under 1.2 seconds.",
+        "b3": "Performance, accessibility and technical SEO are verified before launch.",
         "b4": "Forms wired into the CRM, WhatsApp and Telegram from day one.",
         "b5": "Hosting, maintenance and 30 days of support included.",
         "alt": "Laptop with a dark website scrolling"
       },
       "crm": {
         "name": "CRM & dashboards",
+        "pageTitle": "Custom CRM and dashboard development",
+        "seoTitle": "Custom CRM and dashboard development | WTECH",
+        "seoDescription": "CRM systems and dashboards built around your sales and service process, with pipelines, reports, integrations and client-owned data.",
         "before": "Leads live in a spreadsheet, on the manager's phone and in three different chats.",
         "after": "Every lead has a status, an owner and a deadline. One screen shows how much money is in the pipeline.",
         "cta": "I want a CRM like this",
@@ -113,8 +119,11 @@
       },
       "ai": {
         "name": "AI employees",
+        "pageTitle": "AI agents for customer inquiries",
+        "seoTitle": "AI agents for customer inquiries | WTECH",
+        "seoDescription": "English-language AI agents for websites and messaging: inquiry handling, lead qualification, bookings, CRM updates and transfer to a human operator.",
         "before": "Messages sent at 10 pm get answered at 10 am. The client already signed with someone else.",
-        "after": "Ana answers in 4 minutes, sends the offer, books the meeting and writes everything into the CRM.",
+        "after": "The AI agent follows your rules, qualifies the inquiry, books the meeting and records the conversation in the CRM.",
         "cta": "I want an AI employee",
         "intro": "AI agents that answer through your website and messaging channels, qualify leads, send information, book meetings and write every conversation into the CRM.",
         "b1": "Answers in English, 24/7, on every connected channel.",
@@ -126,6 +135,9 @@
       },
       "automations": {
         "name": "Automations",
+        "pageTitle": "Business process automation",
+        "seoTitle": "Business process automation services | WTECH",
+        "seoDescription": "Connect CRM, email, forms, messaging, invoicing and reporting in observable workflows adapted to your company and existing tools.",
         "before": "Invoices are made by hand, offers copied from another document, reports sent when someone remembers.",
         "after": "Lead → CRM → offer → invoice → report, with no human hand in between.",
         "cta": "I want this automated",
@@ -139,6 +151,9 @@
       },
       "software": {
         "name": "Custom software",
+        "pageTitle": "Custom web and mobile software development",
+        "seoTitle": "Custom web and mobile software development | WTECH",
+        "seoDescription": "Web apps, mobile apps, internal platforms and integrations delivered in planned sprints with English project management and client-owned code.",
         "before": "Off-the-shelf software does 60% of what you need and forces you to work its way.",
         "after": "An application built on your process, with your integrations, that grows with the business.",
         "cta": "I want to talk about an app",
@@ -152,10 +167,13 @@
       },
       "seo": {
         "name": "AI SEO",
+        "pageTitle": "Technical SEO and AI search visibility",
+        "seoTitle": "Technical SEO and AI search visibility | WTECH",
+        "seoDescription": "Technical SEO, useful content, structured data, entity clarity and transparent measurement for Google Search and AI answer engines.",
         "before": "You are on page 3 of Google and nowhere in ChatGPT's answers.",
-        "after": "You show up in Google, in AI Overviews and in ChatGPT, Gemini and Perplexity answers when someone asks about your services.",
+        "after": "The site becomes easier to index, understand and cite, with results tracked in Google Search Console and dedicated reports.",
         "cta": "I want a free SEO + AI audit",
-        "intro": "Technical SEO plus GEO for Google and AI answers: English content, structured data, entity pages and citations, measured in one reporting dashboard.",
+        "intro": "Technical SEO and answer-engine optimization: useful English content, structured data, entity pages and transparent measurement. Search positions and AI citations are monitored, not guaranteed.",
         "b1": "Technical SEO and Core Web Vitals: speed, indexing, clean structure.",
         "b2": "Monthly English content: AI-assisted, human-edited and published on schedule.",
         "b3": "GEO: schema, entity pages, citations and FAQs that AI models can quote.",
@@ -328,7 +346,7 @@
     "alt": "Laptop, phone and tablet showing the same dark interface"
   },
   "seo": {
-    "title": "Show up in Google. And in AI answers.",
+    "title": "Easy to find in Google. Easy for answer engines to understand.",
     "sub": "Your clients ask ChatGPT, Gemini and Perplexity before they search Google. We improve the signals that can help answer engines cite your business.",
     "question": "Who builds premium business websites and connected CRM systems?",
     "answerIntro": "For businesses that want the website, CRM and AI workflow built as one system, one studio to consider is ",
@@ -348,7 +366,8 @@
     },
     "l1": "Technical SEO and Core Web Vitals: speed, indexing, clean structure.",
     "l2": "English content engine: AI-assisted, human-edited and published monthly.",
-    "l3": "GEO: schema, entity pages and citations so AI models recommend your brand.",
+    "l3": "Entity pages, structured data and verifiable sources that help search systems understand the brand.",
+    "demoLabel": "Report example · illustrative data",
     "cta": "I want a free SEO + AI audit"
   },
   "audit": {
@@ -576,7 +595,8 @@
   },
   "schema": {
     "orgDescription": "European software studio serving the USA, Canada, Australia and Europe with premium websites, CRM, AI employees, automation and custom software.",
-    "areaServed": "USA, Canada, Australia and Europe"
+    "areaServed": "USA, Canada, Australia and Europe",
+    "catalogName": "WTECH digital services"
   },
   "chat": {
     "title": "Ana · AI employee",

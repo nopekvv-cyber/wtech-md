@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { type Locale } from "@/i18n/routing";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { blogSlugs, blogMeta } from "@/lib/blog";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("blog.title") }, description: t("blog.description"), alternates: await alternatesFor("/blog", locale as Locale), robots: { index: false, follow: true } };
+  return pageMetadata({ href: "/blog", locale: locale as Locale, title: t("blog.title"), description: t("blog.description"), index: false });
 }
 
 export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {

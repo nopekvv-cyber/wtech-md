@@ -35,6 +35,7 @@ export function AiSeo() {
           <p className="bundle-kicker">WTECH visibility bundle</p>
           <h2 id="seo-title" className="text-[32px] md:text-[46px] max-w-[760px] mt-4">{t("title")}</h2>
           <p className="text-dim mt-4 text-lg max-w-[620px]">{t("sub")}</p>
+          <p className="mt-4 text-[12px] uppercase tracking-[0.14em] text-dim">{t("demoLabel")}</p>
           <div ref={ref} className="mt-14 md:mt-20 grid lg:grid-cols-2 gap-6">
             {/* AI answer panel */}
             <div className="relative crm-panel rounded-[var(--radius-lg)] p-6 md:p-8 overflow-hidden min-h-[380px]">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { type Locale } from "@/i18n/routing";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Proof } from "@/components/sections/Proof";
@@ -18,7 +18,7 @@ import { FaqSchema } from "@/components/seo/Schema";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("home.title") }, description: t("home.description"), alternates: await alternatesFor("/", locale as Locale) };
+  return pageMetadata({ href: "/", locale: locale as Locale, title: t("home.title"), description: t("home.description") });
 }
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {

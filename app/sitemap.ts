@@ -10,13 +10,16 @@ type P = Parameters<typeof getPathname>[0]["href"];
 
 export const dynamic = "force-dynamic";
 
+// Keep lastmod honest and stable. A timestamp that changes on every request tells crawlers every page changed.
+const CONTENT_UPDATED_AT = new Date(process.env.NEXT_PUBLIC_CONTENT_UPDATED_AT ?? "2026-09-23T00:00:00.000Z");
+
 function moldovaEntry(href: P, priority = 0.7): MetadataRoute.Sitemap[number] {
   const languages: Record<string, string> = {};
   for (const locale of locales) languages[locale] = SITE_URL + getPathname({ href, locale });
   languages["x-default"] = SITE_URL + getPathname({ href, locale: routing.defaultLocale });
   return {
     url: SITE_URL + getPathname({ href, locale: routing.defaultLocale }),
-    lastModified: new Date(),
+    lastModified: CONTENT_UPDATED_AT,
     changeFrequency: "weekly",
     priority,
     alternates: { languages },
@@ -27,7 +30,7 @@ function internationalEntry(origin: string, path: string, priority = 0.7): Metad
   const url = origin + internationalPublicPath(path);
   return {
     url,
-    lastModified: new Date(),
+    lastModified: CONTENT_UPDATED_AT,
     changeFrequency: "weekly",
     priority,
     alternates: { languages: { en: url, "x-default": url } },
@@ -79,7 +82,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
     const ro = languages.ro ?? SITE_URL;
     languages["x-default"] = ro;
-    out.push({ url: ro, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9, alternates: { languages } });
+    out.push({ url: ro, lastModified: CONTENT_UPDATED_AT, changeFrequency: "monthly", priority: 0.9, alternates: { languages } });
   }
   return out;
 }
