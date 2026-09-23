@@ -4,6 +4,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { locales, type Locale } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
 import { SITE_URL } from "@/lib/site";
+import { requestMarket, requestOrigin } from "@/lib/market-server";
+import { internationalPublicPath } from "@/lib/market";
 import { serviceFromSlug, serviceMedia, serviceSlugs } from "@/lib/services";
 import { LoopVideo } from "@/components/ui/LoopVideo";
 import { BookButton } from "@/components/ui/BookButton";
@@ -21,6 +23,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const key = serviceFromSlug(locale as Locale, slug);
   if (!key) return {};
   const t = await getTranslations({ locale, namespace: "services.items" });
+  const international = (await requestMarket()) === "international";
+  const origin = international ? await requestOrigin() : SITE_URL;
+  if (international) {
+    const canonical = origin + internationalPublicPath(getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[key].en } }, locale: "en" }));
+    return { title: `${t(`${key}.name`)}`, description: t(`${key}.intro`), alternates: { canonical, languages: { en: canonical, "x-default": canonical } } };
+  }
   const languages: Record<string, string> = {};
   for (const l of locales) languages[l] = SITE_URL + getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[key][l] } }, locale: l });
   languages["x-default"] = languages.ro ?? "";
@@ -40,7 +48,12 @@ export default async function ServicePage({ params }: { params: Promise<{ locale
   const th = await getTranslations({ locale, namespace: "hero" });
   const tn = await getTranslations({ locale, namespace: "nav" });
   const tf = await getTranslations({ locale, namespace: "faq" });
-  const url = SITE_URL + getPathname({ href: { pathname: "/servicii/[slug]", params: { slug } }, locale: locale as Locale });
+  const international = (await requestMarket()) === "international";
+  const origin = international ? await requestOrigin() : SITE_URL;
+  const path = getPathname({ href: { pathname: "/servicii/[slug]", params: { slug } }, locale: locale as Locale });
+  const url = origin + (international ? internationalPublicPath(path) : path);
+  const homeUrl = origin + (international ? "/" : getPathname({ href: "/", locale: locale as Locale }));
+  const servicesUrl = origin + (international ? "/services" : getPathname({ href: "/servicii", locale: locale as Locale }));
   const faq = FAQ_KEYS.map((n) => ({ q: tf(`q${n}`), a: tf(`a${n}`) }));
   return (
     <>
@@ -70,7 +83,7 @@ export default async function ServicePage({ params }: { params: Promise<{ locale
       <Faq />
       <FaqSchema items={faq} />
       <ServiceSchema name={t(`${key}.name`)} description={t(`${key}.intro`)} url={url} locale={locale as Locale} />
-      <BreadcrumbSchema items={[{ name: "wtech.md", url: SITE_URL + getPathname({ href: "/", locale: locale as Locale }) }, { name: tn("services"), url: SITE_URL + getPathname({ href: "/servicii", locale: locale as Locale }) }, { name: t(`${key}.name`), url }]} />
+      <BreadcrumbSchema items={[{ name: "wtech.md", url: homeUrl }, { name: tn("services"), url: servicesUrl }, { name: t(`${key}.name`), url }]} />
     </>
   );
 }

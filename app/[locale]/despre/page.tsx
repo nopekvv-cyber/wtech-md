@@ -9,7 +9,7 @@ import { getSite } from "@/lib/settings";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("about.title") }, description: t("about.description"), alternates: alternatesFor("/despre", locale as Locale) };
+  return { title: { absolute: t("about.title") }, description: t("about.description"), alternates: await alternatesFor("/despre", locale as Locale) };
 }
 
 /** Entity page for AI search: plain, quotable sentences about who wtech.md is. */

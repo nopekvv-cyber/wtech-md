@@ -6,6 +6,7 @@ import { insertLead, markDelivered } from "@/lib/db";
 import { env } from "@/lib/env";
 import { clientIp, rateLimit, originAllowed, jsonError, log } from "@/lib/request-guard";
 import type { Locale } from "@/i18n/routing";
+import { marketForHost } from "@/lib/market";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -63,13 +64,15 @@ export async function POST(req: Request) {
   try { body = await req.json(); } catch { return jsonError("bad_request", 400); }
   const parsed = schema.safeParse(body);
   if (!parsed.success) return jsonError("invalid", 400);
-  const { locale, messages } = parsed.data;
+  const market = marketForHost(req.headers.get("x-forwarded-host") ?? req.headers.get("host"));
+  const locale: Locale = market === "international" ? "en" : parsed.data.locale;
+  const { messages } = parsed.data;
   if (messages[messages.length - 1]?.role !== "user") return jsonError("invalid", 400);
   if (env.CHAT_DISABLED === "1" || !env.ANTHROPIC_API_KEY) return jsonError("offline", 503);
 
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, timeout: 20_000, maxRetries: 1 });
   const history: Anthropic.MessageParam[] = messages.map((message) => ({ role: message.role, content: message.content }));
-  const system = await buildSystemPrompt(locale);
+  const system = await buildSystemPrompt(locale, market, req.headers.get("x-vercel-ip-country"));
 
   const stream = new ReadableStream({
     async start(controller) {

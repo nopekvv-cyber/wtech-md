@@ -11,7 +11,7 @@ import { FaqSchema } from "@/components/seo/Schema";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("pricing.title") }, description: t("pricing.description"), alternates: alternatesFor("/preturi", locale as Locale) };
+  return { title: { absolute: t("pricing.title") }, description: t("pricing.description"), alternates: await alternatesFor("/preturi", locale as Locale) };
 }
 
 export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {

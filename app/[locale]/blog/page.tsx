@@ -8,7 +8,7 @@ import { blogSlugs, blogMeta } from "@/lib/blog";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("blog.title") }, description: t("blog.description"), alternates: alternatesFor("/blog", locale as Locale) };
+  return { title: { absolute: t("blog.title") }, description: t("blog.description"), alternates: await alternatesFor("/blog", locale as Locale) };
 }
 
 export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {

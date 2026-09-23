@@ -3,6 +3,10 @@ import { SITE_URL, geo } from "@/lib/site";
 import { getSite } from "@/lib/settings";
 import { type Locale } from "@/i18n/routing";
 import { serviceKeys, serviceSlugs } from "@/lib/services";
+import { requestCountry, requestMarket, requestOrigin } from "@/lib/market-server";
+import { internationalPublicPath } from "@/lib/market";
+import { internationalPriceBook } from "@/lib/international-pricing";
+import { getPathname } from "@/i18n/navigation";
 
 function JsonLd({ data }: { data: unknown }) {
   // JSON-LD is data, not executed script; still escape "<" so no translated string can break out of the tag.
@@ -15,47 +19,53 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
   const ts = await getTranslations({ locale, namespace: "services.items" });
   const { contact, socials } = await getSite();
   const sameAs = Object.values(socials).filter(Boolean);
+  const international = (await requestMarket()) === "international";
+  const origin = international ? await requestOrigin() : SITE_URL;
+  const priceBook = internationalPriceBook(international ? await requestCountry() : null);
   const org = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
-        "@id": `${SITE_URL}/#organization`,
+        "@id": `${origin}/#organization`,
         name: "wtech.md",
-        url: SITE_URL,
-        logo: `${SITE_URL}/brand/wtech-mark-black.png`,
-        image: `${SITE_URL}/og-${locale}.png`,
+        url: origin,
+        logo: `${origin}/brand/wtech-mark-black.png`,
+        image: `${origin}/og-${locale}.png`,
         description: t("orgDescription"),
         ...(contact.phone ? { telephone: contact.phone } : {}),
         email: contact.email,
         address: { "@type": "PostalAddress", ...(contact.address ? { streetAddress: contact.address } : {}), addressLocality: "Chișinău", addressCountry: "MD" },
         geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng },
-        areaServed: { "@type": "Country", name: t("areaServed") },
-        priceRange: "600–12,000 EUR",
-        currenciesAccepted: "MDL, EUR",
+        areaServed: international ? ["United States", "Canada", "Australia", "Europe"] : { "@type": "Country", name: t("areaServed") },
+        priceRange: international ? `${priceBook.prices[0]}–${priceBook.prices[4]} ${priceBook.currency}` : "600–12,000 EUR",
+        currenciesAccepted: international ? "USD, EUR, CAD, AUD" : "MDL, EUR",
         openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "18:00" }],
         knowsLanguage: ["ro", "ru", "en"],
         sameAs,
         makesOffer: serviceKeys.map((k) => ({
           "@type": "Offer",
-          itemOffered: { "@type": "Service", "@id": `${SITE_URL}/#service-${k}`, name: ts(`${k}.name`), url: `${SITE_URL}/${locale === "ro" ? "" : locale + "/"}${locale === "ru" ? "uslugi" : locale === "en" ? "services" : "servicii"}/${serviceSlugs[k][locale]}` },
-          priceCurrency: "EUR",
+          itemOffered: { "@type": "Service", "@id": `${origin}/#service-${k}`, name: ts(`${k}.name`), url: international ? origin + internationalPublicPath(getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[k].en } }, locale: "en" })) : `${origin}/${locale === "ro" ? "" : locale + "/"}${locale === "ru" ? "uslugi" : locale === "en" ? "services" : "servicii"}/${serviceSlugs[k][locale]}` },
+          priceCurrency: international ? priceBook.currency : "EUR",
         })),
       },
       {
         "@type": "WebSite",
-        "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        "@id": `${origin}/#website`,
+        url: origin,
         name: "wtech.md",
         inLanguage: locale,
-        publisher: { "@id": `${SITE_URL}/#organization` },
+        publisher: { "@id": `${origin}/#organization` },
       },
     ],
   };
   return <JsonLd data={org} />;
 }
 
-export function ServiceSchema({ name, description, url, locale }: { name: string; description: string; url: string; locale: Locale }) {
+export async function ServiceSchema({ name, description, url, locale }: { name: string; description: string; url: string; locale: Locale }) {
+  const international = (await requestMarket()) === "international";
+  const origin = international ? await requestOrigin() : SITE_URL;
+  const priceBook = internationalPriceBook(international ? await requestCountry() : null);
   return (
     <JsonLd
       data={{
@@ -65,9 +75,9 @@ export function ServiceSchema({ name, description, url, locale }: { name: string
         description,
         url,
         inLanguage: locale,
-        provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: { "@type": "Country", name: "Moldova" },
-        offers: { "@type": "Offer", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
+        provider: { "@id": `${origin}/#organization` },
+        areaServed: international ? ["United States", "Canada", "Australia", "Europe"] : { "@type": "Country", name: "Moldova" },
+        offers: { "@type": "Offer", priceCurrency: international ? priceBook.currency : "EUR", availability: "https://schema.org/InStock" },
       }}
     />
   );

@@ -8,7 +8,7 @@ import { BookButton } from "@/components/ui/BookButton";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("work.title") }, description: t("work.description"), alternates: alternatesFor("/lucrari", locale as Locale) };
+  return { title: { absolute: t("work.title") }, description: t("work.description"), alternates: await alternatesFor("/lucrari", locale as Locale) };
 }
 
 const ITEMS = [

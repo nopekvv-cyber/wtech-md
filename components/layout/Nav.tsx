@@ -13,7 +13,7 @@ import { track } from "@/lib/analytics";
 
 const LANG_ORDER: Locale[] = ["ro", "ru", "en"]; // RO first, RU second: the order clients expect
 
-export function Nav() {
+export function Nav({ showLanguages = true }: { showLanguages?: boolean }) {
   const t = useTranslations("nav");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
@@ -78,7 +78,7 @@ export function Nav() {
         </ul>
 
         <div className="hidden lg:flex items-center gap-5">
-          <LangSwitch current={locale} />
+          {showLanguages ? <LangSwitch current={locale} /> : null}
           <button type="button" className="btn btn-primary btn-sm" onClick={() => { track("cta_call_click", { place: "nav" }); openBooking(); }}>
             {t("cta")}
           </button>
@@ -119,7 +119,7 @@ export function Nav() {
                 </li>
               ))}
               <li className="py-4 flex items-center justify-between gap-4">
-                <LangSwitch current={locale} />
+                {showLanguages ? <LangSwitch current={locale} /> : <span />}
                 <button type="button" className="btn btn-primary btn-sm" onClick={() => { setOpen(false); track("cta_call_click", { place: "nav-mobile" }); openBooking(); }}>
                   {t("cta")}
                 </button>

@@ -4,12 +4,16 @@ import { getPathname } from "@/i18n/navigation";
 import { SITE_URL } from "@/lib/site";
 import { serviceKeys, serviceSlugs } from "@/lib/services";
 import { blogSlugs } from "@/lib/blog";
+import { internationalPublicPath } from "@/lib/market";
+import { requestMarket, requestOrigin } from "@/lib/market-server";
 
 type P = Parameters<typeof getPathname>[0]["href"];
 
-function entry(href: P, priority = 0.7): MetadataRoute.Sitemap[number] {
+export const dynamic = "force-dynamic";
+
+function moldovaEntry(href: P, priority = 0.7): MetadataRoute.Sitemap[number] {
   const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = SITE_URL + getPathname({ href, locale: l });
+  for (const locale of locales) languages[locale] = SITE_URL + getPathname({ href, locale });
   languages["x-default"] = SITE_URL + getPathname({ href, locale: routing.defaultLocale });
   return {
     url: SITE_URL + getPathname({ href, locale: routing.defaultLocale }),
@@ -20,29 +24,55 @@ function entry(href: P, priority = 0.7): MetadataRoute.Sitemap[number] {
   };
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+function internationalEntry(origin: string, path: string, priority = 0.7): MetadataRoute.Sitemap[number] {
+  const url = origin + internationalPublicPath(path);
+  return {
+    url,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority,
+    alternates: { languages: { en: url, "x-default": url } },
+  };
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  if ((await requestMarket()) === "international") {
+    const origin = await requestOrigin();
+    const out: MetadataRoute.Sitemap = [
+      internationalEntry(origin, "/", 1),
+      internationalEntry(origin, "/servicii", 0.9),
+      internationalEntry(origin, "/lucrari", 0.7),
+      internationalEntry(origin, "/preturi", 0.8),
+      internationalEntry(origin, "/contact", 0.8),
+      internationalEntry(origin, "/audit", 0.8),
+      internationalEntry(origin, "/despre", 0.6),
+    ];
+    for (const key of serviceKeys) {
+      const internalPath = getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[key].en } }, locale: "en" });
+      out.push(internationalEntry(origin, internalPath, 0.9));
+    }
+    return out;
+  }
+
   const out: MetadataRoute.Sitemap = [
-    entry("/", 1),
-    entry("/servicii", 0.9),
-    entry("/lucrari", 0.7),
-    entry("/preturi", 0.8),
-    entry("/contact", 0.8),
-    entry("/audit", 0.8),
-    entry("/despre", 0.6),
-    entry("/blog", 0.6),
+    moldovaEntry("/", 1),
+    moldovaEntry("/servicii", 0.9),
+    moldovaEntry("/lucrari", 0.7),
+    moldovaEntry("/preturi", 0.8),
+    moldovaEntry("/contact", 0.8),
+    moldovaEntry("/audit", 0.8),
+    moldovaEntry("/despre", 0.6),
+    moldovaEntry("/blog", 0.6),
   ];
   for (const key of serviceKeys) {
-    // service slugs differ per locale; build alternates manually
     const languages: Record<string, string> = {};
-    for (const l of locales as readonly Locale[]) {
-      languages[l] = SITE_URL + getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[key][l] } }, locale: l });
+    for (const locale of locales as readonly Locale[]) {
+      languages[locale] = SITE_URL + getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[key][locale] } }, locale });
     }
     const ro = languages.ro ?? SITE_URL;
     languages["x-default"] = ro;
     out.push({ url: ro, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9, alternates: { languages } });
   }
-  for (const slug of blogSlugs) {
-    out.push(entry({ pathname: "/blog/[slug]", params: { slug } }, 0.5));
-  }
+  for (const slug of blogSlugs) out.push(moldovaEntry({ pathname: "/blog/[slug]", params: { slug } }, 0.5));
   return out;
 }

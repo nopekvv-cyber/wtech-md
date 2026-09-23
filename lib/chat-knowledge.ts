@@ -4,6 +4,9 @@ import { getSite, resolveMessages } from "@/lib/settings";
 import ro from "@/messages/ro.json";
 import ru from "@/messages/ru.json";
 import en from "@/messages/en.json";
+import enIntl from "@/messages/en-intl.json";
+import type { Market } from "@/lib/market";
+import { withInternationalPricing } from "@/lib/international-pricing";
 
 const MESSAGES: Record<Locale, typeof ro> = { ro, ru, en };
 const LANG: Record<Locale, string> = { ro: "Romanian", ru: "Russian", en: "English" };
@@ -13,10 +16,13 @@ const LANG: Record<Locale, string> = { ro: "Romanian", ru: "Russian", en: "Engli
  * localised copy (with the CMS contact details resolved) so the bot never contradicts the site.
  * Stable between CMS edits, so the system prompt caches.
  */
-export async function buildSystemPrompt(locale: Locale): Promise<string> {
+export async function buildSystemPrompt(locale: Locale, market: Market = "moldova", country?: string | null): Promise<string> {
   const site = await getSite();
   const { contact } = site;
-  const m = resolveMessages(MESSAGES[locale], site);
+  const source = market === "international"
+    ? withInternationalPricing(structuredClone(enIntl), country)
+    : MESSAGES[locale];
+  const m = resolveMessages(source, site);
   const svc = serviceKeys
     .map((k) => {
       const s = m.services.items[k];
@@ -30,7 +36,7 @@ export async function buildSystemPrompt(locale: Locale): Promise<string> {
   const process = ([1, 2, 3, 4] as const).map((n) => `${n}. ${m.process[`s${n}`]}: ${m.process[`s${n}d`]}`).join("\n");
   const faq = ([1, 2, 3, 4, 5, 6, 7, 8] as const).map((n) => `Q: ${m.faq[`q${n}`]}\nA: ${m.faq[`a${n}`]}`).join("\n\n");
 
-  return `You are Ana, the AI employee of wtech.md, a software studio in Chișinău, Republic of Moldova. You talk to business owners and managers who visit wtech.md and want to know what we build, how much it costs, how we work, and how to start.
+  return `You are Ana, the AI employee of wtech.md, a European software studio${market === "international" ? " serving businesses in the USA, Canada, Australia and Europe" : " in Chișinău, Republic of Moldova"}. You talk to business owners and managers who want to know what we build, how much it costs, how we work, and how to start.
 
 ## Language
 The site is in ${LANG[locale]}. Reply in the language the visitor writes in (Romanian, Russian or English); if unclear, use ${LANG[locale]}. Use the polite form (вы / dumneavoastră) unless the visitor is clearly informal. Never machine-translate brand terms: keep "wtech.md", "CRM", "AI SEO", "1C".
@@ -38,7 +44,7 @@ The site is in ${LANG[locale]}. Reply in the language the visitor writes in (Rom
 ## What we build (six services)
 ${svc}
 
-## WTECH package prices (EUR)
+## WTECH package prices (${m.pricing.currency})
 ${pricing}
 ${m.pricing.note}
 ${m.pricing.included}: ${m.pricing.includedText}

@@ -1,8 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { internationalInternalPath, internationalRedirectPath, marketForHost } from "./lib/market";
 
 /**
- * Header-only middleware: a per-request nonce for the Content-Security-Policy. It never rewrites or redirects
- * (the standalone runtime turned an earlier absolute-URL rewrite into a loop behind the proxy).
+ * Adds a per-request CSP nonce and selects the public experience by host. The Moldova domain keeps its localized
+ * routes; any additional domain receives clean English URLs rewritten internally to the existing English pages.
  * Static security headers live in next.config.ts.
  */
 export function middleware(req: NextRequest) {
@@ -35,7 +36,24 @@ export function middleware(req: NextRequest) {
   const requestHeaders = new Headers(req.headers);
   requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("content-security-policy", csp);
-  const res = NextResponse.next({ request: { headers: requestHeaders } });
+  const market = marketForHost(req.headers.get("x-forwarded-host") ?? req.headers.get("host"));
+  requestHeaders.set("x-wtech-market", market);
+
+  let res: NextResponse;
+  if (market === "international" && !req.nextUrl.pathname.startsWith("/admin")) {
+    const publicPath = internationalRedirectPath(req.nextUrl.pathname);
+    if (publicPath) {
+      const target = req.nextUrl.clone();
+      target.pathname = publicPath;
+      res = NextResponse.redirect(target, 308);
+    } else {
+      const target = req.nextUrl.clone();
+      target.pathname = internationalInternalPath(req.nextUrl.pathname);
+      res = NextResponse.rewrite(target, { request: { headers: requestHeaders } });
+    }
+  } else {
+    res = NextResponse.next({ request: { headers: requestHeaders } });
+  }
   res.headers.set("content-security-policy", csp);
   return res;
 }

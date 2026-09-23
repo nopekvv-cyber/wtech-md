@@ -8,7 +8,7 @@ import { AuditForm } from "@/components/sections/AuditForm";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("audit.title") }, description: t("audit.description"), alternates: alternatesFor("/audit", locale as Locale) };
+  return { title: { absolute: t("audit.title") }, description: t("audit.description"), alternates: await alternatesFor("/audit", locale as Locale) };
 }
 
 export default async function AuditPage({ params }: { params: Promise<{ locale: string }> }) {

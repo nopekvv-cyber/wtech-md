@@ -9,7 +9,7 @@ import { track } from "@/lib/analytics";
 const PLANS = [1, 2, 3, 4, 5] as const;
 const ACCENTS = ["violet", "cyan", "coral", "violet", "mix"] as const;
 
-/** Five cumulative commercial bundles with one source-controlled EUR price list. */
+/** Five cumulative commercial bundles; international prices are selected server-side from the visitor's country. */
 export function Pricing({ standalone = false }: { standalone?: boolean }) {
   const t = useTranslations("pricing");
   const { openBooking } = useBrand();
@@ -28,6 +28,12 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
           </div>
           <p className="text-dim text-[17px] lg:col-span-4 lg:pb-1">{t("sub")}</p>
         </div>
+
+        {t.has("marketName") ? (
+          <p className="mt-5 text-[13px] text-dim" aria-live="polite">
+            {t("marketLabel")}: <strong className="text-ink">{t("marketName")} · {t("currency")}</strong>
+          </p>
+        ) : null}
 
         <ol className="package-bundle-grid mt-12 md:mt-16">
           {PLANS.map((n, index) => {

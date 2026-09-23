@@ -1,0 +1,599 @@
+{
+  "meta": {
+    "siteName": "wtech.md",
+    "home": {
+      "title": "WTECH | Websites, CRM, AI and custom software",
+      "description": "Premium websites, booking systems, custom CRM, AI employees, automation and mobile apps for businesses in the USA, Canada, Australia and Europe. Fixed-price proposal in 48 hours."
+    },
+    "services": {
+      "title": "Services | wtech.md",
+      "description": "Premium websites, CRM and dashboards, AI employees, automation, custom software and AI SEO for businesses in the USA, Canada, Australia and Europe."
+    },
+    "work": {
+      "title": "Work | wtech.md",
+      "description": "wtech.md concepts and projects: premium website, custom CRM, AI employee on the phone."
+    },
+    "pricing": {
+      "title": "Pricing | wtech.md",
+      "description": "Five cumulative WTECH packages for landing pages, business websites, booking systems, custom CRM, AI and mobile apps. International project prices from USD 1,490."
+    },
+    "contact": {
+      "title": "Contact | wtech.md",
+      "description": "Message us on WhatsApp, Telegram or Viber, or book a 30-minute call. We reply in under an hour on business days."
+    },
+    "audit": {
+      "title": "Free 24-hour website audit | wtech.md",
+      "description": "Send your website address and get an audit tomorrow: speed, SEO, conversion and visibility in AI answers."
+    },
+    "about": {
+      "title": "About WTECH | International software studio",
+      "description": "WTECH is a European software studio serving businesses in the USA, Canada, Australia and Europe with websites, CRM, AI employees, automation and custom applications."
+    },
+    "blog": {
+      "title": "Blog | wtech.md",
+      "description": "Practical guides on websites, CRM, automation and AI SEO for international businesses."
+    },
+    "notFound": {
+      "title": "Page not found | wtech.md"
+    }
+  },
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "process": "Process",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "cta": "Book a call",
+    "language": "Language",
+    "menu": "Menu",
+    "close": "Close",
+    "home": "Home"
+  },
+  "common": {
+    "skip": "Skip to content",
+    "sending": "Sending…",
+    "back": "Back",
+    "next": "Continue",
+    "readMore": "Read",
+    "brandAlt": "wtech.md",
+    "markAlt": "The wtech.md mark, a glass ribbon shaped like a w",
+    "demoData": "Demo data",
+    "loading": "Loading"
+  },
+  "hero": {
+    "h1": "Your clients are messaging you. Someone has to answer in 4 minutes.",
+    "h1b": "Clients who come on their own. A system that never loses them.",
+    "sub": "Premium websites, CRM, AI employees and automation — one connected system for businesses in the USA, Canada, Australia and Europe.",
+    "primary": "Book a 30-min call",
+    "ghost": "See the live CRM demo",
+    "risk": "Fixed-price proposal within 48 h · No obligation",
+    "facts": {
+      "city": "USA · Canada · Australia · Europe",
+      "reply": "We reply in < 1 hour",
+      "price": "Fixed price in the proposal"
+    },
+    "fold": {
+      "websites": "Websites",
+      "crm": "CRM & dashboards",
+      "ai": "AI employees",
+      "automations": "Automations",
+      "software": "Custom software",
+      "seo": "AI SEO"
+    },
+    "videoAlt": "The wtech.md mark, a glowing glass ribbon slowly turning on a black background"
+  },
+  "services": {
+    "title": "Six things we build. They all connect.",
+    "items": {
+      "websites": {
+        "name": "Websites",
+        "before": "You have a website that looks like everyone else's and brings no clients.",
+        "after": "You have a premium, animated site that convinces and brings quote requests every week.",
+        "cta": "I want a site that brings clients",
+        "intro": "Conversion-focused business websites with original design, purposeful motion, native English copy, fast loading and forms connected directly to your CRM.",
+        "b1": "Unique design, not a template. Every section has a conversion job.",
+        "b2": "Native English content, responsive across desktop, tablet and mobile.",
+        "b3": "Lighthouse above 90 on mobile. LCP under 1.2 seconds.",
+        "b4": "Forms wired into the CRM, WhatsApp and Telegram from day one.",
+        "b5": "Hosting, maintenance and 30 days of support included.",
+        "alt": "Laptop with a dark website scrolling"
+      },
+      "crm": {
+        "name": "CRM & dashboards",
+        "before": "Leads live in a spreadsheet, on the manager's phone and in three different chats.",
+        "after": "Every lead has a status, an owner and a deadline. One screen shows how much money is in the pipeline.",
+        "cta": "I want a CRM like this",
+        "intro": "Custom CRM development built around your sales and service process. Pipeline, customer history, tasks, reporting and AI follow-up without per-seat lock-in.",
+        "b1": "Custom pipeline: your stages, your fields, your languages.",
+        "b2": "Dashboard with revenue, response time and win rate, updated live.",
+        "b3": "Integrations with 1C, Facebook Lead Ads, Gmail, WhatsApp Business and Telegram.",
+        "b4": "The code is yours. No monthly per-user fee.",
+        "b5": "Installed on your server or hosted by us, your choice.",
+        "alt": "Dark CRM dashboard with a revenue chart"
+      },
+      "ai": {
+        "name": "AI employees",
+        "before": "Messages sent at 10 pm get answered at 10 am. The client already signed with someone else.",
+        "after": "Ana answers in 4 minutes, sends the offer, books the meeting and writes everything into the CRM.",
+        "cta": "I want an AI employee",
+        "intro": "AI agents that answer through your website and messaging channels, qualify leads, send information, book meetings and write every conversation into the CRM.",
+        "b1": "Answers in English, 24/7, on every connected channel.",
+        "b2": "Qualifies the lead, sends the PDF offer, proposes a meeting time.",
+        "b3": "Writes every conversation into the CRM and alerts the team when a human is needed.",
+        "b4": "Daily report: how many leads, offers and meetings.",
+        "b5": "Escalates to a person when it does not know. It does not make things up.",
+        "alt": "Dark chat interface with a typing indicator"
+      },
+      "automations": {
+        "name": "Automations",
+        "before": "Invoices are made by hand, offers copied from another document, reports sent when someone remembers.",
+        "after": "Lead → CRM → offer → invoice → report, with no human hand in between.",
+        "cta": "I want this automated",
+        "intro": "Business automation connecting CRM, email, forms, messaging, invoicing and reporting into one visible workflow that your team controls.",
+        "b1": "Leads from Facebook, the website and the phone enter the CRM automatically.",
+        "b2": "Offers and invoices generated from the CRM, sent by email and WhatsApp.",
+        "b3": "Payment reminders and meeting confirmations without picking up the phone.",
+        "b4": "Connect QuickBooks, Xero, Stripe, HubSpot, Salesforce and other systems through their APIs.",
+        "b5": "Daily report on Telegram at 18:00.",
+        "alt": "Connected nodes with a travelling light pulse"
+      },
+      "software": {
+        "name": "Custom software",
+        "before": "Off-the-shelf software does 60% of what you need and forces you to work its way.",
+        "after": "An application built on your process, with your integrations, that grows with the business.",
+        "cta": "I want to talk about an app",
+        "intro": "Web apps, mobile apps and integrations built in two-week sprints, with senior English-speaking project management and code that stays yours.",
+        "b1": "Web and mobile apps (iOS, Android) from one codebase.",
+        "b2": "Integrations with Stripe, QuickBooks, Xero, HubSpot, Salesforce, Google Workspace and industry APIs.",
+        "b3": "Two-week sprints with a demo after each one.",
+        "b4": "Documentation, tests and Docker delivery to your server.",
+        "b5": "Support and continued development after launch.",
+        "alt": "Phone and code editor on a black background"
+      },
+      "seo": {
+        "name": "AI SEO",
+        "before": "You are on page 3 of Google and nowhere in ChatGPT's answers.",
+        "after": "You show up in Google, in AI Overviews and in ChatGPT, Gemini and Perplexity answers when someone asks about your services.",
+        "cta": "I want a free SEO + AI audit",
+        "intro": "Technical SEO plus GEO for Google and AI answers: English content, structured data, entity pages and citations, measured in one reporting dashboard.",
+        "b1": "Technical SEO and Core Web Vitals: speed, indexing, clean structure.",
+        "b2": "Monthly English content: AI-assisted, human-edited and published on schedule.",
+        "b3": "GEO: schema, entity pages, citations and FAQs that AI models can quote.",
+        "b4": "Dashboard with Google positions and an AI-visibility score, inside the CRM.",
+        "b5": "Monthly report on what changed and what comes next.",
+        "alt": "Search bar with result rows and an AI answer card"
+      }
+    }
+  },
+  "proof": {
+    "n1": "[[proof.n1]]",
+    "l1": "projects delivered",
+    "n2": "[[proof.n2]]",
+    "l2": "minutes average AI employee response time",
+    "n3": "[[proof.n3]]",
+    "l3": "leads processed monthly through our systems",
+    "sentence": "Real numbers from the systems we built. Updated monthly."
+  },
+  "crm": {
+    "title": "A CRM built around your business — not the other way round.",
+    "sub": "This is not a picture. Drag a card into another column.",
+    "cta": "I want a CRM like this",
+    "search": "Search people, companies, deals…",
+    "user": "Mihai D.",
+    "sidebar": {
+      "overview": "Overview",
+      "leads": "Leads",
+      "deals": "Deals",
+      "clients": "Clients",
+      "automations": "Automations",
+      "ai": "AI employees",
+      "settings": "Settings"
+    },
+    "stats": {
+      "leads": "New leads",
+      "won": "Deals won",
+      "revenue": "Revenue",
+      "response": "Response time",
+      "vs": "vs. last 30 days",
+      "responseValue": "4 min"
+    },
+    "chart": {
+      "title": "Monthly revenue",
+      "months": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+    },
+    "pipeline": {
+      "title": "Sales pipeline",
+      "total": "Total deals",
+      "period": "This month",
+      "more": "{count} more",
+      "columns": {
+        "new": "New",
+        "contacted": "Contacted",
+        "offer": "Offer",
+        "won": "Won"
+      },
+      "dragHint": "Drag cards between columns"
+    },
+    "industries": {
+      "software": "Software development",
+      "trade": "Wholesale",
+      "energy": "Energy",
+      "telecom": "Telecom",
+      "agro": "Farming",
+      "food": "Food production",
+      "pharmacy": "Pharmacy",
+      "confectionery": "Confectionery",
+      "construction": "Construction",
+      "it": "IT & consulting",
+      "logistics": "Logistics",
+      "wine": "Winery",
+      "dental": "Dental clinic",
+      "furniture": "Furniture"
+    },
+    "ana": {
+      "panel": "AI employee",
+      "name": "Ana",
+      "greeting": "Hi, Mihai!",
+      "summary": "Here is today's follow-up summary. I found 12 important opportunities that need your attention.",
+      "t1": "12 follow-ups today",
+      "t1s": "8 leads · 4 clients",
+      "t2": "3 meetings scheduled",
+      "t2s": "9:00, 11:30, 16:00",
+      "t3": "2 hot opportunities",
+      "t3s": "Vinăria Codru, Dental Art",
+      "followups": "Today's follow-ups",
+      "seeAll": "See all",
+      "urgent": "Urgent",
+      "normal": "Normal",
+      "f1": "Confirm the offer and next steps",
+      "f2": "Technical call, custom solution",
+      "f3": "Follow-up on the sent offer",
+      "f4": "Follow-up call, feedback",
+      "input": "Ask Ana something…"
+    }
+  },
+  "ai": {
+    "title": "AI employees that answer while you sleep.",
+    "sub": "A real example of a conversation, from the first question to the booked meeting.",
+    "chat": {
+      "header": "Ana · AI employee",
+      "client": "Andrei C.",
+      "clientRole": "Client",
+      "m1": "Hi! Could you send me an offer for a presentation website? We need something modern and fast.",
+      "m2": "Hi, Andrei! I have prepared a tailored proposal for the presentation website. The START package begins at USD 1,490 excluding applicable taxes, and delivery takes 2–3 weeks.",
+      "file": "Presentation website offer",
+      "fileMeta": "PDF · 1.2 MB",
+      "m3": "If that works for you, we can go through the details on Wednesday at 10:00. Shall I book it?",
+      "m4": "Yes, Wednesday is perfect.",
+      "meeting": "Meeting booked",
+      "meetingWhen": "Wednesday, 14 May · 10:00",
+      "meetingWhere": "Online · Google Meet",
+      "sent": "Sent to CRM ✓",
+      "sentSub": "The client was added to the pipeline",
+      "input": "Write a message…",
+      "m2_short": "Hi, Andrei! I have prepared a tailored offer for the presentation website with a fixed price excluding VAT, and delivery takes 3 weeks."
+    },
+    "automations": {
+      "header": "Automations",
+      "ranToday": "Ran today",
+      "of": "of {total}",
+      "title": "Automated flows",
+      "active": "Active",
+      "a1": "Answer new leads",
+      "a1s": "Sends a welcome message and collects details.",
+      "a2": "Send offers",
+      "a2s": "Generates a tailored offer and sends it to the client.",
+      "a3": "Payment reminders",
+      "a3s": "Sends due dates and payment notifications automatically.",
+      "a4": "Daily report",
+      "a4s": "Emails the day's summary at 18:00.",
+      "tabs": {
+        "chat": "Chat",
+        "automations": "Automations",
+        "crm": "CRM",
+        "settings": "Settings"
+      }
+    },
+    "roi": {
+      "title": "How much do you lose each month on unanswered leads?",
+      "leads": "Leads per month",
+      "lost": "Share that gets no timely answer today",
+      "value": "Average order value (USD)",
+      "result": "USD recovered per month",
+      "hint": "Estimate: an AI employee recovers about 60% of lost leads by answering within minutes.",
+      "cta": "I want to recover this money",
+      "perYear": "per year"
+    }
+  },
+  "automations": {
+    "title": "Everything connected. Nothing copied by hand.",
+    "sub": "A lead is entered once. The rest happens on its own.",
+    "nodes": {
+      "lead": "Lead",
+      "crm": "CRM",
+      "offer": "Offer",
+      "whatsapp": "WhatsApp",
+      "invoice": "Invoice",
+      "report": "Report"
+    },
+    "l1": "We connect HubSpot, Salesforce, QuickBooks, Xero, Google Workspace, WhatsApp Business and your existing tools.",
+    "l2": "Invoices, payments and customer updates are confirmed automatically in the CRM.",
+    "l3": "Every flow is visible, can be switched on or off, and messages you on Telegram when something breaks.",
+    "cta": "I want this automated"
+  },
+  "software": {
+    "title": "Custom software, when off-the-shelf is not enough.",
+    "p": "Web apps, mobile apps and integrations built around your process in two-week sprints, with code and data that stay yours.",
+    "cta": "I want to talk about an app",
+    "alt": "Laptop, phone and tablet showing the same dark interface"
+  },
+  "seo": {
+    "title": "Show up in Google. And in AI answers.",
+    "sub": "Your clients ask ChatGPT, Gemini and Perplexity before they search Google. We make sure the answer mentions you.",
+    "question": "Who builds premium business websites and connected CRM systems?",
+    "answerIntro": "For businesses that want the website, CRM and AI workflow built as one system, one studio to consider is ",
+    "answerBody": ", a European team serving clients across the USA, Canada, Australia and Europe with fixed-scope delivery and English-speaking project management.",
+    "sources": "Sources",
+    "ranking": {
+      "title": "Rankings and AI visibility",
+      "visibility": "AI visibility",
+      "keyword": "Keyword",
+      "position": "Position",
+      "k1": "premium web development agency",
+      "k2": "custom CRM development",
+      "k3": "AI automation agency",
+      "k4": "business software development",
+      "k5": "nearshore development team",
+      "trend": "last 90 days"
+    },
+    "l1": "Technical SEO and Core Web Vitals: speed, indexing, clean structure.",
+    "l2": "English content engine: AI-assisted, human-edited and published monthly.",
+    "l3": "GEO: schema, entity pages and citations so AI models recommend your brand.",
+    "cta": "I want a free SEO + AI audit"
+  },
+  "audit": {
+    "title": "Free audit of your website in 24 h",
+    "sub": "Send your website address. Tomorrow you get a speed, SEO, conversion and AI-visibility audit on WhatsApp.",
+    "url": "Website address",
+    "urlPlaceholder": "https://your-company.com",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "whatsappPlaceholder": "+1 555 000 0000",
+    "includeAi": "Include AI-visibility analysis (ChatGPT, Gemini, Perplexity)",
+    "submit": "Send me the free audit",
+    "success": "Sent. You get the audit tomorrow.",
+    "successSub": "We send it on WhatsApp and by email within 24 business hours.",
+    "error": "We could not send it. Message us directly on WhatsApp.",
+    "invalidUrl": "Enter a valid address, for example https://your-company.com",
+    "invalidEmail": "Enter a valid email address",
+    "invalidPhone": "Enter a valid phone number"
+  },
+  "process": {
+    "title": "How we work. Four steps, no surprises.",
+    "s1": "30-minute call",
+    "s1d": "We listen to your business and the problem. No slides, no jargon.",
+    "s2": "Fixed-price proposal within 48 h",
+    "s2d": "You get a document with what we build, what it costs and when we deliver.",
+    "s3": "We build in 2-week sprints",
+    "s3d": "Every two weeks you see something that works, not a status report.",
+    "s4": "Launch + 30 days of support included",
+    "s4d": "We launch, train your team and stay for a month. After that, maintenance if you want it."
+  },
+  "pricing": {
+    "eyebrow": "International WTECH packages",
+    "title": "Five levels. One system that grows with your business.",
+    "sub": "Senior nearshore delivery priced below typical local full-service agencies in our target markets. Every package includes the previous one; all prices are total project prices in USD.",
+    "from": "from",
+    "currency": "USD",
+    "includesPrevious": "Includes the previous package",
+    "r1": "START — Landing + Design",
+    "r1p": "1,490",
+    "r1i": "One page with up to 7 sections, custom design, phone and tablet adaptation, contact form, phone and WhatsApp buttons, map and basic SEO setup.",
+    "r2": "BUSINESS — Website + Admin",
+    "r2p": "3,490",
+    "r2i": "Everything in START, expanded to a maximum of 8 pages. Scroll animations, gallery, services, blog and an admin panel for editing the text, photos and content defined in the project.",
+    "r3": "BOOKING — Website + Bookings",
+    "r3p": "6,900",
+    "r3i": "Everything in BUSINESS, plus online bookings, availability calendar, services and specialists, bookings with or without an account, customer account, email confirmations and booking administration.",
+    "r4": "CRM & AI — Business Management",
+    "r4p": "14,900",
+    "r4i": "Everything in BOOKING, plus a basic custom CRM: customer records, history, sales stages, tasks, employee roles, simple reports and export. AI chat based on company information, with transfer to a human operator.",
+    "r5": "COMPLETE — Website + CRM + App",
+    "r5p": "29,900",
+    "r5i": "Everything in CRM & AI, plus an iOS and Android app built from a shared codebase: customer account, bookings, history, push notifications and AI chat. Website and CRM sync, employee calendar and app-store publishing preparation.",
+    "r5note": "From USD 29,900. This package is fully tailored; the final price varies with workflows, integrations, data migration, compliance and launch markets.",
+    "customBadge": "Most complete",
+    "termsTitle": "Clear terms, without hidden costs.",
+    "included": "Included",
+    "includedText": "English delivery, discovery, custom design, two design revision rounds, responsive implementation, QA, launch, admin training and 30 days of defect support against the agreed scope.",
+    "separate": "Charged separately",
+    "separateText": "Domain, hosting, third-party subscriptions, AI usage, SMS, paid assets and Apple or Google publishing accounts. Ongoing maintenance is quoted separately.",
+    "individual": "Individual quote",
+    "individualText": "E-commerce, payments, ERP or accounting integrations, regulated data, complex migration, multiple brands or branches and enterprise workflows.",
+    "vat": "Applicable sales tax, GST or VAT is added according to the client location and invoice rules.",
+    "note": "The proposal confirms scope, milestones and a fixed project price. Payments are staged against delivery milestones.",
+    "cta": "I want the fixed-price proposal",
+    "onRequest": "price on request"
+  },
+  "faq": {
+    "title": "The questions business owners ask us",
+    "q1": "How much does a website or a CRM cost at wtech.md?",
+    "a1": "International WTECH packages start at USD 1,490 for START, USD 3,490 for BUSINESS, USD 6,900 for BOOKING, USD 14,900 for CRM & AI and USD 29,900 for COMPLETE. Each package includes the previous one; applicable tax is added separately.",
+    "q2": "How long does it take?",
+    "a2": "A presentation website takes 3 to 5 weeks. A custom CRM takes 6 to 10 weeks. An AI employee can be answering clients within 2 weeks. We work in two-week sprints and you see the result after every sprint.",
+    "q3": "Who owns the code?",
+    "a3": "You do. All code, design and data are yours from the first payment. You receive them in a private repository and can move them anywhere, any time.",
+    "q4": "Where is the website or CRM hosted?",
+    "a4": "On Vercel, AWS, Azure, Google Cloud, your own infrastructure or another provider agreed in the proposal. We keep the application portable and hand over the code and deployment documentation.",
+    "q5": "Do you work with international teams?",
+    "a5": "Yes. Delivery, documentation and project management are available in English, with planned overlap for North American, European and Australian working hours.",
+    "q6": "What happens after launch?",
+    "a6": "You get 30 days of support included. After that you can choose a monthly maintenance plan or call us when you need something. We do not lock you in.",
+    "q7": "Do you work with small businesses?",
+    "a7": "Yes. The packages are designed for small and mid-sized companies that need a serious website or operating system without large-agency overhead.",
+    "q8": "Can you integrate 1C, accounting, Amazon or Facebook Leads?",
+    "a8": "Yes. We integrate 1C and 1C accounting, Facebook and Instagram Lead Ads, Gmail and Google Workspace, WhatsApp Business, Telegram, Viber, maib, MICB, PayNet and MPay, plus Amazon and marketplaces through their APIs. If it has an API, we connect it.",
+    "a1_short": "You receive an exact fixed price in writing within 48 hours after the 30-minute call. The five international packages are priced in USD."
+  },
+  "contact": {
+    "title": "Let's talk about your business.",
+    "sub": "Two questions and we write back in under an hour on business days.",
+    "step1": "What do you want us to build?",
+    "o1": "A website that brings clients",
+    "o2": "A CRM so we stop losing leads",
+    "o3": "An AI employee that answers 24/7",
+    "o4": "Automations between systems",
+    "o5": "Something else, let's talk",
+    "step2": "How do we reach you?",
+    "name": "Your name",
+    "phone": "Phone or WhatsApp",
+    "email": "Email (optional)",
+    "message": "A few words about the project (optional)",
+    "company": "Company (optional)",
+    "submit": "Send",
+    "next": "Continue",
+    "back": "Back",
+    "stepOf": "Step {step} of 2",
+    "success": "Thank you. We write back in under an hour.",
+    "successSub": "In the meantime you can book the 30-minute call directly.",
+    "error": "We could not send it. Message us on WhatsApp or call us.",
+    "invalidName": "Tell us your name",
+    "invalidPhone": "We need a valid phone or WhatsApp number",
+    "aside": {
+      "reply": "We reply in < 1 hour on business days",
+      "hours": "Monday – Friday, 9:00 – 18:00 (EET)",
+      "address": "Address",
+      "channels": "Write to us wherever is easiest",
+      "call": "Call",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "viber": "Viber",
+      "book": "Book a 30-min call"
+    }
+  },
+  "footer": {
+    "tagline": "Software that runs your business. Built in Europe, delivered internationally.",
+    "services": "Services",
+    "company": "Company",
+    "about": "About",
+    "work": "Work",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "audit": "Free audit",
+    "legal": "Legal",
+    "idno": "IDNO {idno}",
+    "rights": "© 2026 wtech.md. All rights reserved.",
+    "languages": "Market"
+  },
+  "sticky": {
+    "call": "Call",
+    "whatsapp": "WhatsApp",
+    "book": "Book a call"
+  },
+  "pill": {
+    "label": "Message us",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "viber": "Viber",
+    "close": "Close"
+  },
+  "exit": {
+    "title": "Before you go: a free audit of your website.",
+    "sub": "Send the address and tomorrow you get the speed, the SEO issues and what keeps you out of AI answers.",
+    "cta": "Send me the free audit",
+    "close": "No, thanks"
+  },
+  "localeBanner": {
+    "text": "This site is also available in {language}.",
+    "switch": "Switch",
+    "dismiss": "Stay here",
+    "ro": "Romanian",
+    "ru": "Russian",
+    "en": "English"
+  },
+  "preloader": {
+    "loading": "Loading",
+    "skip": "Skip"
+  },
+  "booking": {
+    "title": "Book a 30-min call",
+    "sub": "Pick a time that suits you. We talk about your business, not about us.",
+    "fallback": "Leave a number and we call you at the time you choose.",
+    "when": "When should we call?",
+    "close": "Close"
+  },
+  "work": {
+    "title": "Work",
+    "sub": "Three concepts that show how we build. Each is a real system: website, CRM and AI employee, from the same team.",
+    "concept": "Concept",
+    "w1": "Premium website for a software studio",
+    "w1d": "Hero with the animated mark, services in rows, a live CRM on the page. It is the very site you are looking at.",
+    "w2": "Custom CRM with an AI employee",
+    "w2d": "New → Contacted → Offer → Won pipeline, revenue dashboard and Ana preparing the day's follow-ups.",
+    "w3": "AI employee on the phone",
+    "w3d": "A conversation from the quote request to the booked meeting, plus the automated flows running behind it.",
+    "cta": "I want something similar"
+  },
+  "about": {
+    "title": "About wtech.md",
+    "p1": "WTECH is a European software studio building premium websites, booking systems, custom CRM, AI employees, automation and mobile applications for businesses in the USA, Canada, Australia and Europe.",
+    "p2": "You work directly with an English-speaking product team. We combine original design, reliable engineering and connected business workflows without large-agency overhead.",
+    "p3": "We work with a simple process: a 30-minute call, a fixed-price proposal within 48 hours, two-week sprints, launch with 30 days of support. The client owns the code.",
+    "facts": "In short",
+    "f1": "European team with international delivery",
+    "f2": "English-speaking project management and documentation",
+    "f3": "Fixed project price in USD or EUR",
+    "f4": "Six services, one team",
+    "cta": "Book a 30-min call"
+  },
+  "blog": {
+    "title": "Blog",
+    "sub": "Practical guides on websites, CRM, automation and AI SEO for international businesses.",
+    "review": "Draft under review",
+    "readTime": "{minutes} min read",
+    "back": "All articles",
+    "p1t": "How much a website costs in Moldova in 2026 and what you get for the money",
+    "p1e": "Real market prices from 50 EUR to 10,000 EUR, and what separates a site that brings clients from one that merely exists.",
+    "p2t": "CRM for businesses in Moldova: Bitrix24, amoCRM or a CRM built for you?",
+    "p2e": "When a subscription makes sense and when your own system does. With three-year costs and the list of local integrations.",
+    "p3t": "AI SEO in Moldova: how to appear in ChatGPT and Gemini answers",
+    "p3e": "What GEO is, what AI models cite, and the 7 concrete steps to get your brand recommended."
+  },
+  "notFound": {
+    "title": "This page does not exist.",
+    "sub": "But your system can. Head back to the start or write to us.",
+    "home": "Back home",
+    "contact": "Contact"
+  },
+  "schema": {
+    "orgDescription": "European software studio serving the USA, Canada, Australia and Europe with premium websites, CRM, AI employees, automation and custom software.",
+    "areaServed": "USA, Canada, Australia and Europe"
+  },
+  "chat": {
+    "title": "Ana · AI employee",
+    "subtitle": "Answers in English about everything we build",
+    "open": "Ask Ana",
+    "close": "Close",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "greeting": "Hi! I'm Ana, the AI employee at wtech.md. I can help with websites, CRM, AI employees, automations, custom software and AI SEO. What would you like to build?",
+    "s1": "How much does a website cost?",
+    "s2": "What does an AI employee do?",
+    "s3": "Can you integrate our current tools?",
+    "s4": "How do you work?",
+    "typing": "Ana is typing…",
+    "error": "I can't answer right now. Message us on WhatsApp and we reply in under an hour.",
+    "offline": "The AI chat is not active on this server. Message us on WhatsApp or book a call.",
+    "leadSaved": "I've passed your details to the team. We write back in under an hour on business days.",
+    "whatsapp": "WhatsApp",
+    "book": "Book a call",
+    "disclaimer": "Ana is an AI assistant. Final prices come in the fixed-price proposal."
+  },
+  "errorPage": {
+    "title": "Something went wrong. Not your fault.",
+    "sub": "The error is logged. Try again or message us on WhatsApp, we reply in under an hour.",
+    "retry": "Try again",
+    "home": "Back home"
+  }
+}

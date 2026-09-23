@@ -7,7 +7,8 @@ import { headers } from "next/headers";
 import { routing, type Locale } from "@/i18n/routing";
 import { preload } from "react-dom";
 import { outfit, ONEST_CYRILLIC } from "@/lib/fonts";
-import { SITE_URL, umami } from "@/lib/site";
+import { umami } from "@/lib/site";
+import { requestMarket, requestOrigin } from "@/lib/market-server";
 import { getSite } from "@/lib/settings";
 import { SiteProvider } from "@/components/site/SiteContext";
 import { BrandProvider } from "@/components/preloader/BrandContext";
@@ -35,8 +36,9 @@ export const viewport: Viewport = {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
+  const origin = await requestOrigin();
   return {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(origin),
     title: { default: t("home.title"), template: "%s | wtech.md" },
     description: t("home.description"),
     applicationName: "wtech.md",
@@ -71,6 +73,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
   const site = await getSite();
+  const international = (await requestMarket()) === "international";
   const nonce = (await headers()).get("x-nonce") ?? undefined;
   const tc = await getTranslations({ locale, namespace: "common" });
   // Russian headlines paint in Onest: preload it so the H1 (the LCP) does not wait for a late font request.
@@ -91,9 +94,9 @@ export default async function LocaleLayout({
           <MotionProvider>
             <a href="#main" className="skip-link">{tc("skip")}</a>
             <SmoothScroll />
-            <Nav />
+            <Nav showLanguages={!international} />
             <main id="main">{children}</main>
-            <Footer />
+            <Footer showLanguages={!international} showBlog={!international} />
             <StickyCta />
             <MessengerPill />
             <ExitIntent />

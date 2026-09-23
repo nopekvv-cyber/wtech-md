@@ -7,7 +7,7 @@ import { Wordmark } from "@/components/ui/Wordmark";
 import { LangSwitch } from "./Nav";
 import { AuditForm } from "@/components/sections/AuditForm";
 
-export async function Footer() {
+export async function Footer({ showLanguages = true, showBlog = true }: { showLanguages?: boolean; showBlog?: boolean }) {
   const [t, ts, locale, site] = await Promise.all([
     getTranslations("footer"),
     getTranslations("services.items"),
@@ -43,14 +43,14 @@ export async function Footer() {
             <li><Link href="/despre" className="hover:text-ink text-ink/85">{t("about")}</Link></li>
             <li><Link href="/lucrari" className="hover:text-ink text-ink/85">{t("work")}</Link></li>
             <li><Link href="/preturi" className="hover:text-ink text-ink/85">{t("pricing")}</Link></li>
-            <li><Link href="/blog" className="hover:text-ink text-ink/85">{t("blog")}</Link></li>
+            {showBlog ? <li><Link href="/blog" className="hover:text-ink text-ink/85">{t("blog")}</Link></li> : null}
             <li><Link href="/contact" className="hover:text-ink text-ink/85">{t("contact")}</Link></li>
             <li><Link href="/audit" className="hover:text-ink text-ink/85">{t("audit")}</Link></li>
           </ul>
         </div>
         <div className="md:col-span-2">
           <h2 className="text-[15px] text-dim mb-4">{t("languages")}</h2>
-          <LangSwitch current={locale as Locale} />
+          {showLanguages ? <LangSwitch current={locale as Locale} /> : <p className="text-[13px] leading-relaxed text-dim">USA · Canada<br />Australia · Europe</p>}
           <address className="not-italic text-dim text-[14px] mt-8 space-y-1">
             {contact.address ? <div>{contact.address}</div> : null}
             <div><a href={`mailto:${contact.email}`} className="hover:text-ink">{contact.email}</a></div>

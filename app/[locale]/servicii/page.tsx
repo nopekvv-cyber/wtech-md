@@ -11,7 +11,7 @@ import { BookButton } from "@/components/ui/BookButton";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: { absolute: t("services.title") }, description: t("services.description"), alternates: alternatesFor("/servicii", locale as Locale) };
+  return { title: { absolute: t("services.title") }, description: t("services.description"), alternates: await alternatesFor("/servicii", locale as Locale) };
 }
 
 export default async function ServicesIndex({ params }: { params: Promise<{ locale: string }> }) {
