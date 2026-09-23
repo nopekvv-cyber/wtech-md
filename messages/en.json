@@ -316,8 +316,8 @@
       "title": "How much do you lose each month on unanswered leads?",
       "leads": "Leads per month",
       "lost": "Share that gets no timely answer today",
-      "value": "Average order value (MDL)",
-      "result": "MDL recovered per month",
+      "value": "Average order value (EUR)",
+      "result": "EUR recovered per month",
       "hint": "Estimate: an AI employee recovers about 60% of lost leads by answering within minutes.",
       "cta": "I want to recover this money",
       "perYear": "per year"

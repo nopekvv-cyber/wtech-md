@@ -316,8 +316,8 @@
       "title": "Câți bani pierzi lunar pe lead-uri fără răspuns?",
       "leads": "Lead-uri pe lună",
       "lost": "Din ele, câte % rămân fără răspuns la timp",
-      "value": "Valoarea medie a unei comenzi (MDL)",
-      "result": "MDL recuperați pe lună",
+      "value": "Valoarea medie a unei comenzi (EUR)",
+      "result": "EUR recuperați pe lună",
       "hint": "Estimare: un angajat AI recuperează aproximativ 60% din lead-urile pierdute prin răspuns în primele minute.",
       "cta": "Vreau să recuperez acești bani",
       "perYear": "pe an"

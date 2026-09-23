@@ -47,7 +47,7 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
       { "@type": "AdministrativeArea", name: "Europe" },
     ] : { "@type": "Country", name: t("areaServed") },
     priceRange: international ? `${priceBook.prices[0]}–${priceBook.prices[4]} ${priceBook.currency}` : "600–12,000 EUR",
-    currenciesAccepted: international ? "USD, EUR, CAD, AUD" : "MDL, EUR",
+    currenciesAccepted: international ? "USD, EUR, CAD, AUD, GBP" : "EUR",
     knowsLanguage: ["ro", "ru", "en"],
     knowsAbout: ["web development", "custom CRM development", "AI agents", "business automation", "mobile applications", "technical SEO"],
     sameAs,

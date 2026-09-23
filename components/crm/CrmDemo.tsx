@@ -21,6 +21,9 @@ const NAV = [
 
 export function CrmDemo() {
   const t = useTranslations("crm");
+  const tp = useTranslations("pricing");
+  const tc = useTranslations("common");
+  const currency = tp("currency");
   const { openBooking } = useBrand();
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -44,7 +47,7 @@ export function CrmDemo() {
   const stats = [
     { key: "leads", value: "128", delta: "+24%", up: true, Icon: Users },
     { key: "won", value: "34", delta: "+42%", up: true, Icon: Handshake },
-    { key: "revenue", value: "1.2M MDL", delta: "+56%", up: true, Icon: Building2 },
+    { key: "revenue", value: `1.2M ${currency}`, delta: "+56%", up: true, Icon: Building2 },
     { key: "response", value: t("stats.responseValue"), delta: "-67%", up: false, Icon: Clock },
   ] as const;
 
@@ -82,7 +85,7 @@ export function CrmDemo() {
                 ))}
               </nav>
               <div className="mt-auto pt-6 text-dim text-[11px]">
-                <div className="text-ink">wtech.md</div>
+                <div className="text-ink">{tc("brandAlt")}</div>
                 <div>{t("stats.vs")}</div>
               </div>
             </aside>
@@ -115,8 +118,8 @@ export function CrmDemo() {
               </div>
 
               <div className="crm-panel p-3 md:p-4 mt-3">
-                <div className="flex items-center justify-between text-[12px]"><span>{t("chart.title")}</span><span className="tnum">1.2M MDL <span style={{ color: "#35E3F0" }}>+56%</span></span></div>
-                <RevenueChart months={months} draw={inView} />
+                <div className="flex items-center justify-between text-[12px]"><span>{t("chart.title")}</span><span className="tnum">1.2M {currency} <span style={{ color: "#35E3F0" }}>+56%</span></span></div>
+                <RevenueChart months={months} draw={inView} currency={currency} />
               </div>
 
               <div className="mt-4 flex items-center justify-between text-[12px]">
@@ -125,7 +128,7 @@ export function CrmDemo() {
               </div>
               <div className="mt-2 overflow-x-auto no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
                 <m.div initial={reduce ? false : { opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : undefined} transition={{ duration: 0.6, delay: 0.5 }}>
-                  <Kanban />
+                  <Kanban currency={currency} />
                 </m.div>
               </div>
               <p className="sr-only">{t("pipeline.dragHint")}</p>

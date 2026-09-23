@@ -5,7 +5,7 @@ import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "rec
 import { revenue } from "./data";
 
 /** The one gradient stroke the brief allows in the CRM. Draws on when `draw` flips true. */
-export function RevenueChart({ months, draw }: { months: string[]; draw: boolean }) {
+export function RevenueChart({ months, draw, currency }: { months: string[]; draw: boolean; currency: string }) {
   const [animate, setAnimate] = useState(false);
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
@@ -32,7 +32,7 @@ export function RevenueChart({ months, draw }: { months: string[]; draw: boolean
           <Tooltip
             cursor={{ stroke: "rgba(255,255,255,0.15)" }}
             contentStyle={{ background: "#0A0A0B", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, fontSize: 12, color: "#F5F1EA" }}
-            formatter={(v) => [`${Number(v) >= 1000 ? (Number(v) / 1000).toFixed(1) + "M" : v + "K"} MDL`, ""]}
+            formatter={(v) => [`${Number(v) >= 1000 ? (Number(v) / 1000).toFixed(1) + "M" : v + "K"} ${currency}`, ""]}
             labelStyle={{ color: "rgba(245,241,234,0.6)" }}
           />
           <Area type="monotone" dataKey="v" stroke="url(#crm-stroke)" strokeWidth={2} fill="url(#crm-fill)" dot={false} isAnimationActive animationDuration={1600} animationEasing="ease-out" />

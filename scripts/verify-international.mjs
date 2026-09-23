@@ -44,6 +44,14 @@ try {
   await canadaPage.goto(baseURL + "/pricing", { waitUntil: "networkidle" });
   const pricing = await canadaPage.locator("#preturi").innerText();
   if (!pricing.includes("CAD") || !pricing.includes("1,990")) failures.push("Canada: CAD price book missing");
+  await canadaPage.goto(baseURL + "/", { waitUntil: "networkidle" });
+  await canadaPage.locator("#crm").scrollIntoViewIfNeeded();
+  await canadaPage.getByText("1.2M CAD", { exact: true }).first().waitFor({ state: "visible" });
+  await canadaPage.locator("#ai").scrollIntoViewIfNeeded();
+  await canadaPage.getByText("Average order value (CAD)", { exact: true }).waitFor({ state: "visible" });
+  const canadaHome = await canadaPage.locator("body").innerText();
+  if (!canadaHome.includes("1.2M CAD") || !canadaHome.includes("Average order value (CAD)")) failures.push("Canada: CRM/ROI currency localization missing");
+  if (/\bMDL\b|\blei\b/i.test(canadaHome)) failures.push("Canada: MDL currency leaked onto international home");
   await canada.close();
 } finally {
   await browser.close();

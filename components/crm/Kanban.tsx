@@ -5,14 +5,15 @@ import { DndContext, DragOverlay, PointerSensor, TouchSensor, KeyboardSensor, cl
 import { useSensor, useSensors } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { useTranslations } from "next-intl";
-import { initialColumns, extraCounts, fmtMdl, type Card, type ColumnKey } from "./data";
+import { initialColumns, extraCounts, formatMoney, type Card, type ColumnKey } from "./data";
 import { track } from "@/lib/analytics";
 
 const COLS: ColumnKey[] = ["new", "contacted", "offer", "won"];
 const DOT: Record<ColumnKey, string> = { new: "#6E3BFF", contacted: "#B37BFF", offer: "#FF7A6B", won: "#35E3F0" };
 
-function CardView({ card, industry, dragging, listeners, attributes, setRef, style }: {
+function CardView({ card, industry, currency, dragging, listeners, attributes, setRef, style }: {
   card: Card; industry: string; dragging?: boolean;
+  currency: string;
   listeners?: Record<string, unknown>; attributes?: Record<string, unknown>;
   setRef?: (el: HTMLElement | null) => void; style?: React.CSSProperties;
 }) {
@@ -29,19 +30,20 @@ function CardView({ card, industry, dragging, listeners, attributes, setRef, sty
       <div className="min-w-0">
         <div className="text-[13px] font-medium truncate">{card.company}</div>
         <div className="text-[11px] text-dim truncate">{industry}</div>
-        <div className="text-[11px] text-dim mt-2 tnum">{fmtMdl(card.amount)} · {card.days}d</div>
+        <div className="text-[11px] text-dim mt-2 tnum">{formatMoney(card.amount, currency)} · {card.days}d</div>
       </div>
       <span className="shrink-0 w-7 h-7 rounded-full grid place-items-center text-[10px] bg-white/10">{card.initials}</span>
     </div>
   );
 }
 
-function DraggableCard({ card, industry, dragging }: { card: Card; industry: string; dragging: boolean }) {
+function DraggableCard({ card, industry, currency, dragging }: { card: Card; industry: string; currency: string; dragging: boolean }) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({ id: card.id });
   return (
     <CardView
       card={card}
       industry={industry}
+      currency={currency}
       dragging={dragging}
       setRef={setNodeRef}
       attributes={attributes as unknown as Record<string, unknown>}
@@ -66,7 +68,7 @@ function Column({ id, title, count, children }: { id: ColumnKey; title: string; 
   );
 }
 
-export function Kanban() {
+export function Kanban({ currency }: { currency: string }) {
   const t = useTranslations("crm");
   const [cols, setCols] = useState(initialColumns);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -101,13 +103,13 @@ export function Kanban() {
         {COLS.map((c) => (
           <Column key={c} id={c} title={t(`pipeline.columns.${c}`)} count={cols[c].length + extraCounts[c]}>
             {cols[c].map((card) => (
-              <DraggableCard key={card.id} card={card} industry={t(`industries.${card.industry}`)} dragging={activeId === card.id} />
+              <DraggableCard key={card.id} card={card} industry={t(`industries.${card.industry}`)} currency={currency} dragging={activeId === card.id} />
             ))}
           </Column>
         ))}
       </div>
       <DragOverlay dropAnimation={{ duration: 180 }}>
-        {activeCard ? <CardView card={activeCard} industry={t(`industries.${activeCard.industry}`)} /> : null}
+        {activeCard ? <CardView card={activeCard} industry={t(`industries.${activeCard.industry}`)} currency={currency} /> : null}
       </DragOverlay>
     </DndContext>
   );

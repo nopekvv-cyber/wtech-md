@@ -40,6 +40,14 @@ export const followups = [
   { time: "16:00", company: "EuroTrade SRL", key: "f4", urgent: false },
 ] as const;
 
-export function fmtMdl(n: number) {
-  return new Intl.NumberFormat("ro-MD", { maximumFractionDigits: 0 }).format(n).replace(/ /g, " ") + " MDL";
+export function numberLocaleForCurrency(currency: string) {
+  return ({ USD: "en-US", CAD: "en-CA", AUD: "en-AU", GBP: "en-GB", EUR: "en-IE" } as Record<string, string>)[currency] ?? "en-US";
+}
+
+export function formatNumber(n: number, currency: string) {
+  return new Intl.NumberFormat(numberLocaleForCurrency(currency), { maximumFractionDigits: 0 }).format(n).replace(/ /g, " ");
+}
+
+export function formatMoney(n: number, currency: string) {
+  return `${formatNumber(n, currency)} ${currency}`;
 }

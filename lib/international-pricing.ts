@@ -74,6 +74,7 @@ export function withInternationalPricing<T extends MessageTree>(messages: T, cou
   const faq = { ...(messages.faq ?? {}) };
   const ai = { ...(messages.ai ?? {}) };
   const chat = { ...((ai.chat as Record<string, unknown> | undefined) ?? {}) };
+  const roi = { ...((ai.roi as Record<string, unknown> | undefined) ?? {}) };
   const meta = { ...(messages.meta ?? {}) };
   const pricingMeta = { ...((meta.pricing as Record<string, unknown> | undefined) ?? {}) };
   const about = { ...(messages.about ?? {}) };
@@ -85,9 +86,12 @@ export function withInternationalPricing<T extends MessageTree>(messages: T, cou
   pricing.r5note = `From ${book.currency} ${book.prices[4]}. This package is fully tailored; the final price varies with workflows, integrations, data migration, compliance and launch markets.`;
   faq.a1 = `International WTECH packages start at ${book.currency} ${book.prices[0]} for START, ${book.currency} ${book.prices[1]} for BUSINESS, ${book.currency} ${book.prices[2]} for BOOKING, ${book.currency} ${book.prices[3]} for CRM & AI and ${book.currency} ${book.prices[4]} for COMPLETE. Each package includes the previous one; applicable tax is added separately.`;
   chat.m2 = `Hi, Andrei! I have prepared a tailored proposal for the presentation website. The START package begins at ${book.currency} ${book.prices[0]} excluding applicable taxes, and delivery takes 2–3 weeks.`;
+  roi.value = `Average order value (${book.currency})`;
+  roi.result = `${book.currency} recovered per month`;
   pricingMeta.description = `Five cumulative WTECH packages for landing pages, business websites, booking systems, custom CRM, AI and mobile apps. International project prices from ${book.currency} ${book.prices[0]}.`;
   about.f3 = `Fixed project price in ${book.currency}`;
   ai.chat = chat;
+  ai.roi = roi;
   meta.pricing = pricingMeta;
   return { ...messages, pricing, faq, ai, meta, about } as T;
 }
