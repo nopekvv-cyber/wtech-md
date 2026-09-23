@@ -54,6 +54,8 @@ export function metadataWithAlternates({
   index?: boolean;
 }): Metadata {
   const canonical = String(alternates.canonical);
+  const brand = canonical.startsWith("https://wtech.to") ? "wtech.to" : "wtech.md";
+  const image = brand === "wtech.to" ? "/og-intl.png" : `/og-${locale}.png`;
   return {
     title: { absolute: title },
     description,
@@ -64,15 +66,15 @@ export function metadataWithAlternates({
       title,
       description,
       url: canonical,
-      siteName: "wtech.md",
+      siteName: brand,
       locale: OG_LOCALES[locale],
-      images: [{ url: `/og-${locale}.png`, width: 1200, height: 630, alt: `${title} — wtech.md` }],
+      images: [{ url: image, width: 1200, height: 630, alt: `${title} — ${brand}` }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`/og-${locale}.png`],
+      images: [image],
     },
   };
 }

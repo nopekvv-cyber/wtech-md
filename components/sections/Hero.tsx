@@ -36,7 +36,7 @@ export function Hero() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             data-hero
-            src="/brand/wtech-hero-mark-v2.png"
+            src="/brand/wtech-hero-mark-v2.webp"
             alt=""
             width={1247}
             height={738}

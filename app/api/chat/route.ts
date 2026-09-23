@@ -37,7 +37,7 @@ const LEAD_TITLE: Record<Locale, string> = { ro: "Lead din chatul cu Ana", ru: "
 
 const leadTool: Anthropic.Tool = {
   name: "capture_lead",
-  description: "Send the visitor's contact details to the wtech.md team so a person calls them back. Call it once, only after the visitor gave a phone number or email.",
+  description: "Send the visitor's contact details to the WTECH team so a person can reply. Call it once, only after the visitor gave a phone number or email.",
   strict: true,
   input_schema: {
     type: "object",

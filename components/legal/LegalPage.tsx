@@ -2,10 +2,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { legalDocuments, type LegalDocumentKey } from "@/content/legal";
 import type { Locale } from "@/i18n/routing";
 import { getSite } from "@/lib/settings";
+import { requestMarket } from "@/lib/market-server";
 
 export async function LegalPage({ locale, document }: { locale: Locale; document: LegalDocumentKey }) {
   setRequestLocale(locale);
-  const [t, site] = await Promise.all([getTranslations({ locale, namespace: "legal" }), getSite()]);
+  const [t, site, market] = await Promise.all([getTranslations({ locale, namespace: "legal" }), getSite(), requestMarket()]);
   const copy = legalDocuments[locale][document];
   const { contact } = site;
   return (
@@ -26,7 +27,7 @@ export async function LegalPage({ locale, document }: { locale: Locale; document
         <section className="mt-16 rounded-[var(--radius-lg)] border border-line bg-white/[0.025] p-6 md:p-8" aria-labelledby="business-details">
           <h2 id="business-details" className="text-[24px]">{t("businessDetails")}</h2>
           <dl className="mt-5 grid gap-3 text-[15px]">
-            <div><dt className="text-dim inline">{t("tradeName")}: </dt><dd className="inline">wtech.md</dd></div>
+            <div><dt className="text-dim inline">{t("tradeName")}: </dt><dd className="inline">{market === "international" ? "WTECH" : "wtech.md"}</dd></div>
             {contact.legalName ? <div><dt className="text-dim inline">{t("legalName")}: </dt><dd className="inline">{contact.legalName}</dd></div> : null}
             {contact.address ? <div><dt className="text-dim inline">{t("address")}: </dt><dd className="inline">{contact.address}</dd></div> : null}
             {contact.idno ? <div><dt className="text-dim inline">{t("registration")}: </dt><dd className="inline">{contact.idno}</dd></div> : null}

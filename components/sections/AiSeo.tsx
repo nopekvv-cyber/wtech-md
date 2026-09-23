@@ -21,6 +21,8 @@ const SPARK = [22, 25, 24, 31, 38, 36, 44, 52, 58, 57, 66, 74, 81];
 /** Simulated AI answer (typed on scroll-in) + ranking mini-dashboard in the CRM's visual language. Demo data. */
 export function AiSeo() {
   const t = useTranslations("seo");
+  const tc = useTranslations("common");
+  const brand = tc("brandAlt");
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.35 });
@@ -46,12 +48,12 @@ export function AiSeo() {
               <span className="shrink-0 w-8 h-8 rounded-full grid place-items-center bg-white/[0.06]"><Sparkles size={14} aria-hidden="true" /></span>
               <p className="text-[16px] md:text-[17px] leading-relaxed max-w-[520px]">
                 <Typewriter text={t("answerIntro")} start={inView} speed={12} onDone={() => setPhase(1)} />
-                {phase >= 1 ? <span className="font-medium">wtech.md</span> : null}
+                {phase >= 1 ? <span className="font-medium">{brand}</span> : null}
                 <Typewriter text={t("answerBody")} start={phase >= 1} speed={10} onDone={() => setPhase(2)} />
               </p>
             </div>
             <m.div className="mt-8 pl-11 text-[12px] text-dim" initial={reduce ? false : { opacity: 0 }} animate={phase >= 2 ? { opacity: 1 } : undefined}>
-              {t("sources")}: wtech.md · wtech.md/despre · wtech.md/blog
+              {t("sources")}: {brand} · {brand === "wtech.to" ? `${brand}/about · ${brand}/services` : `${brand}/despre · ${brand}/blog`}
             </m.div>
           </div>
             </div>

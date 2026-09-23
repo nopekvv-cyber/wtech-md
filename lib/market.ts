@@ -1,6 +1,7 @@
 export type Market = "moldova" | "international";
 
 const MOLDOVA_HOSTS = new Set(["wtech.md", "www.wtech.md", "localhost", "127.0.0.1", "::1"]);
+export const PRIMARY_INTERNATIONAL_HOST = "wtech.to";
 
 export function cleanHost(value: string | null | undefined): string {
   return (value ?? "").split(",")[0]!.trim().toLowerCase().replace(/:\d+$/, "");

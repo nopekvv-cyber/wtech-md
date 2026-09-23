@@ -82,7 +82,7 @@ export default async function ServicePage({ params }: { params: Promise<{ locale
       <Faq />
       <FaqSchema items={faq} />
       <ServiceSchema name={t(`${key}.pageTitle`)} description={t(`${key}.intro`)} url={url} locale={locale as Locale} />
-      <BreadcrumbSchema items={[{ name: "wtech.md", url: homeUrl }, { name: tn("services"), url: servicesUrl }, { name: t(`${key}.name`), url }]} />
+      <BreadcrumbSchema items={[{ name: international ? "WTECH" : "wtech.md", url: homeUrl }, { name: tn("services"), url: servicesUrl }, { name: t(`${key}.name`), url }]} />
     </>
   );
 }

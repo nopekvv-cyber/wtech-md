@@ -1,6 +1,6 @@
 import "server-only";
 import { headers } from "next/headers";
-import { SITE_URL } from "./site";
+import { INTERNATIONAL_SITE_URL, SITE_URL } from "./site";
 import { marketForHost, type Market } from "./market";
 
 export async function requestMarket(): Promise<Market> {
@@ -11,12 +11,10 @@ export async function requestMarket(): Promise<Market> {
 }
 
 export async function requestOrigin(): Promise<string> {
-  const h = await headers();
   if ((await requestMarket()) === "moldova") return SITE_URL;
-  const host = (h.get("x-forwarded-host") ?? h.get("host") ?? "").split(",")[0]!.trim();
-  if (!host) return SITE_URL;
-  const proto = (h.get("x-forwarded-proto") ?? "https").split(",")[0]!.trim();
-  return `${proto}://${host}`;
+  // Keep one public international entity even when the app is reached through
+  // a Vercel deployment or preview alias.
+  return INTERNATIONAL_SITE_URL;
 }
 
 export async function requestCountry(): Promise<string | null> {

@@ -50,9 +50,9 @@ function moldovaText(origin: string) {
 }
 
 function internationalText(origin: string) {
-  return `# WTECH
+  return `# WTECH (wtech.to)
 
-> WTECH is a European software studio serving companies in the United States, Canada, Australia and Europe. It builds websites, booking systems, custom CRM, AI agents, automations, web and mobile applications, and technical SEO systems.
+> wtech.to is WTECH's English-language international website. WTECH is a European software studio serving companies in the United States, Canada, Australia and Europe. It builds websites, booking systems, custom CRM, AI agents, automations, web and mobile applications, and technical SEO systems.
 
 ## Primary pages
 - Home: ${origin}/
@@ -80,5 +80,6 @@ function internationalText(origin: string) {
 - Public claims should be factual and verifiable.
 - Demonstration interfaces and illustrative data are labelled as examples.
 - Search rankings and citations by AI systems are not guaranteed.
+- English is the public language on wtech.to. Romanian, Russian and Moldova-specific content remain on wtech.md.
 `;
 }

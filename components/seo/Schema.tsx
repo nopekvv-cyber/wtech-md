@@ -21,16 +21,17 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
   const sameAs = Object.values(socials).filter(Boolean);
   const international = (await requestMarket()) === "international";
   const origin = international ? await requestOrigin() : SITE_URL;
+  const brand = international ? "WTECH" : "wtech.md";
   const priceBook = internationalPriceBook(international ? await requestCountry() : null);
   const organizationType = contact.address ? ["Organization", "ProfessionalService"] : "Organization";
   const organization = {
     "@type": organizationType,
     "@id": `${origin}/#organization`,
-    name: "wtech.md",
-    alternateName: "WTECH",
+    name: brand,
+    alternateName: international ? ["wtech.to", "WTECH"] : "WTECH",
     url: origin,
     logo: { "@type": "ImageObject", url: `${origin}/brand/wtech-mark-black.png`, width: 1024, height: 1024 },
-    image: `${origin}/og-${locale}.png`,
+    image: `${origin}/${international ? "og-intl.png" : `og-${locale}.png`}`,
     description: t("orgDescription"),
     ...(contact.legalName ? { legalName: contact.legalName } : {}),
     ...(contact.phone ? { telephone: contact.phone } : {}),
@@ -39,10 +40,16 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
       address: { "@type": "PostalAddress", streetAddress: contact.address, addressLocality: "Chișinău", addressCountry: "MD" },
       geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng },
     } : {}),
-    areaServed: international ? ["United States", "Canada", "Australia", "Europe"] : { "@type": "Country", name: t("areaServed") },
+    areaServed: international ? [
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "Canada" },
+      { "@type": "Country", name: "Australia" },
+      { "@type": "AdministrativeArea", name: "Europe" },
+    ] : { "@type": "Country", name: t("areaServed") },
     priceRange: international ? `${priceBook.prices[0]}–${priceBook.prices[4]} ${priceBook.currency}` : "600–12,000 EUR",
     currenciesAccepted: international ? "USD, EUR, CAD, AUD" : "MDL, EUR",
     knowsLanguage: ["ro", "ru", "en"],
+    knowsAbout: ["web development", "custom CRM development", "AI agents", "business automation", "mobile applications", "technical SEO"],
     sameAs,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -66,7 +73,7 @@ export async function OrganizationSchema({ locale }: { locale: Locale }) {
         "@type": "WebSite",
         "@id": `${origin}/#website`,
         url: origin,
-        name: "wtech.md",
+        name: international ? "wtech.to" : "wtech.md",
         inLanguage: locale,
         publisher: { "@id": `${origin}/#organization` },
       },
@@ -89,8 +96,13 @@ export async function ServiceSchema({ name, description, url, locale }: { name: 
         url,
         inLanguage: locale,
         provider: { "@id": `${origin}/#organization` },
-        areaServed: international ? ["United States", "Canada", "Australia", "Europe"] : { "@type": "Country", name: "Moldova" },
-        availableLanguage: ["Romanian", "Russian", "English"],
+        areaServed: international ? [
+          { "@type": "Country", name: "United States" },
+          { "@type": "Country", name: "Canada" },
+          { "@type": "Country", name: "Australia" },
+          { "@type": "AdministrativeArea", name: "Europe" },
+        ] : { "@type": "Country", name: "Moldova" },
+        availableLanguage: international ? ["English"] : ["Romanian", "Russian", "English"],
       }}
     />
   );

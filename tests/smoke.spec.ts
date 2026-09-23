@@ -67,7 +67,7 @@ test.describe("hero", () => {
     await expect(page.locator('[data-locale-banner="true"]')).toHaveCount(0);
     const media = page.locator("[data-hero]");
     await expect(media).toBeVisible();
-    await expect(media).toHaveAttribute("src", "/brand/wtech-hero-mark-v2.png");
+    await expect(media).toHaveAttribute("src", "/brand/wtech-hero-mark-v2.webp");
     expect(await media.evaluate((el) => (el as HTMLImageElement).complete && (el as HTMLImageElement).naturalWidth === 1247)).toBe(true);
   });
 

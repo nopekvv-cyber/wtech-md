@@ -4,6 +4,10 @@ const file = new URL("../messages/en.json", import.meta.url);
 const out = new URL("../messages/en-intl.json", import.meta.url);
 const m = JSON.parse(fs.readFileSync(file, "utf8"));
 
+m.meta.siteName = "wtech.to";
+m.common.brandAlt = "wtech.to";
+m.common.markAlt = "The wtech.to mark, a glass ribbon shaped like a w";
+
 m.meta.home = {
   title: "WTECH | Websites, CRM, AI and custom software",
   description: "Premium websites, booking systems, custom CRM, AI employees, automation and mobile apps for businesses in the USA, Canada, Australia and Europe. Written project proposal after discovery.",
@@ -29,9 +33,12 @@ m.meta.about = {
   description: "WTECH is a European software studio serving businesses in the USA, Canada, Australia and Europe with websites, CRM, AI employees, automation and custom applications.",
 };
 m.meta.blog.description = "Practical guides on websites, CRM, automation and AI SEO for international businesses.";
+m.meta.blog.title = "Website, CRM and AI guides | WTECH";
+m.meta.notFound.title = "Page not found | wtech.to";
 
 m.hero.sub = "Premium websites, CRM, AI employees and automation — one connected system for businesses in the USA, Canada, Australia and Europe.";
 m.hero.facts.city = "USA · Canada · Australia · Europe";
+m.hero.videoAlt = "The wtech.to mark, a glowing glass ribbon slowly turning on a black background";
 
 m.services.items.websites.intro = "Conversion-focused business websites with original design, purposeful motion, reviewed English copy, fast loading and forms connected directly to your CRM.";
 m.services.items.websites.pageTitle = "Custom business website development";
@@ -39,6 +46,7 @@ m.services.items.websites.seoTitle = "Custom business website development | WTEC
 m.services.items.websites.seoDescription = "Custom business websites with original design, responsive development, reviewed English content, performance work and forms connected to your workflow.";
 m.services.items.websites.b2 = "English content reviewed for the target market, responsive across desktop, tablet and mobile.";
 m.services.items.crm.intro = "Custom CRM development built around your sales and service process. Pipeline, customer history, tasks, reporting and AI follow-up without per-seat lock-in.";
+m.services.items.crm.b3 = "Integrations with HubSpot, Salesforce, QuickBooks, Xero, Google Workspace, WhatsApp Business and other systems through their APIs.";
 m.services.items.crm.pageTitle = "Custom CRM and dashboard development";
 m.services.items.crm.seoTitle = "Custom CRM and dashboard development | WTECH";
 m.services.items.crm.seoDescription = "CRM systems and dashboards built around your sales and service process, with pipelines, reports, integrations and client-owned data.";
@@ -81,6 +89,8 @@ m.seo.ranking.k4 = "business software development";
 m.seo.ranking.k5 = "nearshore development team";
 m.seo.l2 = "English content engine: AI-assisted, human-edited and published monthly.";
 m.audit.whatsappPlaceholder = "+1 555 000 0000";
+m.audit.success = "Submitted. We review your website during business hours.";
+m.audit.successSub = "We will confirm the delivery time by WhatsApp and email after the initial review.";
 
 Object.assign(m.pricing, {
   eyebrow: "International WTECH packages",
@@ -105,10 +115,15 @@ m.faq.a4 = "On Vercel, AWS, Azure, Google Cloud, your own infrastructure or anot
 m.faq.q5 = "Do you work with international teams?";
 m.faq.a5 = "Yes. Delivery, documentation and project management are available in English, with planned overlap for North American, European and Australian working hours.";
 m.faq.a7 = "Yes. The packages are designed for small and mid-sized companies that need a serious website or operating system without large-agency overhead.";
+m.faq.q8 = "Can you integrate our CRM, accounting, payment or lead-generation tools?";
+m.faq.a8 = "Yes. We integrate systems such as HubSpot, Salesforce, QuickBooks, Xero, Stripe, Google Workspace, WhatsApp Business, Meta Lead Ads and industry platforms through their supported APIs. The proposal confirms each integration before work starts.";
 m.faq.a1_short = "You receive a written project price after the discovery call. The five international packages are priced in USD.";
 
 m.footer.tagline = "Software that runs your business. Built in Europe, delivered internationally.";
 m.footer.languages = "Market";
+m.footer.rights = "© 2026 WTECH. All rights reserved.";
+m.exit.sub = "Send the address and we will review speed, technical SEO and the signals that help answer engines understand your business.";
+m.about.title = "About WTECH";
 m.about.p1 = "WTECH is a European software studio building premium websites, booking systems, custom CRM, AI employees, automation and mobile applications for businesses in the USA, Canada, Australia and Europe.";
 m.about.p2 = "You work directly with an English-speaking product team. We combine original design, reliable engineering and connected business workflows without large-agency overhead.";
 m.about.f1 = "European team with international delivery";
@@ -117,7 +132,9 @@ m.about.f3 = "Fixed project price in USD or EUR";
 m.blog.sub = "Practical guides on websites, CRM, automation and AI SEO for international businesses.";
 m.schema.orgDescription = "European software studio serving the USA, Canada, Australia and Europe with premium websites, CRM, AI employees, automation and custom software.";
 m.schema.areaServed = "USA, Canada, Australia and Europe";
+m.faq.q1 = "How much does a website or custom CRM cost at WTECH?";
 m.chat.subtitle = "Answers in English about everything we build";
+m.chat.greeting = "Hi! I'm Ana, the AI employee at wtech.to. I can help with websites, CRM, AI agents, automations, custom software and technical SEO. What would you like to build?";
 m.chat.s3 = "Can you integrate our current tools?";
 
 fs.writeFileSync(out, JSON.stringify(m, null, 2) + "\n");

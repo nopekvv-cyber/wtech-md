@@ -39,11 +39,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
   const origin = await requestOrigin();
+  const international = (await requestMarket()) === "international";
+  const brand = international ? "wtech.to" : "wtech.md";
+  const socialImage = international ? "/og-intl.png" : `/og-${locale}.png`;
   return {
     metadataBase: new URL(origin),
-    title: { default: t("home.title"), template: "%s | wtech.md" },
+    title: { default: t("home.title"), template: `%s | ${brand}` },
     description: t("home.description"),
-    applicationName: "wtech.md",
+    applicationName: brand,
     icons: {
       icon: [
         { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
@@ -54,11 +57,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     manifest: "/site.webmanifest",
     openGraph: {
       type: "website",
-      siteName: "wtech.md",
+      siteName: brand,
       locale: locale === "ro" ? "ro_RO" : locale === "ru" ? "ru_RU" : "en_US",
-      images: [{ url: `/og-${locale}.png`, width: 1200, height: 630, alt: "wtech.md" }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: brand }],
     },
-    twitter: { card: "summary_large_image", images: [`/og-${locale}.png`] },
+    twitter: { card: "summary_large_image", images: [socialImage] },
     robots: { index: true, follow: true },
     verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
       ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }

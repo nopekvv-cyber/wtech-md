@@ -1,6 +1,6 @@
 {
   "meta": {
-    "siteName": "wtech.md",
+    "siteName": "wtech.to",
     "home": {
       "title": "WTECH | Websites, CRM, AI and custom software",
       "description": "Premium websites, booking systems, custom CRM, AI employees, automation and mobile apps for businesses in the USA, Canada, Australia and Europe. Written project proposal after discovery."
@@ -30,11 +30,11 @@
       "description": "WTECH is a European software studio serving businesses in the USA, Canada, Australia and Europe with websites, CRM, AI employees, automation and custom applications."
     },
     "blog": {
-      "title": "Web, CRM and AI guides for Moldova | wtech.md",
+      "title": "Website, CRM and AI guides | WTECH",
       "description": "Practical guides on websites, CRM, automation and AI SEO for international businesses."
     },
     "notFound": {
-      "title": "Page not found | wtech.md"
+      "title": "Page not found | wtech.to"
     }
   },
   "nav": {
@@ -55,8 +55,8 @@
     "back": "Back",
     "next": "Continue",
     "readMore": "Read",
-    "brandAlt": "wtech.md",
-    "markAlt": "The wtech.md mark, a glass ribbon shaped like a w",
+    "brandAlt": "wtech.to",
+    "markAlt": "The wtech.to mark, a glass ribbon shaped like a w",
     "demoData": "Demo data",
     "loading": "Loading"
   },
@@ -80,7 +80,7 @@
       "software": "Custom software",
       "seo": "AI SEO"
     },
-    "videoAlt": "The wtech.md mark, a glowing glass ribbon slowly turning on a black background"
+    "videoAlt": "The wtech.to mark, a glowing glass ribbon slowly turning on a black background"
   },
   "services": {
     "title": "Six things we build. They all connect.",
@@ -112,7 +112,7 @@
         "intro": "Custom CRM development built around your sales and service process. Pipeline, customer history, tasks, reporting and AI follow-up without per-seat lock-in.",
         "b1": "Custom pipeline: your stages, your fields, your languages.",
         "b2": "Dashboard with revenue, response time and win rate, updated live.",
-        "b3": "Integrations with 1C, Facebook Lead Ads, Gmail, WhatsApp Business and Telegram.",
+        "b3": "Integrations with HubSpot, Salesforce, QuickBooks, Xero, Google Workspace, WhatsApp Business and other systems through their APIs.",
         "b4": "The code is yours. No monthly per-user fee.",
         "b5": "Installed on your server or hosted by us, your choice.",
         "alt": "Dark CRM dashboard with a revenue chart"
@@ -380,8 +380,8 @@
     "whatsappPlaceholder": "+1 555 000 0000",
     "includeAi": "Include AI-visibility analysis (ChatGPT, Gemini, Perplexity)",
     "submit": "Send me the free audit",
-    "success": "Sent. You get the audit tomorrow.",
-    "successSub": "We send it on WhatsApp and by email after review during business hours.",
+    "success": "Submitted. We review your website during business hours.",
+    "successSub": "We will confirm the delivery time by WhatsApp and email after the initial review.",
     "error": "We could not send it. Message us directly on WhatsApp.",
     "invalidUrl": "Enter a valid address, for example https://your-company.com",
     "invalidEmail": "Enter a valid email address",
@@ -436,7 +436,7 @@
   },
   "faq": {
     "title": "The questions business owners ask us",
-    "q1": "How much does a website or a CRM cost at wtech.md?",
+    "q1": "How much does a website or custom CRM cost at WTECH?",
     "a1": "International WTECH packages start at USD 1,490 for START, USD 3,490 for BUSINESS, USD 6,900 for BOOKING, USD 14,900 for CRM & AI and USD 29,900 for COMPLETE. Each package includes the previous one; applicable tax is added separately.",
     "q2": "How long does it take?",
     "a2": "A presentation website takes 3 to 5 weeks. A custom CRM takes 6 to 10 weeks. An AI employee can be answering clients within 2 weeks. We work in two-week sprints and you see the result after every sprint.",
@@ -450,8 +450,8 @@
     "a6": "You get 30 days of support included. After that you can choose a monthly maintenance plan or call us when you need something. We do not lock you in.",
     "q7": "Do you work with small businesses?",
     "a7": "Yes. The packages are designed for small and mid-sized companies that need a serious website or operating system without large-agency overhead.",
-    "q8": "Can you integrate 1C, accounting, Amazon or Facebook Leads?",
-    "a8": "Yes. We integrate 1C and 1C accounting, Facebook and Instagram Lead Ads, Gmail and Google Workspace, WhatsApp Business, Telegram, Viber, maib, MICB, PayNet and MPay, plus Amazon and marketplaces through their APIs. If it has an API, we connect it.",
+    "q8": "Can you integrate our CRM, accounting, payment or lead-generation tools?",
+    "a8": "Yes. We integrate systems such as HubSpot, Salesforce, QuickBooks, Xero, Stripe, Google Workspace, WhatsApp Business, Meta Lead Ads and industry platforms through their supported APIs. The proposal confirms each integration before work starts.",
     "a1_short": "You receive a written project price after the discovery call. The five international packages are priced in USD."
   },
   "contact": {
@@ -502,7 +502,7 @@
     "audit": "Free audit",
     "legal": "Legal",
     "idno": "IDNO {idno}",
-    "rights": "© 2026 wtech.md. All rights reserved.",
+    "rights": "© 2026 WTECH. All rights reserved.",
     "languages": "Market",
     "privacy": "Privacy",
     "terms": "Terms",
@@ -525,7 +525,7 @@
   },
   "exit": {
     "title": "Before you go: a free audit of your website.",
-    "sub": "Send the address and tomorrow you get the speed, the SEO issues and what keeps you out of AI answers.",
+    "sub": "Send the address and we will review speed, technical SEO and the signals that help answer engines understand your business.",
     "cta": "Send me the free audit",
     "close": "No, thanks"
   },
@@ -563,7 +563,7 @@
     "cta": "I want something similar"
   },
   "about": {
-    "title": "About wtech.md",
+    "title": "About WTECH",
     "p1": "WTECH is a European software studio building premium websites, booking systems, custom CRM, AI employees, automation and mobile applications for businesses in the USA, Canada, Australia and Europe.",
     "p2": "You work directly with an English-speaking product team. We combine original design, reliable engineering and connected business workflows without large-agency overhead.",
     "p3": "We work with a simple process: a 30-minute call, a fixed-price proposal after the discovery call, two-week sprints, launch with 30 days of support. The client owns the code.",
@@ -605,7 +605,7 @@
     "close": "Close",
     "placeholder": "Type your question…",
     "send": "Send",
-    "greeting": "Hi! I'm Ana, the AI employee at wtech.md. I can help with websites, CRM, AI employees, automations, custom software and AI SEO. What would you like to build?",
+    "greeting": "Hi! I'm Ana, the AI employee at wtech.to. I can help with websites, CRM, AI agents, automations, custom software and technical SEO. What would you like to build?",
     "s1": "How much does a website cost?",
     "s2": "What does an AI employee do?",
     "s3": "Can you integrate our current tools?",

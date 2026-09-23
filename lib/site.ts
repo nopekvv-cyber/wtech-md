@@ -1,6 +1,7 @@
 import type { Locale } from "@/i18n/routing";
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://wtech.md").replace(/\/$/, "");
+export const INTERNATIONAL_SITE_URL = (process.env.NEXT_PUBLIC_INTERNATIONAL_SITE_URL ?? "https://wtech.to").replace(/\/$/, "");
 
 // Contact details: the admin-managed Supabase settings win. These environment values are fallbacks.
 // Empty means "not set" and the site hides the line. Runtime values come from lib/settings.ts.

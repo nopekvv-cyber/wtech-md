@@ -17,6 +17,7 @@
     "preview:prod": "ALLOW_PLACEHOLDERS=1 next build && next start",
     "check:env": "node scripts/check-env.mjs",
     "test:e2e": "playwright test",
+    "verify:intl": "node scripts/verify-international.mjs",
     "lighthouse": "node scripts/lighthouse.mjs",
     "verify": "node scripts/check-env.mjs && npm run check:lock && node scripts/check-placeholders.mjs && node scripts/check-i18n.mjs && tsc --noEmit && eslint . && next build && playwright test && node scripts/lighthouse.mjs",
     "knip": "knip",
