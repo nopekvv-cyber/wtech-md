@@ -371,7 +371,7 @@
     "cta": "Vreau un audit SEO + AI gratuit"
   },
   "audit": {
-    "title": "Audit gratuit al site-ului tău gratuit",
+    "title": "Audit gratuit al site-ului tău",
     "sub": "Trimite adresa site-ului. Mâine primești pe WhatsApp un audit de viteză, SEO, conversie și vizibilitate în răspunsurile AI.",
     "url": "Adresa site-ului",
     "urlPlaceholder": "https://firma-ta.md",
@@ -479,7 +479,7 @@
     "invalidName": "Spune-ne cum te cheamă",
     "invalidPhone": "Avem nevoie de un telefon sau WhatsApp valid",
     "aside": {
-      "reply": "Răspundem în < 1 oră în zilele lucrătoare",
+      "reply": "Răspundem în timpul programului, în zilele lucrătoare",
       "hours": "Luni – Vineri, 9:00 – 18:00",
       "address": "Adresă",
       "channels": "Scrie-ne unde îți e mai ușor",

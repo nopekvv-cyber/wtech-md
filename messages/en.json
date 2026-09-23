@@ -479,7 +479,7 @@
     "invalidName": "Tell us your name",
     "invalidPhone": "We need a valid phone or WhatsApp number",
     "aside": {
-      "reply": "We reply in < 1 hour on business days",
+      "reply": "We reply during business hours on business days",
       "hours": "Monday – Friday, 9:00 – 18:00 (EET)",
       "address": "Address",
       "channels": "Write to us wherever is easiest",
