@@ -11,6 +11,7 @@ import { umami } from "@/lib/site";
 import { requestMarket, requestOrigin } from "@/lib/market-server";
 import { getSite } from "@/lib/settings";
 import { SiteProvider } from "@/components/site/SiteContext";
+import { MarketProvider } from "@/components/site/MarketContext";
 import { BrandProvider } from "@/components/preloader/BrandContext";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
@@ -97,6 +98,7 @@ export default async function LocaleLayout({
           <Script id="dev-err" strategy="beforeInteractive" nonce={nonce}>{`window.__errs=[];(function(){function push(m){try{window.__errs.push(String(m).slice(0,6000))}catch(e){}}var o=console.error;console.error=function(){push(Array.prototype.map.call(arguments,function(a){return typeof a==='string'?a:(a&&a.message)||String(a)}).join(' '));o.apply(console,arguments)};window.addEventListener('error',function(e){push('[error] '+((e.error&&e.error.message)||e.message))});window.addEventListener('unhandledrejection',function(e){push('[rejection] '+((e.reason&&e.reason.message)||e.reason))})})();`}</Script>
         ) : null}
         <NextIntlClientProvider messages={messages}>
+          <MarketProvider international={international}>
           <ConsentProvider>
           <SiteProvider site={site}>
           <BrandProvider>
@@ -115,6 +117,7 @@ export default async function LocaleLayout({
           </SiteProvider>
           <AnalyticsConsent url={umami.url} websiteId={umami.websiteId} nonce={nonce} />
           </ConsentProvider>
+          </MarketProvider>
         </NextIntlClientProvider>
         <OrganizationSchema locale={locale as Locale} />
       </body>

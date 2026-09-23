@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 
 type Categories = { analytics: boolean; external: boolean };
 type ConsentContextValue = Categories & { openSettings: () => void };

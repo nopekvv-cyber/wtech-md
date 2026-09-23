@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 import type { Locale } from "@/i18n/routing";
 import { serviceSlugs } from "@/lib/services";
 import { LoopVideo } from "@/components/ui/LoopVideo";

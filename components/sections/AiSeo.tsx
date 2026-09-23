@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { m, useInView, useReducedMotion } from "framer-motion";
 import { ArrowUp, ArrowDown, Minus, Sparkles, Search, ArrowUpRight } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 import { Typewriter } from "@/components/ui/Typewriter";
 import { BundleShell } from "@/components/ui/BundleShell";
 

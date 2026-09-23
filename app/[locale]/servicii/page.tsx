@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 import { type Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import { serviceKeys, serviceMedia, serviceSlugs } from "@/lib/services";

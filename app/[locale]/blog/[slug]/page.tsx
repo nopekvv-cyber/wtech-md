@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link, getPathname } from "@/i18n/navigation";
+import { getPathname } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 import type { Locale } from "@/i18n/routing";
 import { alternatesFor } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";

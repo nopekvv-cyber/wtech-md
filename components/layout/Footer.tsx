@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 import { type Locale } from "@/i18n/routing";
 import { serviceKeys, serviceSlugs } from "@/lib/services";
 import { getSite } from "@/lib/settings";

@@ -9,7 +9,7 @@ import { whatsappHref } from "@/lib/site";
 import { useSite } from "@/components/site/SiteContext";
 import { track } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 import { useModalFocus } from "@/components/accessibility/useModalFocus";
 
 type Msg = { role: "user" | "assistant"; content: string };

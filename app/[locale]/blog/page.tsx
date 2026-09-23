@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 import { type Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import { blogSlugs, blogMeta } from "@/lib/blog";

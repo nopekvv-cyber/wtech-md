@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 
 export default function NotFound() {
   const t = useTranslations("notFound");

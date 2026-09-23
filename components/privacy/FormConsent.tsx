@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/site/MarketLink";
 
 export function FormConsent({ id, privacyAccepted, marketingConsent, error, onPrivacyChange, onMarketingChange, showMarketing = true }: { id: string; privacyAccepted: boolean; marketingConsent: boolean; error?: string; onPrivacyChange: (value: boolean) => void; onMarketingChange: (value: boolean) => void; showMarketing?: boolean }) {
   const t = useTranslations("consent");
