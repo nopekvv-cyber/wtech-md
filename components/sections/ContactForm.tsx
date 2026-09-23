@@ -4,18 +4,22 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { track } from "@/lib/analytics";
+import { FormConsent } from "@/components/privacy/FormConsent";
 
 const OPTIONS = ["o1", "o2", "o3", "o4", "o5"] as const;
 
 /** Two-step micro-commitment form. Step 1: one tappable question. Step 2: contact. Progress line uses the gradient. */
 export function ContactForm() {
   const t = useTranslations("contact");
+  const tConsent = useTranslations("consent");
   const locale = useLocale();
   const reduce = useReducedMotion();
   const [step, setStep] = useState<1 | 2>(1);
   const [choice, setChoice] = useState<string | null>(null);
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [startedAt] = useState(() => Date.now());
 
   function choose(k: string) {
@@ -32,8 +36,13 @@ export function ContactForm() {
     const errs: Record<string, string> = {};
     if (name.length < 2) errs.name = t("invalidName");
     if (phone.replace(/[^\d]/g, "").length < 8) errs.phone = t("invalidPhone");
+    if (!privacyAccepted) errs.privacy = tConsent("requiredError");
     setErrors(errs);
-    if (Object.keys(errs).length) return;
+    if (Object.keys(errs).length) {
+      const first = errs.name ? "ct-name" : errs.phone ? "ct-phone" : "contact-consent-privacy";
+      document.getElementById(first)?.focus();
+      return;
+    }
     setState("sending");
     try {
       const res = await fetch("/api/lead", {
@@ -43,6 +52,7 @@ export function ContactForm() {
           kind: "contact", locale, name, phone,
           email: String(fd.get("email") ?? ""), company: String(fd.get("company") ?? ""), message: String(fd.get("message") ?? ""),
           interest: choice ? t(choice as "o1") : "", website: String(fd.get("website") ?? ""), startedAt,
+          privacyAccepted, marketingConsent,
         }),
       });
       if (!res.ok) throw new Error(String(res.status));
@@ -92,12 +102,12 @@ export function ContactForm() {
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="label" htmlFor="ct-name">{t("name")}</label>
-                <input id="ct-name" name="name" className="field" autoComplete="name" aria-invalid={errors.name ? "true" : undefined} aria-describedby={errors.name ? "ct-name-err" : undefined} />
+                <input id="ct-name" name="name" className="field" autoComplete="name" required aria-required="true" aria-invalid={errors.name ? "true" : undefined} aria-describedby={errors.name ? "ct-name-err" : undefined} />
                 {errors.name ? <p id="ct-name-err" className="error-text" role="alert">{errors.name}</p> : null}
               </div>
               <div>
                 <label className="label" htmlFor="ct-phone">{t("phone")}</label>
-                <input id="ct-phone" name="phone" type="tel" inputMode="tel" className="field" autoComplete="tel" aria-invalid={errors.phone ? "true" : undefined} aria-describedby={errors.phone ? "ct-phone-err" : undefined} />
+                <input id="ct-phone" name="phone" type="tel" inputMode="tel" className="field" autoComplete="tel" required aria-required="true" aria-invalid={errors.phone ? "true" : undefined} aria-describedby={errors.phone ? "ct-phone-err" : undefined} />
                 {errors.phone ? <p id="ct-phone-err" className="error-text" role="alert">{errors.phone}</p> : null}
               </div>
               <div>
@@ -113,6 +123,7 @@ export function ContactForm() {
               <label className="label" htmlFor="ct-message">{t("message")}</label>
               <textarea id="ct-message" name="message" className="field min-h-[110px]" rows={3} />
             </div>
+            <FormConsent id="contact-consent" privacyAccepted={privacyAccepted} marketingConsent={marketingConsent} error={errors.privacy || undefined} onPrivacyChange={(value) => { setPrivacyAccepted(value); if (value) setErrors((old) => ({ ...old, privacy: "" })); }} onMarketingChange={setMarketingConsent} />
             {state === "error" ? <p className="error-text" role="alert">{t("error")}</p> : null}
             <div className="flex flex-wrap items-center gap-4">
               <button type="submit" className="btn btn-primary" disabled={state === "sending"}>{state === "sending" ? "…" : t("submit")}</button>

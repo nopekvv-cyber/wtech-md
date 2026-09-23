@@ -5,6 +5,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://wtech.md")
 // Contact details: the admin-managed Supabase settings win. These environment values are fallbacks.
 // Empty means "not set" and the site hides the line. Runtime values come from lib/settings.ts.
 export const contactDefaults = {
+  legalName: process.env.NEXT_PUBLIC_LEGAL_NAME ?? "",
   phone: process.env.NEXT_PUBLIC_PHONE ?? "",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
   telegram: process.env.NEXT_PUBLIC_TELEGRAM ?? "",

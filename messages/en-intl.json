@@ -3,7 +3,7 @@
     "siteName": "wtech.md",
     "home": {
       "title": "WTECH | Websites, CRM, AI and custom software",
-      "description": "Premium websites, booking systems, custom CRM, AI employees, automation and mobile apps for businesses in the USA, Canada, Australia and Europe. Fixed-price proposal in 48 hours."
+      "description": "Premium websites, booking systems, custom CRM, AI employees, automation and mobile apps for businesses in the USA, Canada, Australia and Europe. Written project proposal after discovery."
     },
     "services": {
       "title": "Services | wtech.md",
@@ -19,7 +19,7 @@
     },
     "contact": {
       "title": "Contact | wtech.md",
-      "description": "Message us on WhatsApp, Telegram or Viber, or book a 30-minute call. We reply in under an hour on business days."
+      "description": "Message us on WhatsApp, Telegram or Viber, or book a 30-minute call. We reply during business hours on business days."
     },
     "audit": {
       "title": "Free 24-hour website audit | wtech.md",
@@ -62,7 +62,7 @@
   },
   "hero": {
     "h1": "Your clients are messaging you. Someone has to answer in 4 minutes.",
-    "h1b": "Clients who come on their own. A system that never loses them.",
+    "h1b": "Clients who come on their own. A system that keeps every inquiry visible.",
     "sub": "Premium websites, CRM, AI employees and automation — one connected system for businesses in the USA, Canada, Australia and Europe.",
     "primary": "Book a 30-min call",
     "ghost": "See the live CRM demo",
@@ -90,9 +90,9 @@
         "before": "You have a website that looks like everyone else's and brings no clients.",
         "after": "You have a premium, animated site that convinces and brings quote requests every week.",
         "cta": "I want a site that brings clients",
-        "intro": "Conversion-focused business websites with original design, purposeful motion, native English copy, fast loading and forms connected directly to your CRM.",
+        "intro": "Conversion-focused business websites with original design, purposeful motion, reviewed English copy, fast loading and forms connected directly to your CRM.",
         "b1": "Unique design, not a template. Every section has a conversion job.",
-        "b2": "Native English content, responsive across desktop, tablet and mobile.",
+        "b2": "English content reviewed for the target market, responsive across desktop, tablet and mobile.",
         "b3": "Lighthouse above 90 on mobile. LCP under 1.2 seconds.",
         "b4": "Forms wired into the CRM, WhatsApp and Telegram from day one.",
         "b5": "Hosting, maintenance and 30 days of support included.",
@@ -329,7 +329,7 @@
   },
   "seo": {
     "title": "Show up in Google. And in AI answers.",
-    "sub": "Your clients ask ChatGPT, Gemini and Perplexity before they search Google. We make sure the answer mentions you.",
+    "sub": "Your clients ask ChatGPT, Gemini and Perplexity before they search Google. We improve the signals that can help answer engines cite your business.",
     "question": "Who builds premium business websites and connected CRM systems?",
     "answerIntro": "For businesses that want the website, CRM and AI workflow built as one system, one studio to consider is ",
     "answerBody": ", a European team serving clients across the USA, Canada, Australia and Europe with fixed-scope delivery and English-speaking project management.",
@@ -352,7 +352,7 @@
     "cta": "I want a free SEO + AI audit"
   },
   "audit": {
-    "title": "Free audit of your website in 24 h",
+    "title": "Request a free website audit",
     "sub": "Send your website address. Tomorrow you get a speed, SEO, conversion and AI-visibility audit on WhatsApp.",
     "url": "Website address",
     "urlPlaceholder": "https://your-company.com",
@@ -362,7 +362,7 @@
     "includeAi": "Include AI-visibility analysis (ChatGPT, Gemini, Perplexity)",
     "submit": "Send me the free audit",
     "success": "Sent. You get the audit tomorrow.",
-    "successSub": "We send it on WhatsApp and by email within 24 business hours.",
+    "successSub": "We send it on WhatsApp and by email after review during business hours.",
     "error": "We could not send it. Message us directly on WhatsApp.",
     "invalidUrl": "Enter a valid address, for example https://your-company.com",
     "invalidEmail": "Enter a valid email address",
@@ -433,11 +433,11 @@
     "a7": "Yes. The packages are designed for small and mid-sized companies that need a serious website or operating system without large-agency overhead.",
     "q8": "Can you integrate 1C, accounting, Amazon or Facebook Leads?",
     "a8": "Yes. We integrate 1C and 1C accounting, Facebook and Instagram Lead Ads, Gmail and Google Workspace, WhatsApp Business, Telegram, Viber, maib, MICB, PayNet and MPay, plus Amazon and marketplaces through their APIs. If it has an API, we connect it.",
-    "a1_short": "You receive an exact fixed price in writing within 48 hours after the 30-minute call. The five international packages are priced in USD."
+    "a1_short": "You receive a written project price after the discovery call. The five international packages are priced in USD."
   },
   "contact": {
     "title": "Let's talk about your business.",
-    "sub": "Two questions and we write back in under an hour on business days.",
+    "sub": "Two questions and we write back during business hours on business days.",
     "step1": "What do you want us to build?",
     "o1": "A website that brings clients",
     "o2": "A CRM so we stop losing leads",
@@ -454,7 +454,7 @@
     "next": "Continue",
     "back": "Back",
     "stepOf": "Step {step} of 2",
-    "success": "Thank you. We write back in under an hour.",
+    "success": "Thank you. We write back during business hours.",
     "successSub": "In the meantime you can book the 30-minute call directly.",
     "error": "We could not send it. Message us on WhatsApp or call us.",
     "invalidName": "Tell us your name",
@@ -484,7 +484,13 @@
     "legal": "Legal",
     "idno": "IDNO {idno}",
     "rights": "© 2026 wtech.md. All rights reserved.",
-    "languages": "Market"
+    "languages": "Market",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies",
+    "refunds": "Cancellations and refunds",
+    "sms": "SMS consent",
+    "cookieSettings": "Cookie settings"
   },
   "sticky": {
     "call": "Call",
@@ -521,7 +527,9 @@
     "sub": "Pick a time that suits you. We talk about your business, not about us.",
     "fallback": "Leave a number and we call you at the time you choose.",
     "when": "When should we call?",
-    "close": "Close"
+    "close": "Close",
+    "externalBlocked": "The external scheduler is blocked until you accept optional services. You can change your choice or use the form below.",
+    "openCookieSettings": "Open cookie settings"
   },
   "work": {
     "title": "Work",
@@ -539,7 +547,7 @@
     "title": "About wtech.md",
     "p1": "WTECH is a European software studio building premium websites, booking systems, custom CRM, AI employees, automation and mobile applications for businesses in the USA, Canada, Australia and Europe.",
     "p2": "You work directly with an English-speaking product team. We combine original design, reliable engineering and connected business workflows without large-agency overhead.",
-    "p3": "We work with a simple process: a 30-minute call, a fixed-price proposal within 48 hours, two-week sprints, launch with 30 days of support. The client owns the code.",
+    "p3": "We work with a simple process: a 30-minute call, a fixed-price proposal after the discovery call, two-week sprints, launch with 30 days of support. The client owns the code.",
     "facts": "In short",
     "f1": "European team with international delivery",
     "f2": "English-speaking project management and documentation",
@@ -583,17 +591,54 @@
     "s3": "Can you integrate our current tools?",
     "s4": "How do you work?",
     "typing": "Ana is typing…",
-    "error": "I can't answer right now. Message us on WhatsApp and we reply in under an hour.",
+    "error": "I can't answer right now. Message us on WhatsApp and we reply during business hours.",
     "offline": "The AI chat is not active on this server. Message us on WhatsApp or book a call.",
-    "leadSaved": "I've passed your details to the team. We write back in under an hour on business days.",
+    "leadSaved": "I've passed your details to the team. We write back during business hours on business days.",
     "whatsapp": "WhatsApp",
     "book": "Book a call",
-    "disclaimer": "Ana is an AI assistant. Final prices come in the fixed-price proposal."
+    "disclaimer": "Ana is an AI assistant. Final prices come in the fixed-price proposal.",
+    "privacyRequired": "Please confirm the Privacy Policy before sending a message.",
+    "privacyBefore": "I have read the ",
+    "privacyLink": "Privacy Policy",
+    "privacyAfter": " and agree that WTECH and Anthropic may process my messages to provide this response. *"
   },
   "errorPage": {
     "title": "Something went wrong. Not your fault.",
-    "sub": "The error is logged. Try again or message us on WhatsApp, we reply in under an hour.",
+    "sub": "The error is logged. Try again or message us on WhatsApp, we reply during business hours.",
     "retry": "Try again",
     "home": "Back home"
+  },
+  "legal": {
+    "updated": "Updated: {date}",
+    "businessDetails": "Business details",
+    "tradeName": "Trade name",
+    "legalName": "Registered legal name",
+    "address": "Address",
+    "registration": "Registration / IDNO",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "consent": {
+    "legend": "Consent",
+    "privacyBefore": "I have read the ",
+    "privacyLink": "Privacy Policy",
+    "privacyAfter": " and agree that my data may be used to answer this request. *",
+    "marketingBefore": "Optional: send me occasional news and offers by SMS or messaging under the ",
+    "smsLink": "SMS Consent Policy",
+    "marketingAfter": ". I can withdraw at any time.",
+    "requiredError": "Please confirm the Privacy Policy before sending the form."
+  },
+  "cookieBanner": {
+    "title": "Privacy preferences",
+    "body": "Necessary storage keeps the site working. You can choose analytics and the external scheduler separately.",
+    "analytics": "Optional analytics",
+    "analyticsDescription": "Helps us understand site use without behavioural advertising.",
+    "external": "Optional external scheduler",
+    "externalDescription": "Allows the third-party booking calendar to load.",
+    "save": "Save choices",
+    "accept": "Accept all optional",
+    "necessary": "Necessary only",
+    "privacy": "Privacy",
+    "cookies": "Cookie policy"
   }
 }

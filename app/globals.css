@@ -23,7 +23,7 @@
   --color-surface: #0a0a0b;
   --color-line: rgba(255, 255, 255, 0.08);
   --color-ink: #f5f1ea;
-  --color-dim: rgba(245, 241, 234, 0.56);
+  --color-dim: rgba(245, 241, 234, 0.68);
   --color-violet: #6e3bff;
   --color-coral: #ff7a6b;
   --color-cyan: #35e3f0;
@@ -39,7 +39,7 @@
   --surface: #0a0a0b;
   --border: rgba(255, 255, 255, 0.08);
   --text: #f5f1ea;
-  --text-dim: rgba(245, 241, 234, 0.56);
+  --text-dim: rgba(245, 241, 234, 0.68);
   --violet: #6e3bff;
   --coral: #ff7a6b;
   --cyan: #35e3f0;

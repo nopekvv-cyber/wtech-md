@@ -20,5 +20,10 @@ export const routing = defineRouting({
     "/despre": { ro: "/despre", ru: "/o-nas", en: "/about" },
     "/blog": "/blog",
     "/blog/[slug]": "/blog/[slug]",
+    "/legal-privacy": { ro: "/confidentialitate", ru: "/konfidentsialnost", en: "/privacy" },
+    "/legal-terms": { ro: "/termeni", ru: "/usloviya", en: "/terms" },
+    "/legal-cookies": { ro: "/cookie-uri", ru: "/fayly-cookie", en: "/cookies" },
+    "/legal-refunds": { ro: "/rambursari", ru: "/vozvraty", en: "/refunds" },
+    "/legal-sms-consent": { ro: "/consimtamant-sms", ru: "/sms-soglasie", en: "/sms-consent" },
   },
 });

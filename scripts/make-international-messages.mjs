@@ -6,7 +6,7 @@ const m = JSON.parse(fs.readFileSync(file, "utf8"));
 
 m.meta.home = {
   title: "WTECH | Websites, CRM, AI and custom software",
-  description: "Premium websites, booking systems, custom CRM, AI employees, automation and mobile apps for businesses in the USA, Canada, Australia and Europe. Fixed-price proposal in 48 hours.",
+  description: "Premium websites, booking systems, custom CRM, AI employees, automation and mobile apps for businesses in the USA, Canada, Australia and Europe. Written project proposal after discovery.",
 };
 m.meta.services.description = "Premium websites, CRM and dashboards, AI employees, automation, custom software and AI SEO for businesses in the USA, Canada, Australia and Europe.";
 m.meta.pricing.description = "Five cumulative WTECH packages for landing pages, business websites, booking systems, custom CRM, AI and mobile apps. International project prices from USD 1,490.";
@@ -19,8 +19,8 @@ m.meta.blog.description = "Practical guides on websites, CRM, automation and AI 
 m.hero.sub = "Premium websites, CRM, AI employees and automation — one connected system for businesses in the USA, Canada, Australia and Europe.";
 m.hero.facts.city = "USA · Canada · Australia · Europe";
 
-m.services.items.websites.intro = "Conversion-focused business websites with original design, purposeful motion, native English copy, fast loading and forms connected directly to your CRM.";
-m.services.items.websites.b2 = "Native English content, responsive across desktop, tablet and mobile.";
+m.services.items.websites.intro = "Conversion-focused business websites with original design, purposeful motion, reviewed English copy, fast loading and forms connected directly to your CRM.";
+m.services.items.websites.b2 = "English content reviewed for the target market, responsive across desktop, tablet and mobile.";
 m.services.items.crm.intro = "Custom CRM development built around your sales and service process. Pipeline, customer history, tasks, reporting and AI follow-up without per-seat lock-in.";
 m.services.items.ai.intro = "AI agents that answer through your website and messaging channels, qualify leads, send information, book meetings and write every conversation into the CRM.";
 m.services.items.ai.b1 = "Answers in English, 24/7, on every connected channel.";
@@ -73,7 +73,7 @@ m.faq.a4 = "On Vercel, AWS, Azure, Google Cloud, your own infrastructure or anot
 m.faq.q5 = "Do you work with international teams?";
 m.faq.a5 = "Yes. Delivery, documentation and project management are available in English, with planned overlap for North American, European and Australian working hours.";
 m.faq.a7 = "Yes. The packages are designed for small and mid-sized companies that need a serious website or operating system without large-agency overhead.";
-m.faq.a1_short = "You receive an exact fixed price in writing within 48 hours after the 30-minute call. The five international packages are priced in USD.";
+m.faq.a1_short = "You receive a written project price after the discovery call. The five international packages are priced in USD.";
 
 m.footer.tagline = "Software that runs your business. Built in Europe, delivered internationally.";
 m.footer.languages = "Market";

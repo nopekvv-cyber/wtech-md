@@ -19,6 +19,7 @@ export type Field = {
 };
 
 export const FIELDS: Field[] = [
+  { key: "contact.legal_name", group: "contact", label: "Registered legal name", hint: "Exact name from the company register", type: "text", max: 160 },
   { key: "contact.phone", group: "contact", label: "Phone", hint: "+373 69 000 000", type: "tel", max: 24 },
   { key: "contact.whatsapp", group: "contact", label: "WhatsApp number", hint: "+373 69 000 000", type: "tel", max: 24 },
   { key: "contact.telegram", group: "contact", label: "Telegram username", hint: "@wtechmd", type: "text", max: 40 },
@@ -35,7 +36,7 @@ export const FIELDS: Field[] = [
 ];
 
 export type Site = {
-  contact: { phone: string; phoneHref: string; whatsapp: string; telegram: string; viber: string; email: string; address: string; idno: string };
+  contact: { legalName: string; phone: string; phoneHref: string; whatsapp: string; telegram: string; viber: string; email: string; address: string; idno: string };
   socials: { facebook: string; instagram: string; linkedin: string };
   proof: { n1: string; n2: string; n3: string };
 };
@@ -43,6 +44,7 @@ export type Site = {
 /** Raw stored values merged over the environment fallbacks. */
 export const loadSettings = cache(async (): Promise<Record<string, string>> => {
   const env: Record<string, string> = {
+    "contact.legal_name": contactDefaults.legalName,
     "contact.phone": contactDefaults.phone,
     "contact.whatsapp": contactDefaults.whatsapp,
     "contact.telegram": contactDefaults.telegram,
@@ -66,6 +68,7 @@ export const getSite = cache(async (): Promise<Site> => {
   const g = (k: string) => s[k] ?? "";
   return {
     contact: {
+      legalName: g("contact.legal_name"),
       phone: g("contact.phone"),
       phoneHref: g("contact.phone").replace(/[^+\d]/g, ""), whatsapp: g("contact.whatsapp"), telegram: g("contact.telegram"),
       viber: g("contact.viber"), email: g("contact.email"), address: g("contact.address"), idno: g("contact.idno"),

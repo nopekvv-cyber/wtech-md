@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { internationalInternalPath, internationalRedirectPath, marketForHost } from "./lib/market";
+import { internationalInternalPath, internationalRedirectPath, marketForHost, moldovaLegalRedirectPath } from "./lib/market";
 
 /**
  * Adds a per-request CSP nonce and selects the public experience by host. The Moldova domain keeps its localized
@@ -51,6 +51,10 @@ export function middleware(req: NextRequest) {
       target.pathname = internationalInternalPath(req.nextUrl.pathname);
       res = NextResponse.rewrite(target, { request: { headers: requestHeaders } });
     }
+  } else if (market === "moldova" && moldovaLegalRedirectPath(req.nextUrl.pathname)) {
+    const target = req.nextUrl.clone();
+    target.pathname = moldovaLegalRedirectPath(req.nextUrl.pathname)!;
+    res = NextResponse.redirect(target, 308);
   } else {
     res = NextResponse.next({ request: { headers: requestHeaders } });
   }

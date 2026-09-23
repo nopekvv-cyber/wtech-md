@@ -6,6 +6,7 @@ import { getSite } from "@/lib/settings";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { LangSwitch } from "./Nav";
 import { AuditForm } from "@/components/sections/AuditForm";
+import { CookieSettingsButton } from "@/components/privacy/CookieSettingsButton";
 
 export async function Footer({ showLanguages = true, showBlog = true }: { showLanguages?: boolean; showBlog?: boolean }) {
   const [t, ts, locale, site] = await Promise.all([
@@ -52,6 +53,7 @@ export async function Footer({ showLanguages = true, showBlog = true }: { showLa
           <h2 className="text-[15px] text-dim mb-4">{t("languages")}</h2>
           {showLanguages ? <LangSwitch current={locale as Locale} /> : <p className="text-[13px] leading-relaxed text-dim">USA · Canada<br />Australia · Europe</p>}
           <address className="not-italic text-dim text-[14px] mt-8 space-y-1">
+            {contact.legalName ? <div>{contact.legalName}</div> : null}
             {contact.address ? <div>{contact.address}</div> : null}
             <div><a href={`mailto:${contact.email}`} className="hover:text-ink">{contact.email}</a></div>
             {contact.phone ? <div><a href={`tel:${contact.phoneHref}`} className="hover:text-ink">{contact.phone}</a></div> : null}
@@ -59,9 +61,19 @@ export async function Footer({ showLanguages = true, showBlog = true }: { showLa
         </div>
       </div>
       <div className="hairline">
-        <div className="container-x py-6 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-[13px] text-dim">
-          <span>{t("rights")}</span>
-          {contact.idno ? <span>{t("idno", { idno: contact.idno })}</span> : null}
+        <div className="container-x py-6 grid gap-4 text-[13px] text-dim">
+          <nav aria-label={t("legal")} className="flex flex-wrap gap-x-5 gap-y-2">
+            <Link href="/legal-privacy" className="hover:text-ink">{t("privacy")}</Link>
+            <Link href="/legal-terms" className="hover:text-ink">{t("terms")}</Link>
+            <Link href="/legal-cookies" className="hover:text-ink">{t("cookies")}</Link>
+            <Link href="/legal-refunds" className="hover:text-ink">{t("refunds")}</Link>
+            <Link href="/legal-sms-consent" className="hover:text-ink">{t("sms")}</Link>
+            <CookieSettingsButton className="hover:text-ink text-left" />
+          </nav>
+          <div className="flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+            <span>{t("rights")}</span>
+            {contact.idno ? <span>{t("idno", { idno: contact.idno })}</span> : null}
+          </div>
         </div>
       </div>
     </footer>

@@ -7,6 +7,7 @@ import { env } from "@/lib/env";
 import { clientIp, rateLimit, originAllowed, jsonError, log } from "@/lib/request-guard";
 import type { Locale } from "@/i18n/routing";
 import { marketForHost } from "@/lib/market";
+import { appendConsent, consentRecord } from "@/lib/compliance";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,6 +19,7 @@ const schema = z
       .array(z.object({ role: z.enum(["user", "assistant"]), content: z.string().trim().min(1).max(2000) }).strict())
       .min(1)
       .max(30),
+    privacyAccepted: z.literal(true),
   })
   .strict();
 
@@ -114,7 +116,7 @@ export async function POST(req: Request) {
                     phone: contact.phone,
                     email: contact.email,
                     interest: contact.interest,
-                    message: contact.summary,
+                    message: appendConsent(contact.summary, "chat", false),
                     ip,
                   });
                 } catch (e) {
@@ -124,7 +126,7 @@ export async function POST(req: Request) {
                   const delivered = await notifyAll({
                     title: LEAD_TITLE[locale],
                     locale,
-                    lines: [["Nume / Имя / Name", contact.name], ["Telefon", contact.phone], ["E-mail", contact.email], ["Interes", contact.interest], ["Rezumat", contact.summary], ["ID", String(id)]],
+                    lines: [["Nume / Имя / Name", contact.name], ["Telefon", contact.phone], ["E-mail", contact.email], ["Interes", contact.interest], ["Rezumat", contact.summary], ["Consimțământ", consentRecord("chat", false)], ["ID", String(id)]],
                   });
                   if (delivered && id) await markDelivered(id);
                   leadSent = true;

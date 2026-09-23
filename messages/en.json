@@ -3,7 +3,7 @@
     "siteName": "wtech.md",
     "home": {
       "title": "wtech.md | Websites, CRM, AI employees and automations in Chișinău",
-      "description": "Software development in Moldova: web agency in Chisinau building conversion-focused websites, custom CRM, AI employees that answer 24/7 and automations. One team, one system, fixed-price proposal in 48 hours. Nearshore-ready for EU companies."
+      "description": "Software development in Moldova: web agency in Chisinau building conversion-focused websites, custom CRM, AI employees that answer 24/7 and automations. One team, one system, a written proposal after discovery. Nearshore-ready for EU companies."
     },
     "services": {
       "title": "Services | wtech.md",
@@ -19,7 +19,7 @@
     },
     "contact": {
       "title": "Contact | wtech.md",
-      "description": "Message us on WhatsApp, Telegram or Viber, or book a 30-minute call. We reply in under an hour on business days."
+      "description": "Message us on WhatsApp, Telegram or Viber, or book a 30-minute call. We reply during business hours on business days."
     },
     "audit": {
       "title": "Free 24-hour website audit | wtech.md",
@@ -62,8 +62,8 @@
   },
   "hero": {
     "h1": "Your clients are messaging you. Someone has to answer in 4 minutes.",
-    "h1b": "Clients who come on their own. A system that never loses them.",
-    "sub": "Websites, CRM, AI employees and automations — one system, built in Chișinău, that never loses a lead.",
+    "h1b": "Clients who come on their own. A system that keeps every inquiry visible.",
+    "sub": "Websites, CRM, AI employees and automations — one system, built in Chișinău, that keeps leads in one visible workflow.",
     "primary": "Book a 30-min call",
     "ghost": "See the live CRM demo",
     "risk": "Fixed-price proposal within 48 h · No obligation",
@@ -90,9 +90,9 @@
         "before": "You have a website that looks like everyone else's and brings no clients.",
         "after": "You have a premium, animated site that convinces and brings quote requests every week.",
         "cta": "I want a site that brings clients",
-        "intro": "Web agency in Chisinau for businesses that want more than an online business card. Unique design, motion, RO/RU/EN, sub-second load, and forms that land straight in the CRM and on WhatsApp.",
+        "intro": "Web agency in Chisinau for businesses that want more than an online business card. Unique design, motion, RO/RU/EN, performance-focused build, and forms that land straight in the CRM and on WhatsApp.",
         "b1": "Unique design, not a template. Every section has a conversion job.",
-        "b2": "Trilingual RO/RU/EN, written natively, never machine-translated.",
+        "b2": "Trilingual RO/RU/EN, reviewed separately for each language.",
         "b3": "Lighthouse above 90 on mobile. LCP under 1.2 seconds.",
         "b4": "Forms wired into the CRM, WhatsApp and Telegram from day one.",
         "b5": "Hosting, maintenance and 30 days of support included.",
@@ -329,10 +329,10 @@
   },
   "seo": {
     "title": "Show up in Google. And in AI answers.",
-    "sub": "Your clients ask ChatGPT, Gemini and Perplexity before they search Google. We make sure the answer mentions you.",
+    "sub": "Your clients ask ChatGPT, Gemini and Perplexity before they search Google. We improve the signals that can help answer engines cite your business.",
     "question": "Who builds premium websites in Chișinău?",
-    "answerIntro": "For premium websites in Chișinău, one studio that comes up often is ",
-    "answerBody": ", a Chișinău-based team that builds animated websites, CRMs and AI employees for businesses in Moldova. They give a fixed-price proposal within 48 hours and work in Romanian, Russian and English.",
+    "answerIntro": "For premium websites in Chișinău, one studio to consider is ",
+    "answerBody": ", a Chișinău-based team that builds animated websites, CRMs and AI employees for businesses in Moldova. They give a fixed-price proposal after the discovery call and work in Romanian, Russian and English.",
     "sources": "Sources",
     "ranking": {
       "title": "Rankings and AI visibility",
@@ -352,7 +352,7 @@
     "cta": "I want a free SEO + AI audit"
   },
   "audit": {
-    "title": "Free audit of your website in 24 h",
+    "title": "Request a free website audit",
     "sub": "Send your website address. Tomorrow you get a speed, SEO, conversion and AI-visibility audit on WhatsApp.",
     "url": "Website address",
     "urlPlaceholder": "https://your-company.com",
@@ -362,7 +362,7 @@
     "includeAi": "Include AI-visibility analysis (ChatGPT, Gemini, Perplexity)",
     "submit": "Send me the free audit",
     "success": "Sent. You get the audit tomorrow.",
-    "successSub": "We send it on WhatsApp and by email within 24 business hours.",
+    "successSub": "We send it on WhatsApp and by email after review during business hours.",
     "error": "We could not send it. Message us directly on WhatsApp.",
     "invalidUrl": "Enter a valid address, for example https://your-company.com",
     "invalidEmail": "Enter a valid email address",
@@ -426,18 +426,18 @@
     "q4": "Where is the website or CRM hosted?",
     "a4": "Wherever you want: on your server, with a provider in Moldova or the EU, or with us. We deliver everything in Docker, so moving takes an hour, not a month.",
     "q5": "Do you build sites in Romanian, Russian and English?",
-    "a5": "Yes, and we write the copy natively in each language rather than machine-translating it. This site is in RO, RU and EN and is built exactly the way we build for clients.",
+    "a5": "Yes, and we review the copy separately for each language. This site is in RO, RU and EN and is built exactly the way we build for clients.",
     "q6": "What happens after launch?",
     "a6": "You get 30 days of support included. After that you can choose a monthly maintenance plan or call us when you need something. We do not lock you in.",
     "q7": "Do you work with small businesses?",
     "a7": "Yes. Most of our clients are companies with 3 to 50 employees in Chișinău, Bălți and the rest of Moldova, plus EU companies nearshoring development. If you have leads you cannot keep up with, you are exactly who we build for.",
     "q8": "Can you integrate 1C, accounting, Amazon or Facebook Leads?",
     "a8": "Yes. We integrate 1C and 1C accounting, Facebook and Instagram Lead Ads, Gmail and Google Workspace, WhatsApp Business, Telegram, Viber, maib, MICB, PayNet and MPay, plus Amazon and marketplaces through their APIs. If it has an API, we connect it.",
-    "a1_short": "You get the exact fixed price in writing within 48 hours after the 30-minute call. All five packages and EUR prices are on the pricing page."
+    "a1_short": "You get the exact fixed price in writing after the discovery call after the 30-minute call. All five packages and EUR prices are on the pricing page."
   },
   "contact": {
     "title": "Let's talk about your business.",
-    "sub": "Two questions and we write back in under an hour on business days.",
+    "sub": "Two questions and we write back during business hours on business days.",
     "step1": "What do you want us to build?",
     "o1": "A website that brings clients",
     "o2": "A CRM so we stop losing leads",
@@ -454,7 +454,7 @@
     "next": "Continue",
     "back": "Back",
     "stepOf": "Step {step} of 2",
-    "success": "Thank you. We write back in under an hour.",
+    "success": "Thank you. We write back during business hours.",
     "successSub": "In the meantime you can book the 30-minute call directly.",
     "error": "We could not send it. Message us on WhatsApp or call us.",
     "invalidName": "Tell us your name",
@@ -484,7 +484,13 @@
     "legal": "Legal",
     "idno": "IDNO {idno}",
     "rights": "© 2026 wtech.md. All rights reserved.",
-    "languages": "Languages"
+    "languages": "Languages",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies",
+    "refunds": "Cancellations and refunds",
+    "sms": "SMS consent",
+    "cookieSettings": "Cookie settings"
   },
   "sticky": {
     "call": "Call",
@@ -521,7 +527,9 @@
     "sub": "Pick a time that suits you. We talk about your business, not about us.",
     "fallback": "Leave a number and we call you at the time you choose.",
     "when": "When should we call?",
-    "close": "Close"
+    "close": "Close",
+    "externalBlocked": "The external scheduler is blocked until you accept optional services. You can change your choice or use the form below.",
+    "openCookieSettings": "Open cookie settings"
   },
   "work": {
     "title": "Work",
@@ -538,12 +546,12 @@
   "about": {
     "title": "About wtech.md",
     "p1": "wtech.md is a software studio in Chișinău, Moldova. We build websites, CRMs, AI employees, automations, custom apps and AI SEO for businesses in Moldova and for EU companies looking for a nearshore team.",
-    "p2": "We believe a small business in Moldova deserves the same level of software as a company in Berlin: fast, beautiful, connected and in its clients' language. That is why we write in Romanian, Russian and English, invoice in MDL or EUR, and reply in under an hour.",
-    "p3": "We work with a simple process: a 30-minute call, a fixed-price proposal within 48 hours, two-week sprints, launch with 30 days of support. The client owns the code.",
+    "p2": "We believe a small business in Moldova deserves the same level of software as a company in Berlin: fast, beautiful, connected and in its clients' language. That is why we write in Romanian, Russian and English, work in Romanian, Russian and English and reply during business hours.",
+    "p3": "We work with a simple process: a 30-minute call, a fixed-price proposal after the discovery call, two-week sprints, launch with 30 days of support. The client owns the code.",
     "facts": "In short",
     "f1": "Based in Chișinău, Republic of Moldova, EU time zone",
-    "f2": "Romanian, Russian and English, written natively",
-    "f3": "Fixed price in MDL or EUR, fiscal invoice",
+    "f2": "Content in Romanian, Russian and English",
+    "f3": "Price and terms confirmed in the proposal",
     "f4": "Six services, one team",
     "cta": "Book a 30-min call"
   },
@@ -583,17 +591,54 @@
     "s3": "Can you integrate 1C?",
     "s4": "How do you work?",
     "typing": "Ana is typing…",
-    "error": "I can't answer right now. Message us on WhatsApp and we reply in under an hour.",
+    "error": "I can't answer right now. Message us on WhatsApp and we reply during business hours.",
     "offline": "The AI chat is not active on this server. Message us on WhatsApp or book a call.",
-    "leadSaved": "I've passed your details to the team. We write back in under an hour on business days.",
+    "leadSaved": "I've passed your details to the team. We write back during business hours on business days.",
     "whatsapp": "WhatsApp",
     "book": "Book a call",
-    "disclaimer": "Ana is an AI assistant. Final prices come in the fixed-price proposal."
+    "disclaimer": "Ana is an AI assistant. Final prices come in the fixed-price proposal.",
+    "privacyRequired": "Please confirm the Privacy Policy before sending a message.",
+    "privacyBefore": "I have read the ",
+    "privacyLink": "Privacy Policy",
+    "privacyAfter": " and agree that WTECH and Anthropic may process my messages to provide this response. *"
   },
   "errorPage": {
     "title": "Something went wrong. Not your fault.",
-    "sub": "The error is logged. Try again or message us on WhatsApp, we reply in under an hour.",
+    "sub": "The error is logged. Try again or message us on WhatsApp, we reply during business hours.",
     "retry": "Try again",
     "home": "Back home"
+  },
+  "legal": {
+    "updated": "Updated: {date}",
+    "businessDetails": "Business details",
+    "tradeName": "Trade name",
+    "legalName": "Registered legal name",
+    "address": "Address",
+    "registration": "Registration / IDNO",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "consent": {
+    "legend": "Consent",
+    "privacyBefore": "I have read the ",
+    "privacyLink": "Privacy Policy",
+    "privacyAfter": " and agree that my data may be used to answer this request. *",
+    "marketingBefore": "Optional: send me occasional news and offers by SMS or messaging under the ",
+    "smsLink": "SMS Consent Policy",
+    "marketingAfter": ". I can withdraw at any time.",
+    "requiredError": "Please confirm the Privacy Policy before sending the form."
+  },
+  "cookieBanner": {
+    "title": "Privacy preferences",
+    "body": "Necessary storage keeps the site working. You can choose analytics and the external scheduler separately.",
+    "analytics": "Optional analytics",
+    "analyticsDescription": "Helps us understand site use without behavioural advertising.",
+    "external": "Optional external scheduler",
+    "externalDescription": "Allows the third-party booking calendar to load.",
+    "save": "Save choices",
+    "accept": "Accept all optional",
+    "necessary": "Necessary only",
+    "privacy": "Privacy",
+    "cookies": "Cookie policy"
   }
 }

@@ -2,6 +2,7 @@ import { z } from "zod";
 import { insertLead, markDelivered } from "@/lib/db";
 import { notifyAll } from "@/lib/notify";
 import { clientIp, rateLimit, originAllowed, looksLikeBot, normalizePhone, normalizeEmail, jsonError, log } from "@/lib/request-guard";
+import { appendConsent, consentRecord } from "@/lib/compliance";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -19,6 +20,8 @@ const schema = z
     when: z.string().trim().max(120).optional().default(""),
     website: z.string().max(200).optional().default(""), // honeypot
     startedAt: z.number().int().positive().optional(),
+    privacyAccepted: z.literal(true),
+    marketingConsent: z.boolean().optional().default(false),
   })
   .strict();
 
@@ -45,7 +48,7 @@ export async function POST(req: Request) {
 
   let id: number;
   try {
-    id = await insertLead({ kind: d.kind, locale: d.locale, name: d.name, phone, email, company: d.company, message: d.message, interest: d.interest || d.when, ip });
+    id = await insertLead({ kind: d.kind, locale: d.locale, name: d.name, phone, email, company: d.company, message: appendConsent(d.message, d.kind, d.marketingConsent), interest: d.interest || d.when, ip });
   } catch (e) {
     log("error", "lead insert failed", { err: String(e) });
     return jsonError("unavailable", 503);
@@ -54,7 +57,7 @@ export async function POST(req: Request) {
     const delivered = await notifyAll({
       title: TITLES[d.kind][d.locale],
       locale: d.locale,
-      lines: [["Nume / Имя / Name", d.name], ["Telefon", phone], ["E-mail", email], ["Companie", d.company], ["Interes", d.interest], ["Când", d.when], ["Mesaj", d.message], ["ID", String(id)]],
+      lines: [["Nume / Имя / Name", d.name], ["Telefon", phone], ["E-mail", email], ["Companie", d.company], ["Interes", d.interest], ["Când", d.when], ["Mesaj", d.message], ["Consimțământ", consentRecord(d.kind, d.marketingConsent)], ["ID", String(id)]],
     });
     if (delivered) await markDelivered(id);
   } catch (e) {

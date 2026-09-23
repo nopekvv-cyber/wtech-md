@@ -3,16 +3,20 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
+import { FormConsent } from "@/components/privacy/FormConsent";
 
 /** 3-field lead magnet (URL, email, WhatsApp) -> /api/audit -> Telegram + SMTP. */
 export function AuditForm({ compact = false, place = "section", showAi = false }: { compact?: boolean; place?: string; showAi?: boolean }) {
   const t = useTranslations("audit");
+  const tConsent = useTranslations("consent");
   const locale = useLocale();
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [ai, setAi] = useState(showAi);
   const [startedAt] = useState(() => Date.now());
   const [aiOffered, setAiOffered] = useState(showAi);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
   // ?ai=1 (from the AI SEO section CTA) pre-ticks the AI-visibility checkbox; read without useSearchParams so no Suspense boundary is needed
   useEffect(() => {
     try {
@@ -30,14 +34,19 @@ export function AuditForm({ compact = false, place = "section", showAi = false }
     if (!/^(https?:\/\/)?[a-z0-9-]+(\.[a-z0-9-]+)+/i.test(url)) errs.url = t("invalidUrl");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = t("invalidEmail");
     if (whatsapp.replace(/[^\d]/g, "").length < 8) errs.whatsapp = t("invalidPhone");
+    if (!privacyAccepted) errs.privacy = tConsent("requiredError");
     setErrors(errs);
-    if (Object.keys(errs).length) return;
+    if (Object.keys(errs).length) {
+      const first = errs.url ? `${place}-audit-url` : errs.email ? `${place}-audit-email` : errs.whatsapp ? `${place}-audit-wa` : `${place}-audit-consent-privacy`;
+      document.getElementById(first)?.focus();
+      return;
+    }
     setState("sending");
     try {
       const res = await fetch("/api/audit", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ locale, url, email, whatsapp, includeAi: ai, website: String(fd.get("website") ?? ""), place, startedAt }),
+        body: JSON.stringify({ locale, url, email, whatsapp, includeAi: ai, website: String(fd.get("website") ?? ""), place, startedAt, privacyAccepted, marketingConsent }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setState("sent");
@@ -62,17 +71,17 @@ export function AuditForm({ compact = false, place = "section", showAi = false }
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div>
         <label className="label" htmlFor={`${idp}-url`}>{t("url")}</label>
-        <input id={`${idp}-url`} name="url" type="url" inputMode="url" className="field" placeholder={t("urlPlaceholder")} autoComplete="url" aria-invalid={errors.url ? "true" : undefined} aria-describedby={errors.url ? `${idp}-url-err` : undefined} />
+        <input id={`${idp}-url`} name="url" type="url" inputMode="url" className="field" placeholder={t("urlPlaceholder")} autoComplete="url" required aria-required="true" aria-invalid={errors.url ? "true" : undefined} aria-describedby={errors.url ? `${idp}-url-err` : undefined} />
         {errors.url ? <p id={`${idp}-url-err`} className="error-text" role="alert">{errors.url}</p> : null}
       </div>
       <div>
         <label className="label" htmlFor={`${idp}-email`}>{t("email")}</label>
-        <input id={`${idp}-email`} name="email" type="email" inputMode="email" className="field" autoComplete="email" aria-invalid={errors.email ? "true" : undefined} aria-describedby={errors.email ? `${idp}-email-err` : undefined} />
+        <input id={`${idp}-email`} name="email" type="email" inputMode="email" className="field" autoComplete="email" required aria-required="true" aria-invalid={errors.email ? "true" : undefined} aria-describedby={errors.email ? `${idp}-email-err` : undefined} />
         {errors.email ? <p id={`${idp}-email-err`} className="error-text" role="alert">{errors.email}</p> : null}
       </div>
       <div>
         <label className="label" htmlFor={`${idp}-wa`}>{t("whatsapp")}</label>
-        <input id={`${idp}-wa`} name="whatsapp" type="tel" inputMode="tel" className="field" placeholder={t("whatsappPlaceholder")} autoComplete="tel" aria-invalid={errors.whatsapp ? "true" : undefined} aria-describedby={errors.whatsapp ? `${idp}-wa-err` : undefined} />
+        <input id={`${idp}-wa`} name="whatsapp" type="tel" inputMode="tel" className="field" placeholder={t("whatsappPlaceholder")} autoComplete="tel" required aria-required="true" aria-invalid={errors.whatsapp ? "true" : undefined} aria-describedby={errors.whatsapp ? `${idp}-wa-err` : undefined} />
         {errors.whatsapp ? <p id={`${idp}-wa-err`} className="error-text" role="alert">{errors.whatsapp}</p> : null}
       </div>
       {aiOffered ? (
@@ -81,6 +90,9 @@ export function AuditForm({ compact = false, place = "section", showAi = false }
           {t("includeAi")}
         </label>
       ) : null}
+      <div className={compact ? "" : "md:col-span-3"}>
+        <FormConsent id={`${idp}-consent`} privacyAccepted={privacyAccepted} marketingConsent={marketingConsent} error={errors.privacy || undefined} onPrivacyChange={(value) => { setPrivacyAccepted(value); if (value) setErrors((old) => ({ ...old, privacy: "" })); }} onMarketingChange={setMarketingConsent} />
+      </div>
       <div className={compact ? "" : "md:col-span-3"}>
         <button type="submit" className="btn btn-primary" disabled={state === "sending"}>{state === "sending" ? "…" : t("submit")}</button>
         {state === "error" ? <p className="error-text" role="alert">{t("error")}</p> : null}

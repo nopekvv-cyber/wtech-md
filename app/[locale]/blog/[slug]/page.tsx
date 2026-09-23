@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!blogSlugs.includes(slug as BlogSlug)) return {};
   const t = await getTranslations({ locale, namespace: "blog" });
   const m = blogMeta[slug as BlogSlug];
-  return { title: t(`${m.key}t`), description: t(`${m.key}e`), alternates: await alternatesFor({ pathname: "/blog/[slug]", params: { slug } }, locale as Locale) };
+  return { title: t(`${m.key}t`), description: t(`${m.key}e`), alternates: await alternatesFor({ pathname: "/blog/[slug]", params: { slug } }, locale as Locale), robots: { index: false, follow: true } };
 }
 
 export default async function Post({ params }: { params: Promise<{ locale: string; slug: string }> }) {

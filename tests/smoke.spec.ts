@@ -186,6 +186,7 @@ test.describe("forms and API", () => {
     await expect(page.locator('[role="alert"]').first()).toBeVisible(); // name missing
     await page.fill("#ct-name", "Test <b>SRL</b>");
     await page.fill("#ct-phone", "+373 69 123 456");
+    await page.locator("#contact-consent-privacy").check();
     await page.waitForTimeout(2200); // time-to-submit guard
     await form.locator('button[type="submit"]').click();
     await expect(form.locator('[role="status"]').or(page.locator('#main [role="status"]')).first()).toBeVisible(); // the locale banner is a status too
@@ -206,6 +207,7 @@ test.describe("forms and API", () => {
     await expect(form.locator('input[name="url"]')).toHaveValue("firma.md");
     await form.locator('input[name="email"]').fill("test@firma.md");
     await form.locator('input[name="whatsapp"]').fill("+373 60 000 000");
+    await form.locator('input[id$="-consent-privacy"]').check();
     await page.waitForTimeout(2200);
     await form.locator('button[type="submit"]').click();
     await expect(form.locator('[role="status"]').or(page.locator('#main [role="status"]')).first()).toBeVisible(); // the locale banner is a status too
@@ -217,7 +219,7 @@ test.describe("forms and API", () => {
     const origin = baseURL!;
     // own rate-limit bucket: the test server trusts X-Forwarded-For, so each project and this test get a distinct IP
     const json = { "content-type": "application/json", "x-forwarded-for": `10.99.${testInfo.workerIndex}.${1 + testInfo.retry}` };
-    const body = { locale: "ro", url: "firma.md", email: "a@b.md", whatsapp: "+37360000000", startedAt: 1000 };
+    const body = { locale: "ro", url: "firma.md", email: "a@b.md", whatsapp: "+37360000000", startedAt: 1000, privacyAccepted: true };
     expect((await request.post("/api/audit", { data: body, headers: { ...json } })).status()).toBe(403);
     expect((await request.get("/api/audit")).status()).toBe(405);
     const before = telegramMessages().length;

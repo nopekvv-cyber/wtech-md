@@ -6,9 +6,9 @@ export type Locale = (typeof LOCALES)[number];
 
 /** Every route per locale, with the localised slugs from i18n/routing.ts */
 export const PAGES: Record<Locale, string[]> = {
-  ro: ["/", "/servicii", "/servicii/site-uri", "/servicii/ai-seo", "/lucrari", "/preturi", "/contact", "/audit", "/despre", "/blog", "/blog/crm-pentru-afaceri-moldova"],
-  ru: ["/ru", "/ru/uslugi", "/ru/uslugi/sayty", "/ru/uslugi/ai-seo", "/ru/raboty", "/ru/ceny", "/ru/contact", "/ru/audit", "/ru/o-nas", "/ru/blog", "/ru/blog/crm-pentru-afaceri-moldova"],
-  en: ["/en", "/en/services", "/en/services/websites", "/en/services/ai-seo", "/en/work", "/en/pricing", "/en/contact", "/en/audit", "/en/about", "/en/blog", "/en/blog/crm-pentru-afaceri-moldova"],
+  ro: ["/", "/servicii", "/servicii/site-uri", "/servicii/ai-seo", "/lucrari", "/preturi", "/contact", "/audit", "/despre", "/blog", "/blog/crm-pentru-afaceri-moldova", "/confidentialitate", "/termeni", "/cookie-uri", "/rambursari", "/consimtamant-sms"],
+  ru: ["/ru", "/ru/uslugi", "/ru/uslugi/sayty", "/ru/uslugi/ai-seo", "/ru/raboty", "/ru/ceny", "/ru/contact", "/ru/audit", "/ru/o-nas", "/ru/blog", "/ru/blog/crm-pentru-afaceri-moldova", "/ru/konfidentsialnost", "/ru/usloviya", "/ru/fayly-cookie", "/ru/vozvraty", "/ru/sms-soglasie"],
+  en: ["/en", "/en/services", "/en/services/websites", "/en/services/ai-seo", "/en/work", "/en/pricing", "/en/contact", "/en/audit", "/en/about", "/en/blog", "/en/blog/crm-pentru-afaceri-moldova", "/en/privacy", "/en/terms", "/en/cookies", "/en/refunds", "/en/sms-consent"],
 };
 
 export type Watch = { consoleErrors: string[]; pageErrors: string[]; failedRequests: string[]; csp: string[] };
@@ -65,5 +65,5 @@ export function telegramMessages(): Array<{ url: string; body: { text?: string }
 
 /** Skip the preloader for tests that are not about it. */
 export async function markSeen(page: Page) {
-  await page.addInitScript(() => { try { sessionStorage.setItem("wtech_seen", "1"); } catch {} });
+  await page.addInitScript(() => { try { sessionStorage.setItem("wtech_seen", "1"); localStorage.setItem("wtech_consent_v1", JSON.stringify({ version: 2, analytics: false, external: false })); } catch {} });
 }

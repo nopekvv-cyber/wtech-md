@@ -9,6 +9,8 @@ import { whatsappHref } from "@/lib/site";
 import { useSite } from "@/components/site/SiteContext";
 import { track } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
+import { useModalFocus } from "@/components/accessibility/useModalFocus";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -26,17 +28,16 @@ export function AnaChat({ open, onClose }: { open: boolean; onClose: () => void 
   const [busy, setBusy] = useState(false);
   const [offline, setOffline] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [privacyError, setPrivacyError] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const modalRef = useModalFocus(open, onClose);
 
   useEffect(() => {
     if (!open) return;
     track("chat_open");
-    const id = setTimeout(() => inputRef.current?.focus(), 250);
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
-    return () => { clearTimeout(id); window.removeEventListener("keydown", onKey); };
-  }, [open, onClose]);
+  }, [open]);
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
@@ -45,6 +46,7 @@ export function AnaChat({ open, onClose }: { open: boolean; onClose: () => void 
   async function send(text: string) {
     const q = text.trim();
     if (!q || busy) return;
+    if (!privacyAccepted) { setPrivacyError(true); document.getElementById("chat-privacy")?.focus(); return; }
     setInput("");
     setNotice(null);
     const next: Msg[] = [...msgs, { role: "user", content: q }];
@@ -55,7 +57,7 @@ export function AnaChat({ open, onClose }: { open: boolean; onClose: () => void 
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ locale, messages: next }),
+        body: JSON.stringify({ locale, messages: next, privacyAccepted }),
       });
       if (res.status === 503) { setOffline(true); setMsgs(next); return; }
       if (!res.ok || !res.body) throw new Error(String(res.status));
@@ -92,6 +94,7 @@ export function AnaChat({ open, onClose }: { open: boolean; onClose: () => void 
     <AnimatePresence>
       {open ? (
         <m.div
+          ref={modalRef}
           role="dialog"
           aria-modal="true"
           aria-labelledby="ana-title"
@@ -144,24 +147,31 @@ export function AnaChat({ open, onClose }: { open: boolean; onClose: () => void 
           </div>
 
           <form
-            className="flex items-center gap-2 px-3 py-3 border-t border-line"
+            className="px-3 py-3 border-t border-line"
             style={{ paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}
             onSubmit={(e) => { e.preventDefault(); send(input); }}
           >
-            <input
-              ref={inputRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="field flex-1 min-h-[44px] py-2"
-              placeholder={t("placeholder")}
-              aria-label={t("placeholder")}
-              maxLength={2000}
-              disabled={offline}
-              autoComplete="off"
-            />
-            <button type="submit" className="btn btn-primary min-h-[44px] px-4" disabled={busy || offline || !input.trim()} aria-label={t("send")}>
-              <Send size={16} aria-hidden="true" />
-            </button>
+            <label className="flex items-start gap-2 px-1 pb-3 text-[11px] leading-relaxed text-dim">
+              <input id="chat-privacy" data-autofocus type="checkbox" checked={privacyAccepted} onChange={(e) => { setPrivacyAccepted(e.target.checked); if (e.target.checked) setPrivacyError(false); }} className="mt-0.5 h-4 w-4 shrink-0 accent-[#F5F1EA]" required aria-invalid={privacyError ? "true" : undefined} aria-describedby={privacyError ? "chat-privacy-error" : undefined} />
+              <span>{t("privacyBefore")}<Link href="/legal-privacy" className="link-inline">{t("privacyLink")}</Link>{t("privacyAfter")}</span>
+            </label>
+            {privacyError ? <p id="chat-privacy-error" className="error-text px-1 pb-2" role="alert">{t("privacyRequired")}</p> : null}
+            <div className="flex items-center gap-2">
+              <input
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                className="field flex-1 min-h-[44px] py-2"
+                placeholder={t("placeholder")}
+                aria-label={t("placeholder")}
+                maxLength={2000}
+                disabled={offline}
+                autoComplete="off"
+              />
+              <button type="submit" className="btn btn-primary min-h-[44px] px-4" disabled={busy || offline || !input.trim()} aria-label={t("send")}>
+                <Send size={16} aria-hidden="true" />
+              </button>
+            </div>
           </form>
           <p className="text-dim text-[11px] px-4 pb-2 lg:pb-3">{t("disclaimer")}</p>
         </m.div>

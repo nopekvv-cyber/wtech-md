@@ -3,7 +3,6 @@ import { routing, locales, type Locale } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
 import { SITE_URL } from "@/lib/site";
 import { serviceKeys, serviceSlugs } from "@/lib/services";
-import { blogSlugs } from "@/lib/blog";
 import { internationalPublicPath } from "@/lib/market";
 import { requestMarket, requestOrigin } from "@/lib/market-server";
 
@@ -46,6 +45,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       internationalEntry(origin, "/contact", 0.8),
       internationalEntry(origin, "/audit", 0.8),
       internationalEntry(origin, "/despre", 0.6),
+      internationalEntry(origin, "/privacy", 0.3),
+      internationalEntry(origin, "/terms", 0.3),
+      internationalEntry(origin, "/cookies", 0.3),
+      internationalEntry(origin, "/refunds", 0.3),
+      internationalEntry(origin, "/sms-consent", 0.3),
     ];
     for (const key of serviceKeys) {
       const internalPath = getPathname({ href: { pathname: "/servicii/[slug]", params: { slug: serviceSlugs[key].en } }, locale: "en" });
@@ -62,7 +66,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     moldovaEntry("/contact", 0.8),
     moldovaEntry("/audit", 0.8),
     moldovaEntry("/despre", 0.6),
-    moldovaEntry("/blog", 0.6),
+    moldovaEntry("/legal-privacy", 0.3),
+    moldovaEntry("/legal-terms", 0.3),
+    moldovaEntry("/legal-cookies", 0.3),
+    moldovaEntry("/legal-refunds", 0.3),
+    moldovaEntry("/legal-sms-consent", 0.3),
   ];
   for (const key of serviceKeys) {
     const languages: Record<string, string> = {};
@@ -73,6 +81,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     languages["x-default"] = ro;
     out.push({ url: ro, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9, alternates: { languages } });
   }
-  for (const slug of blogSlugs) out.push(moldovaEntry({ pathname: "/blog/[slug]", params: { slug } }, 0.5));
   return out;
 }

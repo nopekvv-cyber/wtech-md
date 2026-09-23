@@ -2,6 +2,7 @@ import { z } from "zod";
 import { insertLead, markDelivered } from "@/lib/db";
 import { notifyAll } from "@/lib/notify";
 import { clientIp, rateLimit, originAllowed, looksLikeBot, normalizePhone, normalizeEmail, jsonError, log } from "@/lib/request-guard";
+import { appendConsent, consentRecord } from "@/lib/compliance";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -16,10 +17,12 @@ const schema = z
     place: z.string().max(40).optional().default(""),
     website: z.string().max(200).optional().default(""),
     startedAt: z.number().int().positive().optional(),
+    privacyAccepted: z.literal(true),
+    marketingConsent: z.boolean().optional().default(false),
   })
   .strict();
 
-const TITLE = { ro: "Cerere audit gratuit (24 h)", ru: "Запрос бесплатного аудита (24 ч)", en: "Free audit request (24 h)" } as const;
+const TITLE = { ro: "Cerere audit gratuit", ru: "Запрос бесплатного аудита", en: "Free audit request" } as const;
 
 export async function POST(req: Request) {
   const ip = clientIp(req);
@@ -45,7 +48,7 @@ export async function POST(req: Request) {
 
   let id: number;
   try {
-    id = await insertLead({ kind: "audit", locale: d.locale, phone: whatsapp, email, url, interest: d.includeAi ? "audit+ai" : "audit", message: d.place, ip });
+    id = await insertLead({ kind: "audit", locale: d.locale, phone: whatsapp, email, url, interest: d.includeAi ? "audit+ai" : "audit", message: appendConsent(d.place, "audit", d.marketingConsent), ip });
   } catch (e) {
     log("error", "audit insert failed", { err: String(e) });
     return jsonError("unavailable", 503);
@@ -54,7 +57,7 @@ export async function POST(req: Request) {
     const delivered = await notifyAll({
       title: TITLE[d.locale],
       locale: d.locale,
-      lines: [["Site", url], ["E-mail", email], ["WhatsApp", whatsapp], ["AI visibility", d.includeAi ? "da / да / yes" : "nu / нет / no"], ["Sursă", d.place], ["ID", String(id)]],
+      lines: [["Site", url], ["E-mail", email], ["WhatsApp", whatsapp], ["AI visibility", d.includeAi ? "da / да / yes" : "nu / нет / no"], ["Sursă", d.place], ["Consimțământ", consentRecord("audit", d.marketingConsent)], ["ID", String(id)]],
     });
     if (delivered) await markDelivered(id);
   } catch (e) {

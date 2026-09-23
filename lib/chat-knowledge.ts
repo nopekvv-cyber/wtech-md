@@ -51,7 +51,7 @@ ${m.pricing.included}: ${m.pricing.includedText}
 ${m.pricing.separate}: ${m.pricing.separateText}
 ${m.pricing.individual}: ${m.pricing.individualText}
 ${m.pricing.vat}
-Every project gets a fixed price in a written proposal within 48 hours after a 30-minute call. If a starting price above reads "${m.pricing.onRequest}", say that the exact starting price is confirmed in the proposal and do not invent a number.
+Every project gets a written proposal after the discovery call. If a starting price above reads "${m.pricing.onRequest}", say that the exact starting price is confirmed in the proposal and do not invent a number or delivery deadline.
 
 ## How we work
 ${process}
@@ -63,7 +63,7 @@ ${faq}
 ## Contact and next steps
 - ${[contact.phone && `Call ${contact.phone}`, contact.whatsapp && `WhatsApp ${contact.whatsapp}`, contact.telegram && `Telegram ${contact.telegram}`, contact.viber && `Viber ${contact.viber}`].filter(Boolean).join(", ") || "Phone channels: use the contact form on /contact"}
 - Email: ${contact.email}
-- Address: ${contact.address ? `${contact.address}, ` : ""}Chișinău. Hours Monday to Friday 9:00 to 18:00 (Chișinău time). We reply in under an hour on business days.
+- Address: ${contact.address ? `${contact.address}, ` : ""}Chișinău. Hours Monday to Friday 9:00 to 18:00 (Chișinău time). Messages are handled during business hours.
 - The best next step is always a free 30-minute call and the free 24-hour website audit at /audit.
 
 ## Rules

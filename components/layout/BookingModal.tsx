@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { m, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useBrand } from "@/components/preloader/BrandContext";
 import { calUrl } from "@/lib/site";
 import { track } from "@/lib/analytics";
+import { useConsent } from "@/components/privacy/ConsentProvider";
+import { FormConsent } from "@/components/privacy/FormConsent";
+import { useModalFocus } from "@/components/accessibility/useModalFocus";
 
 /**
  * Primary CTA target. If NEXT_PUBLIC_CAL_URL is set, embeds the self-hosted Cal.com page.
@@ -16,32 +19,31 @@ export function BookingModal() {
   const { bookingOpen, closeBooking } = useBrand();
   const t = useTranslations("booking");
   const tc = useTranslations("contact");
+  const tConsent = useTranslations("consent");
   const locale = useLocale();
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [err, setErr] = useState<string | null>(null);
   const [startedAt] = useState(() => Date.now());
-
-  useEffect(() => {
-    if (!bookingOpen) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeBooking();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [bookingOpen, closeBooking]);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
+  const { external, openSettings } = useConsent();
+  const modalRef = useModalFocus(bookingOpen, closeBooking);
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const name = String(fd.get("name") ?? "").trim();
     const phone = String(fd.get("phone") ?? "").trim();
-    if (name.length < 2) return setErr(tc("invalidName"));
-    if (phone.replace(/[^\d]/g, "").length < 8) return setErr(tc("invalidPhone"));
+    if (name.length < 2) { setErr(tc("invalidName")); document.getElementById("bk-name")?.focus(); return; }
+    if (phone.replace(/[^\d]/g, "").length < 8) { setErr(tc("invalidPhone")); document.getElementById("bk-phone")?.focus(); return; }
+    if (!privacyAccepted) { setErr(tConsent("requiredError")); document.getElementById("booking-consent-privacy")?.focus(); return; }
     setErr(null);
     setState("sending");
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ kind: "call", locale, name, phone, when: String(fd.get("when") ?? ""), website: String(fd.get("website") ?? ""), startedAt }),
+        body: JSON.stringify({ kind: "call", locale, name, phone, when: String(fd.get("when") ?? ""), website: String(fd.get("website") ?? ""), startedAt, privacyAccepted, marketingConsent }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setState("sent");
@@ -56,6 +58,7 @@ export function BookingModal() {
       {bookingOpen ? (
         <m.div className="fixed inset-0 z-[70] grid place-items-center bg-black/75 backdrop-blur-sm p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeBooking}>
           <m.div
+            ref={modalRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="booking-title"
@@ -72,7 +75,7 @@ export function BookingModal() {
               <h2 id="booking-title" className="text-[26px] md:text-[30px] pr-10">{t("title")}</h2>
               <p className="text-dim mt-2">{t("sub")}</p>
             </div>
-            {calUrl ? (
+            {calUrl && external ? (
               <iframe
                 title={t("title")}
                 src={`${calUrl}?embed=true&theme=dark&layout=month_view`}
@@ -81,6 +84,7 @@ export function BookingModal() {
               />
             ) : (
               <form onSubmit={submit} className="px-6 md:px-8 pb-8 grid gap-4" noValidate>
+                {calUrl ? <div className="rounded-[var(--radius-md)] border border-line p-4 text-[14px] text-dim"><p>{t("externalBlocked")}</p><button type="button" className="link-inline mt-3" onClick={openSettings}>{t("openCookieSettings")}</button></div> : null}
                 <p className="text-dim text-[14px]">{t("fallback")}</p>
                 {state === "sent" ? (
                   <div role="status" className="rounded-[var(--radius-md)] border border-line p-5">
@@ -91,17 +95,18 @@ export function BookingModal() {
                     <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
                     <div>
                       <label className="label" htmlFor="bk-name">{tc("name")}</label>
-                      <input id="bk-name" name="name" className="field" autoComplete="name" required />
+                      <input id="bk-name" name="name" className="field" autoComplete="name" required aria-required="true" aria-invalid={err === tc("invalidName") ? "true" : undefined} aria-describedby={err === tc("invalidName") ? "booking-error" : undefined} />
                     </div>
                     <div>
                       <label className="label" htmlFor="bk-phone">{tc("phone")}</label>
-                      <input id="bk-phone" name="phone" type="tel" inputMode="tel" className="field" autoComplete="tel" required aria-invalid={err ? "true" : undefined} />
+                      <input id="bk-phone" name="phone" type="tel" inputMode="tel" className="field" autoComplete="tel" required aria-required="true" aria-invalid={err === tc("invalidPhone") ? "true" : undefined} aria-describedby={err === tc("invalidPhone") ? "booking-error" : undefined} />
                     </div>
+                    <FormConsent id="booking-consent" privacyAccepted={privacyAccepted} marketingConsent={marketingConsent} error={!privacyAccepted && err === tConsent("requiredError") ? err : undefined} onPrivacyChange={(value) => { setPrivacyAccepted(value); if (value && err === tConsent("requiredError")) setErr(null); }} onMarketingChange={setMarketingConsent} />
                     <div>
                       <label className="label" htmlFor="bk-when">{t("when")}</label>
                       <input id="bk-when" name="when" className="field" placeholder="Marți, 14:00" />
                     </div>
-                    {err ? <p className="error-text" role="alert">{err}</p> : null}
+                    {err ? <p id="booking-error" className="error-text" role="alert">{err}</p> : null}
                     {state === "error" ? <p className="error-text" role="alert">{tc("error")}</p> : null}
                     <button type="submit" className="btn btn-primary justify-self-start" disabled={state === "sending"}>
                       {state === "sending" ? tc("submit") + "…" : tc("submit")}

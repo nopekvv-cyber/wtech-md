@@ -20,7 +20,12 @@ export function internationalPublicPath(pathname: string): string {
     .replace(/^\/servicii(?=\/|$)/, "/services")
     .replace(/^\/lucrari$/, "/work")
     .replace(/^\/preturi$/, "/pricing")
-    .replace(/^\/despre$/, "/about");
+    .replace(/^\/despre$/, "/about")
+    .replace(/^\/confidentialitate$/, "/privacy")
+    .replace(/^\/termeni$/, "/terms")
+    .replace(/^\/cookie-uri$/, "/cookies")
+    .replace(/^\/rambursari$/, "/refunds")
+    .replace(/^\/consimtamant-sms$/, "/sms-consent");
 }
 
 /** Map an international public URL to the existing English app route. */
@@ -30,7 +35,12 @@ export function internationalInternalPath(pathname: string): string {
     .replace(/^\/services(?=\/|$)/, "/servicii")
     .replace(/^\/work$/, "/lucrari")
     .replace(/^\/pricing$/, "/preturi")
-    .replace(/^\/about$/, "/despre");
+    .replace(/^\/about$/, "/despre")
+    .replace(/^\/privacy$/, "/legal-privacy")
+    .replace(/^\/terms$/, "/legal-terms")
+    .replace(/^\/cookies$/, "/legal-cookies")
+    .replace(/^\/refunds$/, "/legal-refunds")
+    .replace(/^\/sms-consent$/, "/legal-sms-consent");
 }
 
 export function internationalRedirectPath(pathname: string): string | null {
@@ -43,6 +53,27 @@ export function internationalRedirectPath(pathname: string): string | null {
     "/lucrari": "/work", "/raboty": "/work",
     "/preturi": "/pricing", "/ceny": "/pricing",
     "/despre": "/about", "/o-nas": "/about",
+    "/confidentialitate": "/privacy", "/konfidentsialnost": "/privacy",
+    "/termeni": "/terms", "/usloviya": "/terms",
+    "/cookie-uri": "/cookies", "/fayly-cookie": "/cookies",
+    "/rambursari": "/refunds", "/vozvraty": "/refunds",
+    "/consimtamant-sms": "/sms-consent", "/sms-soglasie": "/sms-consent",
+  };
+  return translated[pathname] ?? null;
+}
+
+export function moldovaLegalRedirectPath(pathname: string): string | null {
+  const translated: Record<string, string> = {
+    "/privacy": "/confidentialitate",
+    "/terms": "/termeni",
+    "/cookies": "/cookie-uri",
+    "/refunds": "/rambursari",
+    "/sms-consent": "/consimtamant-sms",
+    "/legal-privacy": "/confidentialitate",
+    "/legal-terms": "/termeni",
+    "/legal-cookies": "/cookie-uri",
+    "/legal-refunds": "/rambursari",
+    "/legal-sms-consent": "/consimtamant-sms",
   };
   return translated[pathname] ?? null;
 }

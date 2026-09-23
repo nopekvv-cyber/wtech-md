@@ -21,6 +21,8 @@ import { MessengerPill } from "@/components/layout/MessengerPill";
 import { ExitIntent } from "@/components/layout/ExitIntent";
 import { BookingModal } from "@/components/layout/BookingModal";
 import { OrganizationSchema } from "@/components/seo/Schema";
+import { ConsentProvider } from "@/components/privacy/ConsentProvider";
+import { AnalyticsConsent } from "@/components/privacy/AnalyticsConsent";
 import "../globals.css";
 
 // Supabase-backed CMS values must be read on every request so /admin changes appear immediately.
@@ -89,6 +91,7 @@ export default async function LocaleLayout({
           <Script id="dev-err" strategy="beforeInteractive" nonce={nonce}>{`window.__errs=[];(function(){function push(m){try{window.__errs.push(String(m).slice(0,6000))}catch(e){}}var o=console.error;console.error=function(){push(Array.prototype.map.call(arguments,function(a){return typeof a==='string'?a:(a&&a.message)||String(a)}).join(' '));o.apply(console,arguments)};window.addEventListener('error',function(e){push('[error] '+((e.error&&e.error.message)||e.message))});window.addEventListener('unhandledrejection',function(e){push('[rejection] '+((e.reason&&e.reason.message)||e.reason))})})();`}</Script>
         ) : null}
         <NextIntlClientProvider messages={messages}>
+          <ConsentProvider>
           <SiteProvider site={site}>
           <BrandProvider>
           <MotionProvider>
@@ -104,11 +107,10 @@ export default async function LocaleLayout({
           </MotionProvider>
           </BrandProvider>
           </SiteProvider>
+          <AnalyticsConsent url={umami.url} websiteId={umami.websiteId} nonce={nonce} />
+          </ConsentProvider>
         </NextIntlClientProvider>
         <OrganizationSchema locale={locale as Locale} />
-        {umami.url && umami.websiteId ? (
-          <Script src={`${umami.url}/script.js`} data-website-id={umami.websiteId} data-do-not-track="true" strategy="lazyOnload" nonce={nonce} />
-        ) : null}
       </body>
     </html>
   );

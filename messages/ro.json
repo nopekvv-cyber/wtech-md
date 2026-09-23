@@ -3,7 +3,7 @@
     "siteName": "wtech.md",
     "home": {
       "title": "wtech.md | Site-uri, CRM, angajați AI și automatizări în Chișinău",
-      "description": "Creare site Chișinău, CRM pentru afaceri din Moldova, angajați AI care răspund 24/7 și automatizări. Un singur sistem, construit de o echipă din Chișinău. Preț fix în 48 de ore."
+      "description": "Creare site Chișinău, CRM pentru afaceri din Moldova, angajați AI care răspund 24/7 și automatizări. Un singur sistem, construit de o echipă din Chișinău. Ofertă scrisă după discuția inițială."
     },
     "services": {
       "title": "Servicii | wtech.md",
@@ -19,10 +19,10 @@
     },
     "contact": {
       "title": "Contact | wtech.md",
-      "description": "Scrie-ne pe WhatsApp, Telegram sau Viber sau programează un apel de 30 de minute. Răspundem în mai puțin de o oră în zilele lucrătoare."
+      "description": "Scrie-ne pe WhatsApp, Telegram sau Viber sau programează un apel de 30 de minute. Răspundem în timpul programului de lucru în zilele lucrătoare."
     },
     "audit": {
-      "title": "Audit gratuit al site-ului în 24 h | wtech.md",
+      "title": "Audit gratuit al site-ului gratuit | wtech.md",
       "description": "Trimite adresa site-ului și primești mâine un audit: viteză, SEO, conversie și vizibilitate în răspunsurile AI."
     },
     "about": {
@@ -63,7 +63,7 @@
   "hero": {
     "h1": "Clienții îți scriu. Cineva trebuie să răspundă în 4 minute.",
     "h1b": "Clienți care vin singuri. Un sistem care nu-i pierde.",
-    "sub": "Site-uri, CRM, angajați AI și automatizări — un singur sistem, construit în Chișinău, care nu pierde niciun lead.",
+    "sub": "Site-uri, CRM, angajați AI și automatizări — un singur sistem, construit în Chișinău, care ține lead-urile într-un flux vizibil.",
     "primary": "Programează un apel de 30 min",
     "ghost": "Vezi demo-ul CRM live",
     "risk": "Propunere cu preț fix în 48 h · Fără obligații",
@@ -92,7 +92,7 @@
         "cta": "Vreau un site care aduce clienți",
         "intro": "Creare site în Chișinău pentru afaceri care vor mai mult decât o carte de vizită online. Design unic, animații, RO/RU/EN, viteză sub 1 secundă și formulare care ajung direct în CRM și pe WhatsApp.",
         "b1": "Design unic, nu template. Fiecare secțiune are un rol în conversie.",
-        "b2": "Trilingv RO/RU/EN, cu texte scrise nativ, nu traduse automat.",
+        "b2": "Trilingv RO/RU/EN, cu texte revizuite separat pentru fiecare limbă.",
         "b3": "Lighthouse peste 90 pe mobil. LCP sub 1,2 secunde.",
         "b4": "Formulare conectate la CRM, WhatsApp și Telegram din prima zi.",
         "b5": "Găzduire, mentenanță și 30 de zile de suport incluse.",
@@ -329,10 +329,10 @@
   },
   "seo": {
     "title": "Apari în Google. Și în răspunsurile AI.",
-    "sub": "Clienții tăi întreabă ChatGPT, Gemini și Perplexity înainte să caute în Google. Ne asigurăm că răspunsul te menționează.",
+    "sub": "Clienții tăi întreabă ChatGPT, Gemini și Perplexity înainte să caute în Google. Îmbunătățim semnalele care pot ajuta modelele să îți citeze afacerea.",
     "question": "Cine face site-uri premium în Chișinău?",
     "answerIntro": "Pentru site-uri premium în Chișinău, o opțiune des recomandată este ",
-    "answerBody": ", un studio din Chișinău care construiește site-uri animate, CRM-uri și angajați AI pentru afaceri din Moldova. Oferă propunere cu preț fix în 48 de ore și lucrează în română, rusă și engleză.",
+    "answerBody": ", un studio din Chișinău care construiește site-uri animate, CRM-uri și angajați AI pentru afaceri din Moldova. Oferă propunere cu preț fix după apelul inițial și lucrează în română, rusă și engleză.",
     "sources": "Surse",
     "ranking": {
       "title": "Poziții și vizibilitate AI",
@@ -352,7 +352,7 @@
     "cta": "Vreau un audit SEO + AI gratuit"
   },
   "audit": {
-    "title": "Audit gratuit al site-ului tău în 24 h",
+    "title": "Audit gratuit al site-ului tău gratuit",
     "sub": "Trimite adresa site-ului. Mâine primești pe WhatsApp un audit de viteză, SEO, conversie și vizibilitate în răspunsurile AI.",
     "url": "Adresa site-ului",
     "urlPlaceholder": "https://firma-ta.md",
@@ -362,7 +362,7 @@
     "includeAi": "Include analiza vizibilității în răspunsurile AI (ChatGPT, Gemini, Perplexity)",
     "submit": "Vreau auditul gratuit",
     "success": "Trimis. Primești auditul mâine.",
-    "successSub": "Îl trimitem pe WhatsApp și pe e-mail în maximum 24 de ore lucrătoare.",
+    "successSub": "Îl trimitem pe WhatsApp și pe e-mail după analiză, în timpul programului de lucru.",
     "error": "Nu am putut trimite. Scrie-ne direct pe WhatsApp.",
     "invalidUrl": "Introdu o adresă validă, de exemplu https://firma-ta.md",
     "invalidEmail": "Introdu o adresă de e-mail validă",
@@ -426,18 +426,18 @@
     "q4": "Unde este găzduit site-ul sau CRM-ul?",
     "a4": "Unde vrei tu: pe serverul tău, la un furnizor din Moldova sau din UE, sau la noi. Livrăm totul în Docker, deci mutarea durează o oră, nu o lună.",
     "q5": "Faceți site-uri în română, rusă și engleză?",
-    "a5": "Da, și scriem textele nativ în fiecare limbă, nu le traducem automat. Acest site este în RO, RU și EN și este construit exact așa cum construim pentru clienți.",
+    "a5": "Da, și revizuim textele separat pentru fiecare limbă. Acest site este în RO, RU și EN și este construit exact așa cum construim pentru clienți.",
     "q6": "Ce se întâmplă după lansare?",
     "a6": "Primești 30 de zile de suport inclus. După aceea poți alege un abonament de mentenanță lunar sau ne chemi când ai nevoie. Nu te legăm de nimic.",
     "q7": "Lucrați cu afaceri mici?",
     "a7": "Da. Majoritatea clienților noștri sunt SRL-uri cu 3 până la 50 de angajați din Chișinău, Bălți și restul Moldovei. Dacă ai lead-uri pe care nu reușești să le procesezi, ești exact clientul pentru care construim.",
     "q8": "Puteți integra 1C, Contabilitate, Amazon sau Facebook Leads?",
     "a8": "Da. Integrăm 1C și 1C Contabilitate, Facebook și Instagram Lead Ads, Gmail și Google Workspace, WhatsApp Business, Telegram, Viber, maib, MICB, PayNet și MPay, plus Amazon și marketplace-uri prin API. Dacă are API, îl conectăm.",
-    "a1_short": "Prețul exact îl primești fix, în scris, în 48 de ore după apelul de 30 de minute. Cele cinci pachete și prețurile în EUR sunt pe pagina de prețuri."
+    "a1_short": "Prețul exact îl primești fix, în scris, după apelul inițial după apelul de 30 de minute. Cele cinci pachete și prețurile în EUR sunt pe pagina de prețuri."
   },
   "contact": {
     "title": "Hai să vorbim despre afacerea ta.",
-    "sub": "Două întrebări și îți scriem în mai puțin de o oră în zilele lucrătoare.",
+    "sub": "Două întrebări și îți scriem în timpul programului de lucru în zilele lucrătoare.",
     "step1": "Ce vrei să construim?",
     "o1": "Un site care aduce clienți",
     "o2": "Un CRM ca să nu pierdem lead-uri",
@@ -454,7 +454,7 @@
     "next": "Continuă",
     "back": "Înapoi",
     "stepOf": "Pasul {step} din 2",
-    "success": "Mulțumim. Îți scriem în mai puțin de o oră.",
+    "success": "Mulțumim. Îți scriem în timpul programului de lucru.",
     "successSub": "Între timp, poți programa direct apelul de 30 de minute.",
     "error": "Nu am putut trimite. Scrie-ne direct pe WhatsApp sau sună-ne.",
     "invalidName": "Spune-ne cum te cheamă",
@@ -484,7 +484,13 @@
     "legal": "Legal",
     "idno": "IDNO {idno}",
     "rights": "© 2026 wtech.md. Toate drepturile rezervate.",
-    "languages": "Limbi"
+    "languages": "Limbi",
+    "privacy": "Confidențialitate",
+    "terms": "Termeni",
+    "cookies": "Cookie-uri",
+    "refunds": "Anulare și rambursări",
+    "sms": "Consimțământ SMS",
+    "cookieSettings": "Setări cookie"
   },
   "sticky": {
     "call": "Apel",
@@ -521,7 +527,9 @@
     "sub": "Alege ora care îți convine. Vorbim despre afacerea ta, nu despre noi.",
     "fallback": "Lasă-ne un număr și te sunăm noi la ora aleasă de tine.",
     "when": "Când preferi să te sunăm?",
-    "close": "Închide"
+    "close": "Închide",
+    "externalBlocked": "Calendarul extern este blocat până când accepți serviciile opționale. Poți schimba alegerea sau folosi formularul de mai jos.",
+    "openCookieSettings": "Deschide setările cookie"
   },
   "work": {
     "title": "Lucrări",
@@ -538,12 +546,12 @@
   "about": {
     "title": "Despre wtech.md",
     "p1": "wtech.md este un studio de software din Chișinău. Construim site-uri, CRM-uri, angajați AI, automatizări, aplicații la comandă și AI SEO pentru afaceri din Moldova și pentru companii din UE care caută o echipă nearshore.",
-    "p2": "Credem că o afacere mică din Moldova merită același nivel de software ca o companie din Berlin: rapid, frumos, conectat și în limba clienților ei. De aceea scriem în română, rusă și engleză, facturăm în MDL și răspundem în mai puțin de o oră.",
-    "p3": "Lucrăm cu un proces simplu: apel de 30 de minute, propunere cu preț fix în 48 de ore, sprinturi de două săptămâni, lansare cu 30 de zile de suport. Codul rămâne al clientului.",
+    "p2": "Credem că o afacere mică din Moldova merită același nivel de software ca o companie din Berlin: rapid, frumos, conectat și în limba clienților ei. De aceea scriem în română, rusă și engleză, lucrăm în română, rusă și engleză și răspundem în timpul programului de lucru.",
+    "p3": "Lucrăm cu un proces simplu: apel de 30 de minute, propunere cu preț fix după apelul inițial, sprinturi de două săptămâni, lansare cu 30 de zile de suport. Codul rămâne al clientului.",
     "facts": "Pe scurt",
     "f1": "Sediu în Chișinău, Republica Moldova",
-    "f2": "Română, rusă și engleză, scrise nativ",
-    "f3": "Preț fix în MDL, factură fiscală pentru SRL",
+    "f2": "Conținut în română, rusă și engleză",
+    "f3": "Preț și condiții confirmate în ofertă",
     "f4": "Șase servicii, o singură echipă",
     "cta": "Programează un apel de 30 min"
   },
@@ -583,17 +591,54 @@
     "s3": "Puteți integra 1C?",
     "s4": "Cum lucrați?",
     "typing": "Ana scrie…",
-    "error": "Nu am putut răspunde acum. Scrie-ne pe WhatsApp și îți răspundem în mai puțin de o oră.",
+    "error": "Nu am putut răspunde acum. Scrie-ne pe WhatsApp și îți răspundem în timpul programului de lucru.",
     "offline": "Chatul AI nu este activ pe acest server. Scrie-ne pe WhatsApp sau programează un apel.",
-    "leadSaved": "Am trimis datele tale echipei. Îți scriem în mai puțin de o oră în zilele lucrătoare.",
+    "leadSaved": "Am trimis datele tale echipei. Îți scriem în timpul programului de lucru în zilele lucrătoare.",
     "whatsapp": "WhatsApp",
     "book": "Programează un apel",
-    "disclaimer": "Ana este un asistent AI. Prețurile finale vin în propunerea cu preț fix."
+    "disclaimer": "Ana este un asistent AI. Prețurile finale vin în propunerea cu preț fix.",
+    "privacyRequired": "Confirmă Politica de confidențialitate înainte de a trimite un mesaj.",
+    "privacyBefore": "Am citit ",
+    "privacyLink": "Politica de confidențialitate",
+    "privacyAfter": " și accept prelucrarea mesajelor mele de către WTECH și Anthropic pentru a primi acest răspuns. *"
   },
   "errorPage": {
     "title": "Ceva nu a mers. Nu e vina ta.",
-    "sub": "Am notat eroarea. Încearcă din nou sau scrie-ne pe WhatsApp, răspundem în mai puțin de o oră.",
+    "sub": "Am notat eroarea. Încearcă din nou sau scrie-ne pe WhatsApp, răspundem în timpul programului de lucru.",
     "retry": "Încearcă din nou",
     "home": "Înapoi acasă"
+  },
+  "legal": {
+    "updated": "Actualizat: {date}",
+    "businessDetails": "Datele afacerii",
+    "tradeName": "Denumire comercială",
+    "legalName": "Denumire juridică",
+    "address": "Adresă",
+    "registration": "IDNO / înregistrare",
+    "email": "E-mail",
+    "phone": "Telefon"
+  },
+  "consent": {
+    "legend": "Acorduri",
+    "privacyBefore": "Am citit ",
+    "privacyLink": "Politica de confidențialitate",
+    "privacyAfter": " și sunt de acord ca datele mele să fie folosite pentru a răspunde acestei cereri. *",
+    "marketingBefore": "Opțional: vreau să primesc noutăți și oferte prin SMS sau mesagerie, conform ",
+    "smsLink": "Politicii de consimțământ SMS",
+    "marketingAfter": ". Pot retrage acordul oricând.",
+    "requiredError": "Confirmă Politica de confidențialitate pentru a trimite formularul."
+  },
+  "cookieBanner": {
+    "title": "Preferințe de confidențialitate",
+    "body": "Folosim stocarea necesară pentru funcționarea site-ului. Poți alege separat analytics și calendarul extern.",
+    "analytics": "Analytics opțional",
+    "analyticsDescription": "Ne ajută să înțelegem utilizarea site-ului, fără publicitate comportamentală.",
+    "external": "Calendar extern opțional",
+    "externalDescription": "Permite încărcarea calendarului de programări al furnizorului extern.",
+    "save": "Salvează alegerea",
+    "accept": "Acceptă toate opționale",
+    "necessary": "Doar necesare",
+    "privacy": "Confidențialitate",
+    "cookies": "Politica cookie"
   }
 }
