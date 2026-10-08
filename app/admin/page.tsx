@@ -1,57 +1,68 @@
-import Link from "next/link";
-import { isAdmin } from "@/lib/admin-auth";
-import { FIELDS, loadSettings } from "@/lib/settings";
-import { countLeads } from "@/lib/db";
-import { logout } from "./actions";
-import { LoginForm, SettingsForm } from "./forms";
-
+import { getActor } from "@/lib/admin-auth";
+import { LeadWorkspace } from "@/components/admin/LeadWorkspace";
+import { LoginForm } from "./forms";
+import type { WorkspaceLead, LeadNote } from "@/lib/workspace-types";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { REFRESH_COOKIE } from "@/lib/admin-auth";
 export const dynamic = "force-dynamic";
-
-export default async function AdminPage() {
-  if (!(await isAdmin())) {
+export default async function Admin() {
+  const actor = await getActor();
+  if (!actor) {
+    if ((await cookies()).has(REFRESH_COOKIE)) redirect("/admin/refresh");
     return (
-      <>
-        <p className="text-[13px] uppercase tracking-[0.18em] text-dim">wtech.md</p>
-        <h1 className="mt-2 text-[32px] md:text-[40px]">WTECH CRM</h1>
-        <p className="text-dim mt-3 max-w-[520px]">Acces securizat la leadurile primite prin Ana, formularele website-ului și setările publice.</p>
+      <section className="owner-login">
+        <strong>WTECH</strong>
+        <h1>Workspace privat</h1>
+        <p>
+          Autentificare pentru conturile autorizate. Accesul este verificat pe
+          server.
+        </p>
         <LoginForm />
-      </>
+      </section>
     );
   }
-  const [stored, open, total] = await Promise.all([loadSettings(), countLeads(true), countLeads(false)]);
-  const groups: Array<{ id: (typeof FIELDS)[number]["group"]; title: string; note?: string }> = [
-    { id: "contact", title: "Contact", note: "Canalele necompletate sunt ascunse pe site. Numerele sunt salvate în format +373…" },
-    { id: "proof", title: "Cifre verificate", note: "Folosește doar cifre reale din sistemele proprii. Câmpurile goale nu sunt afișate." },
-    { id: "social", title: "Rețele sociale", note: "Linkuri complete https://, folosite în footer și în datele structurate Google." },
-  ];
-  return (
-    <>
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="text-[13px] uppercase tracking-[0.18em] text-dim">wtech.md</p>
-          <h1 className="mt-1 text-[32px] md:text-[40px]">WTECH CRM</h1>
-        </div>
-        <div className="flex items-center gap-3 text-[14px]">
-          <Link href="/admin/leads" className="btn btn-primary btn-sm">Leaduri{open ? ` · ${open} noi` : ""}</Link>
-          <Link href="/" className="text-dim hover:text-ink" target="_blank" rel="noopener noreferrer">Deschide site-ul ↗</Link>
-          <form action={logout}><button type="submit" className="btn btn-ghost btn-sm">Ieșire</button></form>
-        </div>
-      </div>
-      <section className="mt-8 grid gap-3 sm:grid-cols-2" aria-label="Rezumat CRM">
-        <Link href="/admin/leads" className="rounded-[var(--radius-lg)] border border-line p-5 transition-colors hover:border-ink/35">
-          <span className="text-[13px] uppercase tracking-[0.12em] text-dim">Necesită răspuns</span>
-          <strong className="mt-2 block text-[34px] font-medium">{open}</strong>
-          <span className="text-[14px] text-dim">Leaduri noi din Ana și formularele site-ului</span>
-        </Link>
-        <Link href="/admin/leads?all=1" className="rounded-[var(--radius-lg)] border border-line p-5 transition-colors hover:border-ink/35">
-          <span className="text-[13px] uppercase tracking-[0.12em] text-dim">Istoric CRM</span>
-          <strong className="mt-2 block text-[34px] font-medium">{total}</strong>
-          <span className="text-[14px] text-dim">Toate leadurile salvate în baza de date</span>
-        </Link>
+  const [leads, records, audit] = await Promise.all([
+    actor.db
+      .from("leads")
+      .select("*")
+      .order("id", { ascending: false })
+      .limit(200),
+    actor.db
+      .from("wtech_records")
+      .select(
+        "id,title,status,lead_id,due_at,payload,version,created_at,updated_at",
+      )
+      .eq("module", "tasks")
+      .order("updated_at", { ascending: false })
+      .limit(500),
+    actor.role === "owner"
+      ? actor.db
+          .from("wtech_audit")
+          .select("id,entity,entity_id,action,created_at")
+          .order("id", { ascending: false })
+          .limit(200)
+      : Promise.resolve({ data: [] }),
+  ]);
+  if (records.error)
+    return (
+      <section className="owner-login">
+        <h1>Workspace indisponibil</h1>
+        <p>
+          Schema sau conexiunea nu este disponibilă. Datele nu au fost înlocuite
+          cu un demo.
+        </p>
       </section>
-      <h2 className="mt-12 text-[24px]">Setările website-ului</h2>
-      <p className="text-dim mt-2 text-[14px]">Canalele de contact, cifrele și profilurile sociale se actualizează pe site după salvare.</p>
-      <SettingsForm groups={groups} fields={FIELDS} values={stored} />
-    </>
+    );
+  return (
+    <LeadWorkspace
+      email={actor.email || ""}
+      initial={{
+        role: actor.role,
+        leads: (leads.data || []) as WorkspaceLead[],
+        notes: (records.data || []) as LeadNote[],
+        audit: audit.data || [],
+      }}
+    />
   );
 }

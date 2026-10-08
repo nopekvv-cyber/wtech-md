@@ -1,0 +1,11 @@
+.git
+.env*
+!.env.example
+work
+qa
+test-results
+playwright-report
+docs
+supabase
+node_modules
+.21st

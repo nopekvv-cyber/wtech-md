@@ -7,11 +7,11 @@ export const INTERNATIONAL_SITE_URL = (process.env.NEXT_PUBLIC_INTERNATIONAL_SIT
 // Empty means "not set" and the site hides the line. Runtime values come from lib/settings.ts.
 export const contactDefaults = {
   legalName: process.env.NEXT_PUBLIC_LEGAL_NAME ?? "",
-  phone: process.env.NEXT_PUBLIC_PHONE ?? "",
+  phone: "+37369360663",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
   telegram: process.env.NEXT_PUBLIC_TELEGRAM ?? "",
   viber: process.env.NEXT_PUBLIC_VIBER ?? "",
-  email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@wtech.md",
+  email: "hello@wtech.md",
   address: process.env.NEXT_PUBLIC_ADDRESS ?? "",
   idno: process.env.NEXT_PUBLIC_IDNO ?? "",
 };

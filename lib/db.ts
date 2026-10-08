@@ -1,4 +1,6 @@
 import "server-only";
+import {publicDb} from "./workspace-db";
+import {randomUUID} from "node:crypto";
 import { dbError, supabaseAdmin } from "./supabase";
 import { supabaseConfigured } from "./env";
 
@@ -13,6 +15,11 @@ export type LeadRow = {
   interest?: string;
   url?: string;
   ip: string;
+  channel?:"phone"|"email"|"whatsapp";
+  idempotencyKey?:string;
+  source?:string;
+  privacyAccepted?:boolean;
+  marketingConsent?:boolean;
 };
 
 export type Lead = {
@@ -93,7 +100,7 @@ export async function leadsCsv(): Promise<string> {
 /** Every CMS setting, key -> value (empty string means cleared). */
 export async function readSettings(): Promise<Record<string, string>> {
   if (memoryEnabled()) return { ...memory.settings };
-  const { data, error } = await supabaseAdmin().from("settings").select("key, value");
+  const { data, error } = await publicDb().rpc("wtech_public_settings");
   dbError("read settings", error);
   const out: Record<string, string> = {};
   for (const row of data ?? []) out[row.key] = row.value;
@@ -112,7 +119,7 @@ export async function writeSettings(values: Record<string, string>): Promise<voi
   dbError("write settings", error);
 }
 
-export async function insertLead(row: LeadRow): Promise<number> {
+export async function insertLead(row: LeadRow): Promise<{id:number;duplicate:boolean}> {
   if (memoryEnabled()) {
     const id = memory.nextId++;
     memory.leads.push({
@@ -130,27 +137,12 @@ export async function insertLead(row: LeadRow): Promise<number> {
       delivered: false,
       handled: false,
     });
-    return id;
+    return {id,duplicate:false};
   }
-  const { data, error } = await supabaseAdmin()
-    .from("leads")
-    .insert({
-      kind: row.kind,
-      locale: row.locale,
-      name: row.name ?? null,
-      phone: row.phone ?? null,
-      email: row.email ?? null,
-      company: row.company ?? null,
-      message: row.message ?? null,
-      interest: row.interest ?? null,
-      url: row.url ?? null,
-      ip: row.ip,
-    })
-    .select("id")
-    .single();
-  dbError("insert lead", error);
-  if (!data?.id) throw new Error("insert lead returned no id");
-  return Number(data.id);
+  const {data,error}=await publicDb().rpc('wtech_capture_lead',{d:{...row,idempotencyKey:row.idempotencyKey||randomUUID()}});
+  dbError('insert lead',error);
+  if(!data?.id)throw Error('Lead not saved');
+  return {id:Number(data.id),duplicate:!!data.duplicate};
 }
 
 export async function markDelivered(id: number): Promise<void> {

@@ -1,10 +1,12 @@
 import "server-only";
+import {publicDb} from "./workspace-db";
+import {createHash} from "node:crypto";
 import { env } from "./env";
 import { SITE_URL } from "./site";
-import { supabaseAdmin } from "./supabase";
 
 /** Client IP: only trusts proxy headers when TRUST_PROXY=1 (UGOS reverse proxy or a Cloudflare Tunnel in front). */
 export function clientIp(req: Request): string {
+  if(process.env.VERCEL){return (req.headers.get("x-vercel-forwarded-for")||req.headers.get("x-forwarded-for")||"unknown").split(",")[0]!.trim()}
   const trust = env.TRUST_PROXY === "1";
   const cf = req.headers.get("cf-connecting-ip"); // Cloudflare's canonical client address
   const xff = req.headers.get("x-forwarded-for");
@@ -36,16 +38,12 @@ function localRateLimit(ip: string): number {
 /** Returns seconds to wait when limited, 0 when allowed. Supabase keeps the window shared across Vercel instances. */
 export async function rateLimit(ip: string): Promise<number> {
   try {
-    const { data, error } = await supabaseAdmin().rpc("consume_rate_limit", {
-      p_key: ip,
-      p_limit: env.RATE_LIMIT_MAX,
-      p_window_seconds: WINDOW_MS / 1000,
-    });
+    const {data,error}=await publicDb().rpc('wtech_rate_gate',{key_hash:createHash('sha256').update(ip).digest('hex'),kind:'intake'});
     if (error) throw error;
     return Number(data) || 0;
   } catch (error) {
     log("warn", "shared rate limit unavailable; using instance-local fallback", { err: String(error) });
-    return localRateLimit(ip);
+    return process.env.NODE_ENV==="production"?600:localRateLimit(ip);
   }
 }
 

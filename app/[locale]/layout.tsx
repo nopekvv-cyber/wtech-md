@@ -17,14 +17,13 @@ import { MotionProvider } from "@/components/layout/MotionProvider";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
-import { StickyCta } from "@/components/layout/StickyCta";
-import { MessengerPill } from "@/components/layout/MessengerPill";
 import { ExitIntent } from "@/components/layout/ExitIntent";
 import { BookingModal } from "@/components/layout/BookingModal";
 import { OrganizationSchema } from "@/components/seo/Schema";
 import { ConsentProvider } from "@/components/privacy/ConsentProvider";
 import { AnalyticsConsent } from "@/components/privacy/AnalyticsConsent";
 import "../globals.css";
+import "../liquid-glass.css";
 
 // Supabase-backed CMS values must be read on every request so /admin changes appear immediately.
 export const dynamic = "force-dynamic";
@@ -91,6 +90,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={outfit.variable} suppressHydrationWarning>
       <body>
+        <Script id="wtech-theme" strategy="beforeInteractive" nonce={nonce}>{`try{var t=localStorage.getItem("wtech-appearance");document.documentElement.dataset.theme=(t==="light"||t==="dark")?t:(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch(e){document.documentElement.dataset.theme="dark"}`}</Script>
         {process.env.NEXT_PUBLIC_PERF_DEBUG === "1" ? (
           <Script id="lcp-debug" strategy="beforeInteractive" nonce={nonce}>{`window.__lcp=[];try{new PerformanceObserver(function(l){l.getEntries().forEach(function(e){window.__lcp.push({t:Math.round(e.startTime),size:e.size,tag:e.element?e.element.tagName:null,cls:e.element?String(e.element.className).slice(0,40):null,url:(e.url||'').slice(-40)})})}).observe({type:'largest-contentful-paint',buffered:true})}catch(e){}`}</Script>
         ) : null}
@@ -108,8 +108,6 @@ export default async function LocaleLayout({
             <Nav showLanguages={!international} />
             <main id="main">{children}</main>
             <Footer showLanguages={!international} showBlog={!international} />
-            <StickyCta />
-            <MessengerPill />
             <ExitIntent />
             <BookingModal />
           </MotionProvider>

@@ -12,9 +12,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 const ITEMS = [
-  { k: "w1", img: "/media/work-1.jpg" },
-  { k: "w2", img: "/media/work-2.jpg" },
-  { k: "w3", img: "/media/work-3.jpg" },
+  { k: "w1", img: "/media/portfolio/miadora.jpg", width:1440,height:900,url:"https://miadora.md/ro" },
+  { k: "w2", img: "/media/portfolio/globus-reisen.jpg", width:1440,height:1000,url:"https://globusreisen.md/" },
+  { k: "w3", img: "/media/portfolio/heroes-moldova.jpg", width:1430,height:993,url:"https://heroesmoldova.com/ro" },
 ] as const;
 
 export default async function Work({ params }: { params: Promise<{ locale: string }> }) {
@@ -30,12 +30,13 @@ export default async function Work({ params }: { params: Promise<{ locale: strin
           {ITEMS.map((it, i) => (
             <li key={it.k} className="py-12 grid lg:grid-cols-12 gap-8 items-center">
               <div className={`lg:col-span-7 ${i % 2 ? "lg:order-2" : ""} rounded-[var(--radius-lg)] overflow-hidden border border-line`}>
-                <Image src={it.img} alt={t(it.k)} width={1344} height={752} sizes="(min-width:1024px) 60vw, 100vw" className="w-full h-auto" priority={i === 0} />
+                <Image src={it.img} alt={t(it.k)} width={it.width} height={it.height} sizes="(min-width:1280px) 660px, (min-width:1024px) 60vw, 100vw" className="w-full h-auto" priority={i === 0} />
               </div>
               <div className={`lg:col-span-5 ${i % 2 ? "lg:order-1" : ""}`}>
-                <div className="text-dim text-[14px]">{t("concept")}</div>
+                <div className="text-dim text-[14px]">{t("capture")}</div>
                 <h2 className="text-[26px] md:text-[32px] mt-2">{t(it.k)}</h2>
                 <p className="text-dim mt-3 max-w-[460px]">{t(`${it.k}d`)}</p>
+                <a className="link-inline mt-6" href={it.url} target="_blank" rel="noopener noreferrer">{t("visit")} ↗</a>
               </div>
             </li>
           ))}

@@ -10,6 +10,7 @@ export function cleanHost(value: string | null | undefined): string {
 /** wtech.md is the Moldova site. Every additional production or preview host is the English international site. */
 export function marketForHost(value: string | null | undefined): Market {
   const host = cleanHost(value);
+  if (process.env.VERCEL_ENV === "preview" && host.endsWith(".vercel.app")) return "moldova";
   if (!host || MOLDOVA_HOSTS.has(host) || host.endsWith(".localhost")) return "moldova";
   return "international";
 }
