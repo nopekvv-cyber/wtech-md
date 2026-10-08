@@ -160,7 +160,10 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
           {settingsOpen ? (
             <fieldset className="mt-4 grid gap-3 border-0 p-0">
               <legend className="sr-only">{t("title")}</legend>
-              <div className="flex items-start gap-3 rounded-[12px] border border-line p-3">
+              <label
+                htmlFor="consent-analytics"
+                className="flex items-start gap-3 rounded-[12px] border border-line p-3 cursor-pointer"
+              >
                 <input
                   id="consent-analytics"
                   type="checkbox"
@@ -186,8 +189,11 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
                     {t("analyticsDescription")}
                   </span>
                 </span>
-              </div>
-              <div className="flex items-start gap-3 rounded-[12px] border border-line p-3">
+              </label>
+              <label
+                htmlFor="consent-external"
+                className="flex items-start gap-3 rounded-[12px] border border-line p-3 cursor-pointer"
+              >
                 <input
                   id="consent-external"
                   type="checkbox"
@@ -213,7 +219,7 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
                     {t("externalDescription")}
                   </span>
                 </span>
-              </div>
+              </label>
             </fieldset>
           ) : null}
           <div className="cookie-actions">
