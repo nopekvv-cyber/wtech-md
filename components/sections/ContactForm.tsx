@@ -119,7 +119,7 @@ export function ContactForm() {
                 {errors.phone ? <p id="ct-phone-err" className="error-text" role="alert">{errors.phone}</p> : null}
               </div>
               <div>
-                <label className="label" htmlFor="ct-email">{t("email")}</label>
+                <label className="label" htmlFor="ct-email">{channel==="email"?"Email":t("email")}</label>
                 <input required={channel==="email"} aria-invalid={errors.email?true:undefined} id="ct-email" name="email" defaultValue={draft.email||""} type="email" inputMode="email" className="field" autoComplete="email" />
               </div>
               <div>

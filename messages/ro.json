@@ -551,7 +551,10 @@
     "when": "Când preferi să te sunăm?",
     "close": "Închide",
     "externalBlocked": "Calendarul extern este blocat până când accepți serviciile opționale. Poți schimba alegerea sau folosi formularul de mai jos.",
-    "openCookieSettings": "Deschide setările cookie"
+    "openCookieSettings": "Deschide setările cookie",
+    "emailFallback": "Lasă-ne adresa email și vom răspunde cu următorul pas.",
+    "whatsappFallback": "Lasă-ne numărul WhatsApp. Salvăm cererea, apoi echipa răspunde.",
+    "contactWhen": "Când preferi să te contactăm?"
   },
   "work": {
     "title": "Lucrări",

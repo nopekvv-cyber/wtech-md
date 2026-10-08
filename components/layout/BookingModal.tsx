@@ -97,7 +97,7 @@ export function BookingModal() {
     <AnimatePresence>
       {bookingOpen ? (
         <m.div
-          className="fixed inset-0 z-[70] grid place-items-center bg-black/75 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-[120] grid place-items-center bg-black/75 backdrop-blur-sm p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -157,7 +157,7 @@ export function BookingModal() {
                     </button>
                   </div>
                 ) : null}
-                <p className="text-dim text-[14px]">{t("fallback")}</p>
+                <p className="text-dim text-[14px]">{channel==="email"?t("emailFallback"):channel==="whatsapp"?t("whatsappFallback"):t("fallback")}</p>
                 {state === "sent" ? (
                   <div
                     role="status"
@@ -262,7 +262,7 @@ export function BookingModal() {
                     />
                     <div>
                       <label className="label" htmlFor="bk-when">
-                        {t("when")}
+                        {t("contactWhen")}
                       </label>
                       <input
                         id="bk-when"

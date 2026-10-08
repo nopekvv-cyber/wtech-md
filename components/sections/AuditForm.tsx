@@ -9,6 +9,7 @@ import { FormConsent } from "@/components/privacy/FormConsent";
 /** 3-field lead magnet (URL, email, WhatsApp) -> /api/audit -> Telegram + SMTP. */
 export function AuditForm({ compact = false, place = "section", showAi = false }: { compact?: boolean; place?: string; showAi?: boolean }) {
   const t = useTranslations("audit");
+  const tc=useTranslations("contact");
   const tConsent = useTranslations("consent");
   const locale = useLocale();
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -86,7 +87,7 @@ export function AuditForm({ compact = false, place = "section", showAi = false }
       </div>
       <div>
         <ContactPreference id={idp} value={channel} onChange={setChannel}/>
-        <label className="label" htmlFor={`${idp}-wa`}>{t("whatsapp")}</label>
+        <label className="label" htmlFor={`${idp}-wa`}>{channel==="phone"?tc("phoneChannel"):t("whatsapp")}</label>
         <input disabled={channel==="email"} id={`${idp}-wa`} name="whatsapp" type="tel" inputMode="tel" className="field" placeholder={t("whatsappPlaceholder")} autoComplete="tel" required aria-required="true" aria-invalid={errors.whatsapp ? "true" : undefined} aria-describedby={errors.whatsapp ? `${idp}-wa-err` : undefined} />
         {errors.whatsapp ? <p id={`${idp}-wa-err`} className="error-text" role="alert">{errors.whatsapp}</p> : null}
       </div>

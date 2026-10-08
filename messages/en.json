@@ -551,7 +551,10 @@
     "when": "When should we call?",
     "close": "Close",
     "externalBlocked": "The external scheduler is blocked until you accept optional services. You can change your choice or use the form below.",
-    "openCookieSettings": "Open cookie settings"
+    "openCookieSettings": "Open cookie settings",
+    "emailFallback": "Leave your email and we will reply with the next step.",
+    "whatsappFallback": "Leave your WhatsApp number. We save the request, then the team replies.",
+    "contactWhen": "When would you prefer to hear from us?"
   },
   "work": {
     "title": "Work",
