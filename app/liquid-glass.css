@@ -270,3 +270,8 @@ header:has(nav[aria-label="Main"]) {
   overscroll-behavior: contain;
   padding-bottom: env(safe-area-inset-bottom);
 }
+/* Keep validation and focus readable on Pearl as well as Obsidian. */
+:root[data-theme=light] .error-text{color:#b63428}
+:root[data-theme=light] .field{border-color:#767685}
+:root[data-theme=light] .field:focus{outline-color:#6740a9;border-color:#6740a9}
+:root[data-theme=light] :focus-visible{outline-color:#6740a9}

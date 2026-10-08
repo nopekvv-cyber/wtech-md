@@ -501,3 +501,6 @@
   outline: 2px solid #6740a9;
   outline-offset: 3px;
 }
+.workspace input,.workspace textarea,.workspace select,.owner-login .field{border-color:#767685}
+.owner-login .field:focus{outline:2px solid #6740a9;outline-offset:3px;border-color:#6740a9}
+.owner-login .error-text{color:#b63428}
