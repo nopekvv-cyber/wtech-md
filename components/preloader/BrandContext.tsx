@@ -4,7 +4,8 @@ import { createContext, useContext, useMemo, useState } from "react";
 
 type BrandState = {
   bookingOpen: boolean;
-  openBooking: () => void;
+  bookingContext: {message?:string};
+  openBooking: (context?:{message?:string}) => void;
   closeBooking: () => void;
 };
 
@@ -12,14 +13,16 @@ const Ctx = createContext<BrandState | null>(null);
 
 export function BrandProvider({ children }: { children: React.ReactNode }) {
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [bookingContext,setBookingContext]=useState<{message?:string}>({});
 
   const value = useMemo<BrandState>(
     () => ({
       bookingOpen,
-      openBooking: () => setBookingOpen(true),
+      bookingContext,
+      openBooking: (context={}) => {setBookingContext(context);setBookingOpen(true)},
       closeBooking: () => setBookingOpen(false),
     }),
-    [bookingOpen],
+    [bookingOpen,bookingContext],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

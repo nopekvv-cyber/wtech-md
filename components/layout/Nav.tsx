@@ -12,6 +12,8 @@ import { useBrand } from "@/components/preloader/BrandContext";
 import { useLocalizedHref } from "./useLocalizedHref";
 import { track } from "@/lib/analytics";
 
+import {ThemeToggle} from "@/components/wtech/ThemeToggle";
+
 const LANG_ORDER: Locale[] = ["ro", "ru", "en"]; // RO first, RU second: the order clients expect
 
 export function Nav({ showLanguages = true }: { showLanguages?: boolean }) {
@@ -68,7 +70,7 @@ export function Nav({ showLanguages = true }: { showLanguages?: boolean }) {
           {items.map((it) => (
             <li key={it.label}>
               {it.anchor ? (
-                <a href={it.anchor} className="text-dim hover:text-ink transition-colors">{it.label}</a>
+                <Link href={{pathname:"/",hash:"proces"}} className="text-dim hover:text-ink transition-colors">{it.label}</Link>
               ) : (
                 <Link href={it.href as "/servicii"} className={`transition-colors ${pathname === it.href ? "text-ink" : "text-dim hover:text-ink"}`}>
                   {it.label}
@@ -78,13 +80,14 @@ export function Nav({ showLanguages = true }: { showLanguages?: boolean }) {
           ))}
         </ul>
 
-        <div className="hidden lg:flex items-center gap-5">
+        <div className="hidden lg:flex items-center gap-5"><ThemeToggle/>
           {showLanguages ? <LangSwitch current={locale} /> : null}
           <button type="button" className="btn btn-primary btn-sm" onClick={() => { track("cta_call_click", { place: "nav" }); openBooking(); }}>
             {t("cta")}
           </button>
         </div>
 
+        <div className="flex items-center gap-2 lg:hidden"><ThemeToggle/>
         <button
           ref={menuBtn}
           type="button"
@@ -95,7 +98,7 @@ export function Nav({ showLanguages = true }: { showLanguages?: boolean }) {
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
+        </button></div>
       </nav>
 
       <AnimatePresence>
@@ -113,7 +116,7 @@ export function Nav({ showLanguages = true }: { showLanguages?: boolean }) {
               {items.map((it) => (
                 <li key={it.label}>
                   {it.anchor ? (
-                    <a href={it.anchor} className="block py-4 text-lg" onClick={() => setOpen(false)}>{it.label}</a>
+                    <Link href={{pathname:"/",hash:"proces"}} className="block py-4 text-lg" onClick={() => setOpen(false)}>{it.label}</Link>
                   ) : (
                     <Link href={it.href as "/servicii"} className="block py-4 text-lg" onClick={() => setOpen(false)}>{it.label}</Link>
                   )}

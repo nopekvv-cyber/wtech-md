@@ -14,3 +14,5 @@ qa/screenshots/*.png
 qa/lighthouse/*.json
 !qa/lighthouse/summary.json
 config/
+.vercel
+qa/final-update

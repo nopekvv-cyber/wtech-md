@@ -11,7 +11,7 @@
     },
     "work": {
       "title": "Web, CRM and AI projects | wtech.md",
-      "description": "Explore WTECH website, custom CRM and AI assistant work, with real projects and demonstration concepts labelled clearly."
+      "description": "MiaDora, Globus Reisen and Heroes Moldova: real websites for events, transport and sport, with original captures and project links."
     },
     "pricing": {
       "title": "Website, CRM and automation pricing | wtech.md",
@@ -380,9 +380,9 @@
     "whatsappPlaceholder": "+373 6x xxx xxx",
     "includeAi": "Include AI-visibility analysis (ChatGPT, Gemini, Perplexity)",
     "submit": "Send me the free audit",
-    "success": "Sent. You get the audit tomorrow.",
-    "successSub": "We send it on WhatsApp and by email after review during business hours.",
-    "error": "We could not send it. Message us directly on WhatsApp.",
+    "success": "Your audit request was saved.",
+    "successSub": "We will reply through your chosen channel.",
+    "error": "We could not save your request. Your input is still in the form. Please try again.",
     "invalidUrl": "Enter a valid address, for example https://your-company.com",
     "invalidEmail": "Enter a valid email address",
     "invalidPhone": "Enter a valid phone number"
@@ -473,9 +473,9 @@
     "next": "Continue",
     "back": "Back",
     "stepOf": "Step {step} of 2",
-    "success": "Thank you. We write back during business hours.",
-    "successSub": "In the meantime you can book the 30-minute call directly.",
-    "error": "We could not send it. Message us on WhatsApp or call us.",
+    "success": "Your request was saved.",
+    "successSub": "Your request was saved. We will reply through your chosen channel. No WhatsApp message was sent.",
+    "error": "We could not save your request. Your input is still in the form. Please try again.",
     "invalidName": "Tell us your name",
     "invalidPhone": "We need a valid phone or WhatsApp number",
     "aside": {
@@ -488,7 +488,10 @@
       "telegram": "Telegram",
       "viber": "Viber",
       "book": "Book a 30-min call"
-    }
+    },
+    "preferredChannel": "How should we reply?",
+    "phoneChannel": "Phone",
+    "invalidEmail": "Enter a valid email address."
   },
   "footer": {
     "tagline": "Software that runs your business. Built in Chișinău.",
@@ -548,19 +551,24 @@
     "when": "When should we call?",
     "close": "Close",
     "externalBlocked": "The external scheduler is blocked until you accept optional services. You can change your choice or use the form below.",
-    "openCookieSettings": "Open cookie settings"
+    "openCookieSettings": "Open cookie settings",
+    "emailFallback": "Leave your email and we will reply with the next step.",
+    "whatsappFallback": "Leave your WhatsApp number. We save the request, then the team replies.",
+    "contactWhen": "When would you prefer to hear from us?"
   },
   "work": {
     "title": "Work",
-    "sub": "Three concepts that show how we build. Each is a real system: website, CRM and AI employee, from the same team.",
+    "sub": "MiaDora, Globus Reisen and Heroes Moldova. Real websites in three different contexts.",
     "concept": "Concept",
-    "w1": "Premium website for a software studio",
-    "w1d": "Hero with the animated mark, services in rows, a live CRM on the page. It is the very site you are looking at.",
-    "w2": "Custom CRM with an AI employee",
-    "w2d": "New → Contacted → Offer → Won pipeline, revenue dashboard and Ana preparing the day's follow-ups.",
-    "w3": "AI employee on the phone",
-    "w3d": "A conversation from the quote request to the booked meeting, plus the automated flows running behind it.",
-    "cta": "I want something similar"
+    "w1": "MiaDora",
+    "w1d": "Events and hospitality. A public website for exploring the venue, events and contact options.",
+    "w2": "Globus Reisen",
+    "w2d": "Moldova–Italy transport. A public website with routes and information for travelers.",
+    "w3": "Heroes Moldova",
+    "w3d": "Sport and events. A public website about events, athletes and the community.",
+    "cta": "I want something similar",
+    "capture": "Real website capture",
+    "visit": "Open website"
   },
   "about": {
     "title": "About wtech.md",
@@ -659,6 +667,10 @@
     "accept": "Accept all optional",
     "necessary": "Necessary only",
     "privacy": "Privacy",
-    "cookies": "Cookie policy"
+    "cookies": "Cookie policy",
+    "compactTitle": "Cookie preferences",
+    "compactBody": "We use necessary storage. You choose whether to allow analytics and the external calendar.",
+    "settings": "Settings",
+    "close": "Close settings"
   }
 }

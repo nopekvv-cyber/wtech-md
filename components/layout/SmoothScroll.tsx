@@ -7,7 +7,7 @@ import { loadGsap } from "@/lib/gsap";
 export function SmoothScroll() {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+    if (reduce || window.matchMedia("(pointer: coarse)").matches) return;
     let cleanup: (() => void) | undefined;
     let disposed = false;
     Promise.all([import("lenis"), loadGsap()]).then(([{ default: Lenis }, { gsap, ScrollTrigger }]) => {

@@ -11,7 +11,7 @@
     },
     "work": {
       "title": "Proiecte web, CRM și AI | wtech.md",
-      "description": "Vezi concepte și proiecte WTECH pentru website-uri, CRM personalizat și asistenți AI, prezentate clar ca proiecte reale sau concepte."
+      "description": "MiaDora, Globus Reisen și Heroes Moldova: website-uri reale pentru evenimente, transport și sport, cu capturi originale și linkuri către proiecte."
     },
     "pricing": {
       "title": "Prețuri site, CRM și automatizări | wtech.md",
@@ -380,9 +380,9 @@
     "whatsappPlaceholder": "+373 6x xxx xxx",
     "includeAi": "Include analiza vizibilității în răspunsurile AI (ChatGPT, Gemini, Perplexity)",
     "submit": "Vreau auditul gratuit",
-    "success": "Trimis. Primești auditul mâine.",
-    "successSub": "Îl trimitem pe WhatsApp și pe e-mail după analiză, în timpul programului de lucru.",
-    "error": "Nu am putut trimite. Scrie-ne direct pe WhatsApp.",
+    "success": "Cererea de audit a fost salvată.",
+    "successSub": "Vom răspunde pe canalul ales.",
+    "error": "Cererea nu a putut fi salvată. Datele sunt păstrate în formular. Încearcă din nou.",
     "invalidUrl": "Introdu o adresă validă, de exemplu https://firma-ta.md",
     "invalidEmail": "Introdu o adresă de e-mail validă",
     "invalidPhone": "Introdu un număr de telefon valid"
@@ -473,9 +473,9 @@
     "next": "Continuă",
     "back": "Înapoi",
     "stepOf": "Pasul {step} din 2",
-    "success": "Mulțumim. Îți scriem în timpul programului de lucru.",
-    "successSub": "Între timp, poți programa direct apelul de 30 de minute.",
-    "error": "Nu am putut trimite. Scrie-ne direct pe WhatsApp sau sună-ne.",
+    "success": "Cererea a fost salvată.",
+    "successSub": "Cererea a fost salvată. Vom răspunde pe canalul ales. Nu a fost trimis un mesaj WhatsApp.",
+    "error": "Cererea nu a putut fi salvată. Datele sunt păstrate în formular. Încearcă din nou.",
     "invalidName": "Spune-ne cum te cheamă",
     "invalidPhone": "Avem nevoie de un telefon sau WhatsApp valid",
     "aside": {
@@ -488,7 +488,10 @@
       "telegram": "Telegram",
       "viber": "Viber",
       "book": "Programează un apel de 30 min"
-    }
+    },
+    "preferredChannel": "Cum preferi să răspundem?",
+    "phoneChannel": "Telefon",
+    "invalidEmail": "Introdu o adresă email validă."
   },
   "footer": {
     "tagline": "Software care îți conduce afacerea. Construit în Chișinău.",
@@ -548,19 +551,24 @@
     "when": "Când preferi să te sunăm?",
     "close": "Închide",
     "externalBlocked": "Calendarul extern este blocat până când accepți serviciile opționale. Poți schimba alegerea sau folosi formularul de mai jos.",
-    "openCookieSettings": "Deschide setările cookie"
+    "openCookieSettings": "Deschide setările cookie",
+    "emailFallback": "Lasă-ne adresa email și vom răspunde cu următorul pas.",
+    "whatsappFallback": "Lasă-ne numărul WhatsApp. Salvăm cererea, apoi echipa răspunde.",
+    "contactWhen": "Când preferi să te contactăm?"
   },
   "work": {
     "title": "Lucrări",
-    "sub": "Trei concepte care arată cum construim. Fiecare este un sistem real: site, CRM și angajat AI, din aceeași echipă.",
+    "sub": "MiaDora, Globus Reisen și Heroes Moldova. Website-uri reale, în trei contexte diferite.",
     "concept": "Concept",
-    "w1": "Site premium pentru un studio de software",
-    "w1d": "Hero cu marcă animată, servicii în rânduri, CRM live în pagină. Este chiar site-ul pe care îl vezi.",
-    "w2": "CRM personalizat cu angajat AI",
-    "w2d": "Pipeline Nou → Contactat → Ofertă → Câștigat, dashboard de venit și Ana, care pregătește follow-up-urile zilei.",
-    "w3": "Angajat AI pe telefon",
-    "w3d": "Conversație de la cererea de ofertă la întâlnirea programată, plus fluxurile automate care rulează în spate.",
-    "cta": "Vreau ceva similar"
+    "w1": "MiaDora",
+    "w1d": "Evenimente și hospitality. Website public pentru explorarea locației, evenimentelor și opțiunilor de contact.",
+    "w2": "Globus Reisen",
+    "w2d": "Transport Moldova–Italia. Website public cu rute și informații utile pentru călători.",
+    "w3": "Heroes Moldova",
+    "w3d": "Sport și evenimente. Website public dedicat evenimentelor, sportivilor și comunității.",
+    "cta": "Vreau ceva similar",
+    "capture": "Captură reală a website-ului",
+    "visit": "Deschide website-ul"
   },
   "about": {
     "title": "Despre wtech.md",
@@ -659,6 +667,10 @@
     "accept": "Acceptă toate opționale",
     "necessary": "Doar necesare",
     "privacy": "Confidențialitate",
-    "cookies": "Politica cookie"
+    "cookies": "Politica cookie",
+    "compactTitle": "Preferințe cookie",
+    "compactBody": "Folosim stocarea necesară. Tu alegi dacă permiți analytics și calendarul extern.",
+    "settings": "Setări",
+    "close": "Închide setările"
   }
 }

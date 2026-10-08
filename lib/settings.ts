@@ -69,9 +69,9 @@ export const getSite = cache(async (): Promise<Site> => {
   return {
     contact: {
       legalName: g("contact.legal_name"),
-      phone: g("contact.phone"),
-      phoneHref: g("contact.phone").replace(/[^+\d]/g, ""), whatsapp: g("contact.whatsapp"), telegram: g("contact.telegram"),
-      viber: g("contact.viber"), email: g("contact.email"), address: g("contact.address"), idno: g("contact.idno"),
+      phone: "+37369360663",
+      phoneHref: "+37369360663", whatsapp: g("contact.whatsapp"), telegram: g("contact.telegram"),
+      viber: g("contact.viber"), email: "hello@wtech.md", address: g("contact.address"), idno: g("contact.idno"),
     },
     socials: { facebook: g("social.facebook"), instagram: g("social.instagram"), linkedin: g("social.linkedin") },
     proof: { n1: g("proof.n1"), n2: g("proof.n2"), n3: g("proof.n3") },

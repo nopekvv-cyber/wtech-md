@@ -1,3 +1,4 @@
+import {preload} from "react-dom";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { type Locale } from "@/i18n/routing";
@@ -10,6 +11,7 @@ import { CrmDemo, AiEmployees, Automations, AiSeo } from "@/components/sections/
 import { LeadMagnet } from "@/components/sections/LeadMagnet";
 import { Process } from "@/components/sections/Process";
 import { Pricing } from "@/components/sections/Pricing";
+import {AskAnything} from "@/components/wtech/AskAnything";
 import { Faq } from "@/components/sections/Faq";
 import { FAQ_KEYS } from "@/lib/faq";
 import { Contact } from "@/components/sections/Contact";
@@ -24,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  preload("/brand/wtech-hero-mark-v2.webp",{as:"image",imageSrcSet:"/brand/wtech-hero-mark-mobile.webp 780w, /brand/wtech-hero-mark-v2.webp 1247w",imageSizes:"(max-width:480px) 102vw, (max-width:1023px) 660px, 56vw",fetchPriority:"high"});
   const tf = await getTranslations({ locale, namespace: "faq" });
   const faq = FAQ_KEYS.map((n) => ({ q: tf(`q${n}`), a: tf(`a${n}`) }));
   return (
@@ -40,6 +43,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <Process />
       <Pricing />
       <Faq />
+      <AskAnything />
       <Contact />
       <FaqSchema items={faq} />
     </>

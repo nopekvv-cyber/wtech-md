@@ -1,0 +1,277 @@
+/* Surface finishes only. Existing composition, palette, typography and animation remain intact. */
+:root {
+  --glass-surface: rgba(14, 14, 18, 0.9);
+  --glass-edge: rgba(245, 241, 234, 0.19);
+}
+header:has(nav[aria-label="Main"]) {
+  background: var(--glass-surface) !important;
+  backdrop-filter: blur(18px) saturate(115%);
+  border-bottom: 1px solid var(--glass-edge) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+#mobile-menu {
+  background: rgba(9, 9, 12, 0.97) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.btn-ghost {
+  background: rgba(245, 241, 234, 0.05);
+  box-shadow: inset 0 1px 0 rgba(245, 241, 234, 0.08);
+  border-color: var(--glass-edge);
+}
+[role="dialog"]:not([aria-labelledby="cookie-title"]) {
+  background: rgba(12, 12, 16, 0.98) !important;
+  border: 1px solid var(--glass-edge);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 24px 80px rgba(0, 0, 0, 0.35);
+}
+.field {
+  font-size: 16px;
+  min-height: 48px;
+}
+.field:focus {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 3px;
+}
+.field::placeholder {
+  color: rgba(245, 241, 234, 0.62);
+}
+@media (pointer: coarse) {
+  header:has(nav[aria-label="Main"]),
+  #mobile-menu,
+  [role="dialog"] {
+    backdrop-filter: none !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  header:has(nav[aria-label="Main"]),
+  #mobile-menu,
+  [role="dialog"] {
+    backdrop-filter: none !important;
+    background: #0c0c10 !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-edge);
+  color: var(--text);
+  background: rgba(128, 128, 140, 0.08);
+  flex-shrink: 0;
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 3px;
+}
+:root[data-theme="light"] {
+  --bg: #f5f5f8;
+  --surface: #fff;
+  --text: #19191f;
+  --text-dim: #55555f;
+  --border: rgba(25, 25, 31, 0.2);
+  --glass-surface: rgba(249, 249, 252, 0.94);
+  --glass-edge: rgba(25, 25, 31, 0.22);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--text);
+  --color-dim: var(--text-dim);
+  --color-line: var(--border);
+  color-scheme: light;
+}
+:root[data-theme="light"] #mobile-menu,
+:root[data-theme="light"]
+  [role="dialog"]:not([aria-labelledby="cookie-title"]) {
+  background: rgba(250, 250, 253, 0.98) !important;
+}
+:root[data-theme="light"] .field {
+  background: #fff;
+  color: #19191f;
+  border-color: #9c9ca7;
+}
+:root[data-theme="light"] .field::placeholder {
+  color: #60606b;
+}
+:root[data-theme="light"] .bundle-shell {
+  background: linear-gradient(145deg, #fff, #ededf4) !important;
+  color: var(--text);
+  border-color: var(--glass-edge);
+}
+:root[data-theme="light"] .text-white,
+:root[data-theme="light"] .text-white\/80 {
+  color: var(--text);
+}
+:root[data-theme="light"] .bg-black\/95,
+:root[data-theme="light"] .bg-black\/70 {
+  background: var(--glass-surface) !important;
+}
+:root[data-theme="light"] .bg-ink.text-black {
+  color: #fff !important;
+  background: #19191f !important;
+}
+:root[data-theme="light"] .btn-primary {
+  background: #19191f;
+  color: #fff;
+}
+:root[data-theme="light"] .border-white\/10 {
+  border-color: var(--glass-edge);
+}
+:root[data-theme="light"] .phone {
+  background: #f0f0f4;
+  color: #19191f;
+}
+:root[data-theme="light"] .bg-white\/10 {
+  background: rgba(25, 25, 31, 0.12);
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root[data-theme="light"] header,
+  :root[data-theme="light"] #mobile-menu,
+  :root[data-theme="light"] [role="dialog"] {
+    background: #f5f5f8 !important;
+  }
+}
+[role="dialog"][aria-labelledby="booking-title"] {
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.cookie-panel {
+  position: fixed;
+  left: auto;
+  right: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 100;
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  background: var(--glass-surface);
+  color: var(--text);
+  border: 1px solid var(--glass-edge);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 16px 60px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(16px);
+  overscroll-behavior: contain;
+}
+.cookie-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.cookie-heading h2 {
+  font-size: 18px;
+}
+.cookie-heading button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cookie-panel #cookie-description {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-top: 10px;
+}
+.cookie-panel > .mt-3 {
+  display: none;
+}
+.cookie-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 16px;
+}
+.cookie-actions .btn {
+  font-size: 14px;
+  min-height: 44px;
+  padding: 10px 12px;
+  justify-content: center;
+  line-height: 1.2;
+}
+.cookie-actions .btn-primary {
+  grid-column: 1/-1;
+  grid-row: 1;
+}
+.cookie-panel input {
+  accent-color: var(--text);
+}
+@media (max-width: 767px) {
+  .cookie-panel {
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: calc(100vw - 24px);
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .cookie-panel[role="dialog"] {
+    max-height: 65dvh;
+  }
+  .cookie-panel #cookie-description {
+    font-size: 14px;
+  }
+}
+@media (max-height: 450px) {
+  .cookie-panel {
+    max-height: 70dvh;
+  }
+  .cookie-panel #cookie-description {
+    margin-top: 6px;
+  }
+  .cookie-actions {
+    margin-top: 10px;
+  }
+  .cookie-panel[role="region"] {
+    padding: 12px;
+  }
+}
+:root[data-theme="light"] .package-bundle__badge,
+:root[data-theme="light"] .package-bundle__cumulative,
+:root[data-theme="light"] .package-bundle__variable,
+:root[data-theme="light"] .package-terms__vat {
+  color: var(--text-dim);
+  border-color: var(--glass-edge);
+}
+:root[data-theme="light"] .monitor,
+:root[data-theme="light"] .phone {
+  --surface: #0a0a0b;
+  --text: #f5f1ea;
+  --text-dim: rgba(245, 241, 234, 0.78);
+  --color-surface: #0a0a0b;
+  --color-ink: #f5f1ea;
+  --color-dim: rgba(245, 241, 234, 0.78);
+  --color-line: rgba(245, 241, 234, 0.16);
+  color: #f5f1ea;
+  background: #050506;
+}
+:root[data-theme="light"] .phone .text-white,
+:root[data-theme="light"] .monitor .text-white {
+  color: white;
+}
+:root[data-theme="light"] .phone .bg-ink.text-black,
+:root[data-theme="light"] .monitor .bg-ink.text-black {
+  color: #050506 !important;
+  background: #f5f1ea !important;
+}
+#mobile-menu {
+  max-height: calc(100dvh - var(--nav-h));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+/* Keep validation and focus readable on Pearl as well as Obsidian. */
+:root[data-theme=light] .error-text{color:#b63428}
+:root[data-theme=light] .field{border-color:#767685}
+:root[data-theme=light] .field:focus{outline-color:#6740a9;border-color:#6740a9}
+:root[data-theme=light] :focus-visible{outline-color:#6740a9}

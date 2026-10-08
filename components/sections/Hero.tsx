@@ -37,12 +37,14 @@ export function Hero() {
           <img
             data-hero
             src="/brand/wtech-hero-mark-v2.webp"
+            srcSet="/brand/wtech-hero-mark-mobile.webp 780w, /brand/wtech-hero-mark-v2.webp 1247w"
+            sizes="(max-width:480px) 102vw, (max-width:1023px) 660px, 56vw"
             alt=""
             width={1247}
             height={738}
             className="hero-art__mark"
             draggable={false}
-            decoding="async"
+            decoding="sync"
             fetchPriority="high"
           />
         </div>
